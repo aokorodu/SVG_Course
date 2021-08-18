@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Viewbox</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="content-holder">
+        <div class="info-holder">
+            <div class="title">viewbox </div>
+            <div class="subtitle">svg coordinate system</div>
+            <div class="description">Defines the coordinate system of the viewport.
+            </div>
+        </div>
+        <div class="svg-holder">
+            <!--
+                base element <svg>
+                viewbox 
+                2nd example - offset the min-x and min-y position
+                3rd, 4th example - change the w and height of the viewbox
+            -->
+            <!--svg width="500" height="500" viewbox="0 0 500 500">
+                <circle cx="250" cy="250" r="200" fill="rgb(0, 206, 0)"></circle>
+            </svg-->
+            <!--svg width="500" height="500" viewbox="-50 -50 500 500">
+                <circle cx="250" cy="250" r="200" fill="rgb(0, 206, 0)"></circle>
+            </svg-->
+            <!-- <svg width="500" height="500" viewbox="0 0 200 200">
+                <circle cx="250" cy="250" r="200" fill="rgb(0, 206, 0)"></circle>
+            </svg> -->
+            <svg width="500" height="500" viewBox="0 0 1000 1000">
+                <circle cx="250" cy="250" r="200" fill="rgb(0, 206, 0)"></circle>
+            </svg>
+        </div>
+        <div class="info">container size: 500px x 500px </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>SVG</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+    <div class="content-holder">
+        <div class="svg-holder">
+            <svg width="500" height="500" viewbox="0 0 500 500">
+                
+                <circle id="head" cx="250" cy="250" r="250" fill="orange"></circle>
+                
+                <circle id="lefteye" cx="150" cy="150" r="20" fill="black">
+                </circle>
+                
+                <circle id="righteye" cx="350" cy="150" r="20" fill="black"></circle>
+                
+                <use href="#lefteye" x="100" y="10"/>
+                
+                <line x1="150" y1="300" x2="350" y2="300" stroke="black" stroke-width="5"></line>
+            </svg>
+        </div>
+    </div>
+</body>
+
+</html>

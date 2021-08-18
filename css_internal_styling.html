@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>CSS Styling</title>
+    <link rel="stylesheet" href="css-styling-main.css">
+</head>
+
+<body>
+    <div class="content-holder">
+        <div class="svg-holder">
+            <svg width="500" height="500" viewbox="0 0 500 500">
+                <style>
+                    #head {
+                        fill: rgb(243, 206, 125);
+                    }
+
+                    .eye {
+                        fill: brown;
+                        stroke: white;
+                        stroke-width: 10px;
+                        ;
+                    }
+                </style>
+                <circle id="head" cx="250" cy="250" r="250"></circle>
+
+                <circle id="lefteye" class="eye" cx="150" cy="150" r="20">
+                </circle>
+
+                <circle id="righteye" class="eye" cx="350" cy="150" r="20"></circle>
+
+                <line x1="150" y1="300" x2="350" y2="300" stroke="black" stroke-width="5"></line>
+            </svg>
+        </div>
+    </div>
+</body>
+
+</html>

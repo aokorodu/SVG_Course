@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Viewbox</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="content-holder">
+        <div class="info-holder">
+            <div class="title">SVG Paths </div>
+            <div class="subtitle">horizontaal and vertical sub-paths, shortcuts, absolute and relative quadratic curves</div>
+            <div class="description"></div>
+        </div>
+        <div class="svg-holder">
+            <!--
+                base element <svg>
+                1.  path with no curves
+                2.  path with horizontal line shorthand absolute
+                3.  path with horizontal line shorthand relative
+                4.  path with vertical line shorthand absolute
+                5.  path with vertical line shorthand relative
+                6. combination vertical, horizontal, relative and absolute, with close path command
+                7.  curved path - absolute quadratic curves
+                8.  curved path - relative quadratic curve
+            -->
+            
+            <svg width="500" height="500" viewbox="0 0 500 500">
+                <!-- horizontal lines -->
+                <path d="M 50,50 L 450,50" fill="none" stroke="black" stroke-width="2"></path>
+
+                <path d="M 50,75 H 450" fill="none" stroke="black" stroke-width="2"></path>
+
+                <path d="M 50,100 h 400" fill="none" stroke="black" stroke-width="2"></path>
+
+                <!-- vertical lines -->
+                <path d="M 200,25 V 125" fill="none" stroke="black" stroke-width="2"></path>
+
+                <path d="M 300,25 v 100" fill="none" stroke="black" stroke-width="2"></path>
+
+                <!-- combination -->
+
+                <path d="M 50, 150 H 450 V 200 h -400 Z" fill="none" stroke="black" stroke-width="2"></path>
+
+                <!-- quadratic curves -->
+                <path d="M 0,300 L 50,300 Q 150,150 300,300 Q 350,350 450,300 L 500,300" fill="none" stroke="black" stroke-width="2"></path>
+
+                <path d="M 0,350 L 50,350 q 200,150 400,0 L 500,350" fill="none" stroke="black" stroke-width="2"></path>
+            </svg>
+
+                
+            
+        </div>
+        <div class="info">container size: 500px x 500px </div>
+    </div>
+</body>
+
+</html>

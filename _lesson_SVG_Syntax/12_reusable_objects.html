@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Viewbox</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="content-holder">
+        <div class="info-holder">
+            <div class="title">SVG reusable objects</div>
+            <div class="subtitle">defs, use
+            </div>
+            <div class="description"></div>
+        </div>
+        <div class="svg-holder">
+            <!--
+                base element <svg>
+                
+            -->
+
+            <svg id="svg" width="500" height="500" viewbox="0 0 500 500">
+
+                <!-- 
+                    in defs, two objects
+                    button_object: has cx and cy of 250
+                    button_object_zero: has cy and cy of 0
+
+                    NOTE: the x and y attributes of the <use> element change the position of the ORIGIN of the object.
+
+                    NOTE: the button_object is more difficult to move around than the button_object_zero, which is built at 0,0 so it's easier to move around by changing the x and y of the <use> object.
+
+                    NOTE: it's also much easier to generate and position the buttn_object_zero <use> objects. See the generate_buttons()javascript method below.
+                -->
+
+                <defs>
+                    <g id="button_object" stroke="black" stroke-width="3" fill="none">
+                        <circle cx="300" cy="300" r="20"></circle>
+                        <path d="M 290, 300 h 20 M 300,290 v 20"></path>
+                    </g>
+
+
+                    <g id="button_object_zero" stroke="green" stroke-width="3" fill="none">
+                        <circle cx="0" cy="0" r="20"></circle>
+                        <path d="M-10, 0 H 10 M 0,-10 V 10"></path>
+                    </g>
+
+
+                </defs>
+                <use href="#button_object" x="0" y="0"></use>
+                <use href="#button_object_zero" x="100" y="100"></use>
+                <use href="#button_object_zero" transform="translate(200,200)"></use>
+                <use href="#button_object_zero" transform="translate(400,400) scale(2) rotate(45)"></use>
+
+            </svg>
+
+        </div>
+        <div class="info">container size: 500px x 500px </div>
+    </div>
+</body>
+<script>
+    const svg = document.getElementById("svg");
+    const generate_buttons = () => {
+        const num = 20;
+        for (let i = 0; i < num; i++) {
+            const elm = document.createElementNS("http://www.w3.org/2000/svg", "use");
+            elm.setAttribute("href", "#button_object_zero");
+            const x = 20 + Math.round(Math.random() * 460);
+            const y = 20 + Math.round(Math.random() * 460);
+
+            elm.setAttribute("x", x);
+            elm.setAttribute("y", y);
+            svg.appendChild(elm);
+        }
+    }
+
+    //generate_buttons();
+
+
+
+</script>
+
+</html>

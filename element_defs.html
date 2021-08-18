@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>SVG - DEFs</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+    <div class="content-holder">
+        <div class="svg-holder">
+            <svg width="500" height="500" viewbox="0 0 500 500">
+                <defs>
+                    <g id="eye">
+                        <circle cx="0" cy="0" r="40" fill="white" stroke="black" />
+                        <circle cx="0" cy="0" r="20" fill="black" />
+                    </g>
+
+                    <g id="nose" >
+                        <circle cx="0" cy="0" r="50" fill="red"/>
+                        <circle cx="-15" cy="0" r="10" fill="black" />
+                        <circle cx="15" cy="0" r="10" fill="black" />
+                    </g>
+                </defs>
+
+                <circle id="head" cx="250" cy="250" r="250" fill="orange"></circle>
+                
+                <!-- remember, the x and y coordinates of the use element describe where the origin (0,0) point of the defined element will be! -->
+                <use href="#eye" x="350" y="150"/>
+                
+                <use href="#eye" x="150" y="150"/>
+
+                <use xlink:href="#nose" x="250" y="250"/>
+                
+                <line x1="150" y1="350" x2="350" y2="350" stroke="black" stroke-width="5"></line>
+            </svg>
+        </div>
+    </div>
+</body>
+
+</html>

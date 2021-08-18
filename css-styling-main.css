@@ -1,0 +1,21 @@
+* {
+    box-sizing: border-box;
+}
+
+.content-holder {
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.svg-holder {
+    border: 1px solid #656565; 
+    width: 500px; 
+    height: 500px
+}
