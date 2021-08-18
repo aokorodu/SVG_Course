@@ -19,10 +19,11 @@
                 
             -->
             <svg width="500" height="500" viewbox="0 0 500 500">
+                <!-- style for stroke-dashoffset animation -->
                 <style>
                     
                     #animated_dash {
-                        animation: strokeAnimation 2s linear infinite;;
+                        animation: strokeAnimation 3s linear infinite;;
                     }
 
                     @keyframes strokeAnimation {
@@ -30,25 +31,28 @@
                         to {stroke-dashoffset: 70;}
                     }
                 </style>
+
+                <!-- path object use in demos -->
                 <defs>
-                    <path id="line_object" d="M 0,0 h 500" ></path> 
+                    <path id="path_object" d="M 0,0 h 500" ></path> 
                 </defs>
+
                 <!-- varying stroke-width -->
-                <use href="#line_object" x="0" y="50" stroke="black" stroke-width="1"></use>
-                <use href="#line_object" x="0" y="100" stroke="black" stroke-width="3"></use>
-                <use href="#line_object" x="0" y="150" stroke="black" stroke-width="5"></use>
+                <use href="#path_object" x="0" y="50" stroke="black" stroke-width="1"></use>
+                <use href="#path_object" x="0" y="100" stroke="black" stroke-width="3"></use>
+                <use href="#path_object" x="0" y="150" stroke="black" stroke-width="5"></use>
 
                 <!-- varying stroke color and opacity -->
-                <use href="#line_object" x="0" y="200" stroke="#bb0934" stroke-width="5"></use>
-                <use href="#line_object" x="0" y="250" stroke="#FF0000" stroke-width="5" stroke-opacity=".2"></use>
+                <use href="#path_object" x="0" y="200" stroke="#bb0934" stroke-width="5"></use>
+                <use href="#path_object" x="0" y="250" stroke="#FF0000" stroke-width="5" stroke-opacity=".2"></use>
 
                 <!-- stroke dash-array, arrays of 1, 2, and 4 values -->
-                <use href="#line_object" x="0" y="300" stroke="black" stroke-width="5" stroke-dasharray="10"></use>
-                <use href="#line_object" x="0" y="350" stroke="black" stroke-width="5" stroke-dasharray="20 10"></use>
-                <use href="#line_object" x="0" y="400" stroke="black" stroke-width="5" stroke-dasharray="20 15 10 5"></use>
+                <use href="#path_object" x="0" y="300" stroke="black" stroke-width="5" stroke-dasharray="10"></use>
+                <use href="#path_object" x="0" y="350" stroke="black" stroke-width="5" stroke-dasharray="20 10"></use>
+                <use href="#path_object" x="0" y="400" stroke="black" stroke-width="5" stroke-dasharray="20 15 10 5"></use>
 
                 <!-- animating stroke-dashoffset using animation defined in style section -->
-                <use id="animated_dash" href="#line_object" x="0" y="450" stroke="black" stroke-width="5" stroke-dasharray="20 50"></use>
+                <use id="animated_dash" href="#path_object" x="0" y="450" stroke="black" stroke-width="5" stroke-dasharray="20 50"></use>
                 
             </svg>
             
