@@ -13,7 +13,7 @@
     <div class="content-holder">
         <div class="info-holder">
             <div class="title">SVG Strokes </div>
-            <div class="subtitle">linear gradients</div>
+            <div class="subtitle">linear and radial gradients</div>
         </div>
         <div class="svg-holder">
             <!-- -->
@@ -24,22 +24,37 @@
                 <defs>
                     <rect id="rectangle" x="0" y="0" width="300" height="50" stroke-width="20" fill="none"></rect>
 
-                    <circle id="circle" cx="0" cy="0" r="100" fill="none" stroke-width="20"></circle>
+                    <circle id="circle" cx="0" cy="0" r="50" fill="none" stroke-width="40"></circle>
 
-                    <linearGradient id="the_gradient">
+                    <polygon id="polygon" points="0,0 0,100 200,50 Z" fill="none" stroke-width="20" ></polygon>
+
+                    <linearGradient id="linear_gradient">
                         <stop offset="0%" stop-color="red" />
                         <stop offset="95%" stop-color="black" />
                     </linearGradient>
+
+                    <radialGradient id="radial_gradient">
+                        <stop offset="70%" stop-color="red" />
+                        <stop offset="100%" stop-color="black" />
+                    </radialGradient>
                 </defs>
 
-                <!-- rect -->
-                <use href="#rectangle" x="100" y="100" stroke="url('#the_gradient')"></use>
+                <!-- rect with linear gradient -->
+                <use href="#rectangle" x="100" y="100" stroke="url('#linear_gradient')"></use>
 
-                <!-- circle -->
-                <use href="#circle" x="250" y="300" stroke="url('#the_gradient')"></use>
+                <!-- circle with linear gradient -->
+                <use href="#circle" x="150" y="250" stroke="url('#linear_gradient')"></use>
+
+                <!-- circle with radial gradient -->
+                <use href="#circle" x="350" y="250" stroke="url('#radial_gradient')"></use>
+
+                <!-- polygon with radial gradient -->
+                <use href="#polygon" x="150" y="350" stroke="url('#linear_gradient')"></use>
 
                 <!-- NOTE: can't use gradient with lines or paths -->
-                <line x1="100" y1="50" x2="400" y2="50" stroke-width="20" stroke="url('#the_gradient')"></line>
+                <line x1="100" y1="50" x2="400" y2="50" stroke-width="20" stroke="url('#radial_gradient')"></line>
+
+                
 
 
 
