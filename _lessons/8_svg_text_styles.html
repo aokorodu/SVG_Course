@@ -35,7 +35,7 @@
 
                     .text-style {
                         font-family: serif;
-                        font-size: 3rem;
+                        font-size: 2rem;
                         font-weight: bold;
                         fill: blue;
                         stroke: red;
@@ -45,6 +45,7 @@
                     .span-style {
                         font-size: 3rem;
                         fill: green;
+                        font-weight: bold;
                     }
                 </style>
 
@@ -66,13 +67,20 @@
                     >attribute-styled text</text>
 
                 <text 
-                    x="75" 
+                    x="25" 
                     y="350"
                     font-size="2rem"
                     font-family="serif"
                     font-weight="normal";
                     fill="black"
-                    >using <tspan class="span-style">tspan</tspan> to style text</text>
+                    >using the
+                    <tspan 
+                        class="span-style" 
+                        dx="5" 
+                        dy="50" 
+                        rotate="15">tspan
+                    </tspan> to style text
+                    </text>
             </svg>
         
         </div>

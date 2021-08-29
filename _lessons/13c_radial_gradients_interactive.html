@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Viewbox</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="content-holder">
+        <div class="info-holder">
+            <div class="title">SVG radial gradients</div>
+            <div class="subtitle">controling the flow of a radial gradient
+            </div>
+            <div class="description">Drag the circular handles to change the orientation of the radial gradient.
+            </div>
+        </div>
+        <div class="svg-holder">
+            <!--
+               
+                
+            -->
+            <svg id="svg" width="500" height="500" viewbox="0 0 500 500">
+                <!-- 
+                -->
+                <defs>
+                    <!-- radial gradient -->
+                    <radialGradient id="radial_gradient" cx=".5" cy=".5" fx=".5" fy=".5" r=".5">
+                        <stop offset="0%" stop-color="red" />
+                        <stop offset="100%" stop-color="blue" />
+                    </radialGradient>
+                </defs>
+                <rect x="0" y="0" width="500" height="500" stroke="none" fill="url(#radial_gradient)"></rect>
+
+                <circle id="outer_boundry_circle" cx="250" cy="250" r="250" fill="transparent" stroke="white"
+                    stroke-width="1" stroke-opacity=".5"></circle>
+
+                <circle id="outer_boundry_handle" cx="250" cy="250" r="10" fill="transparent" stroke="white"
+                    stroke-width="5" stroke-opacity=".5"></circle>
+
+                <circle id="focal_point_handle" cx="250" cy="300" r="10" fill="transparent" stroke="white"
+                    stroke-width="5" stroke-opacity=".5"></circle>
+            </svg>
+        </div>
+        <div id="info" class="info">container size: 500px x 500px </div>
+    </div>
+</body>
+<script>
+    const svg = document.getElementById("svg");
+    const gradient = document.getElementById("radial_gradient");
+    const outer_boundry_handle = document.getElementById("outer_boundry_handle");
+    const outer_boundry_circle = document.getElementById("outer_boundry_circle");
+    const focal_point_handle = document.getElementById("focal_point_handle");
+    const info = document.getElementById("info");
+    let drag_handle = null;
+
+
+
+    outer_boundry_handle.addEventListener("mousedown", (e) => {
+        console.log('left handle');
+        drag_handle = outer_boundry_handle;
+        startDrag(e);
+    })
+
+    focal_point_handle.addEventListener("mousedown", (e) => {
+        drag_handle = focal_point_handle;
+        console.log('left handle');
+        startDrag(e);
+    })
+
+    const startDrag = (e) => {
+        console.log('start drag');
+
+        svg.addEventListener("mousemove", drag);
+        svg.addEventListener("mouseup", stopDrag);
+        svg.addEventListener("mouseleave", stopDrag);
+    }
+
+    const stopDrag = () => {
+        console.log('stopDrag')
+        svg.removeEventListener("mousemove", drag);
+        svg.removeEventListener("mouseup", stopDrag);
+        svg.removeEventListener("mouseleave", stopDrag);
+    }
+
+    const drag = (e) => {
+        let x = e.offsetX;
+        let y = e.offsetY;
+        if (x < 10) {
+            x = 10;
+        } else if (x > 490) {
+            x = 490;
+        }
+
+        if (y < 10) {
+            y = 10;
+        } else if (y > 490) {
+            y = 490;
+        }
+        updateHandlePosition(x, y);
+        updateGradient(x, y);
+        updateGradientString();
+    }
+
+    const updateHandlePosition = (x, y) => {
+        drag_handle.setAttribute("cx", x);
+        drag_handle.setAttribute("cy", y);
+    }
+
+    const updateGradient = (x, y) => {
+        const xpos = `${x / 5}%`;
+        const ypos = `${y / 5}%`;
+        if (drag_handle == outer_boundry_handle) {
+            initOuterBoundryStuff(xpos, ypos)
+
+        } else {
+            initFocalStuff(xpos, ypos)
+        }
+    }
+
+    const initOuterBoundryStuff = (x, y) => {
+        gradient.setAttribute('cx', x);
+        gradient.setAttribute('cy', y);
+
+        outer_boundry_circle.setAttribute('cx', x);
+        outer_boundry_circle.setAttribute('cy', y);
+    }
+
+    const initFocalStuff = (x, y) => {
+        gradient.setAttribute('fx', x);
+        gradient.setAttribute('fy', y);
+    }
+
+    const updateGradientString = () => {
+        const cx = gradient.getAttribute('cx');
+        const cy = gradient.getAttribute('cy');
+        const fx = gradient.getAttribute('fx');
+        const fy = gradient.getAttribute('fy');
+        const str = `<radialGradient cx="${cx}" cy="${cy}" fx="${fx}" fy="${fy}">`;
+        console.log(str);
+        info.innerText = str;
+    }
+
+    const positionEverything = (x, y)=>{
+        updateHandlePosition(x, y);
+        updateGradient(x, y);
+        updateGradientString();
+    }
+
+    const init = ()=>{
+        drag_handle = outer_boundry_handle;
+        cx = drag_handle.getAttribute('cx');
+        cy = drag_handle.getAttribute('cy');
+        updateGradient(cx, cy);
+
+        drag_handle = focal_point_handle;
+        cx = drag_handle.getAttribute('cx');
+        cy = drag_handle.getAttribute('cy');
+        updateGradient(cx, cy);
+        updateGradientString();
+    }
+    init();
+</script>
+
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>SVG - SYNTAX</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="content-holder">
+        <div class="info-holder">
+            <div class="title">Transform </div>
+            <div class="subtitle">translate, rotate, scale, skewX, skewY</div>
+        </div>
+        <div class="svg-holder">
+            <!-- 
+
+            -->
+
+
+            <svg width="500" height="500" viewbox="-50 -50 500 500">
+                <defs>
+                    <pattern id='a' patternUnits='userSpaceOnUse' width='10' height='10'>
+                        <rect x='0' y='0' width='100%' height='100%' fill='none' />
+                        <path d='M 10,-2.55e-7 V 20 Z M -1.1677362e-8,10 H 20 Z' stroke-width='0.5'
+                            stroke='hsla(259, 0%, 0%, .4)' fill='none' />
+                    </pattern>
+                    <g id="box">
+                        <rect id="bg" x="-500" y="-500" width="2000" height="2000" fill="url(#a)"></rect>
+                        <rect x="0" y="0" width="100" height="100" stroke="black" stroke-width="2" fill="none"></rect>
+                        <circle cx="0" cy="0" r="5" fill="black"></circle>
+                        <path d="M 0,0 h 200" stroke="red"></path>
+                        <path d="M 0,0 v 200" stroke="red" stroke-opacity=".5"></path>
+                        <text x="5" y="5" font-size="12" fill="#000" text-anchor="start"
+                            dominant-baseline="hanging">(0,0)</text>
+                    </g>
+
+                    <marker id="arrow" refX="3" refY="3" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                        <path d="M 0,0 L 0,6 L 6,3 Z">
+                        </path>
+                    </marker>
+
+
+                </defs>
+
+                <polyline marker-start="url(#arrow)" marker-end="url(#arrow)" points="400,0 0,0 0,400" stroke="black"
+                    stroke-width="3" fill="none">
+                </polyline>
+
+
+                <text x="0" y="-10" font-weight="bold" text-anchor="end">(0,0)</text>
+                <use id="transform-box" href="#box" style="transform:translate(50) rotate(45) translate(50)"></use>
+            </svg>
+        </div>
+        <div class="info">the square (the object being transformed) is 100x100</div>
+        <div>
+            <input id="transform-string" type="text" placeholder="transform string">
+            <label></label>
+        </div>
+        <div class="button-holder">
+            <div id="run" class="button">RUN</div>
+            <div id="reset" class="button">RESET</div>
+        </div>
+
+    </div>
+</body>
+<script>
+    const runButton = document.getElementById('run');
+    const resetButton = document.getElementById('reset');
+    const transformString = document.getElementById('transform-string');
+    const transformBox = document.getElementById('transform-box');
+
+    transformString.addEventListener("keypress", (e) => {
+        console.log(e.keyCode)
+        if (e.keyCode == 13) updateTransformString();
+    })
+
+
+
+    resetButton.addEventListener('mousedown', () => {
+        console.log('mouse down on reset button');
+        transformString.value = "";
+        updateTransformString();
+    })
+
+    runButton.addEventListener('mousedown', () => {
+        console.log('mouse down on run button');
+        updateTransformString();
+    })
+
+    const updateTransformString = () => {
+        transformBox.setAttribute("transform", transformString.value)
+    }
+</script>
+
+</html>

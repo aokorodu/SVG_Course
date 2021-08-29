@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Viewbox</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="content-holder">
+        <div class="info-holder">
+            <div class="title">SVG linear gradients</div>
+            <div class="subtitle">controling the direction of a gradient
+            </div>
+            <div class="description">Drag the circular handles to change the orientation of the  linear gradient.
+            </div>
+        </div>
+        <div class="svg-holder">
+            <!--
+               
+                
+            -->
+            <svg id="svg" width="500" height="500" viewbox="0 0 500 500">
+                <!-- 
+                -->
+                <defs>
+                    <!-- linear gradients -->
+                    <linearGradient id="linear_gradient_vert" x1="50%" y1="0%" x2="50%" y2="100%">
+                        <stop offset="0%" stop-color="red" />
+                        <stop offset="95%" stop-color="blue" />
+                    </linearGradient>
+
+
+
+                </defs>
+                <rect x="0" y="0" width="500" height="500" stroke="none" fill="black"></rect>
+                <rect x="0" y="0" width="500" height="500" stroke="none" fill="url(#linear_gradient_vert)"></rect>
+
+                <circle id="left_handle" cx="250" cy="50" r="10" fill="transparent" stroke="white" stroke-width="5"
+                    stroke-opacity=".5"></circle>
+
+                <circle id="right_handle" cx="250" cy="450" r="10" fill="transparent" stroke="white" stroke-width="5"
+                    stroke-opacity=".5"></circle>
+            </svg>
+        </div>
+        <div id="info" class="info">container size: 500px x 500px </div>
+    </div>
+</body>
+<script>
+    const svg = document.getElementById("svg");
+    const gradient = document.getElementById("linear_gradient_vert");
+    const left_handle = document.getElementById("left_handle");
+    const right_handle = document.getElementById("right_handle");
+    const info = document.getElementById("info");
+    let drag_handle = null;
+
+    
+
+    left_handle.addEventListener("mousedown", (e) => {
+        console.log('left handle');
+        drag_handle = left_handle;
+        startDrag(e);
+    })
+
+    right_handle.addEventListener("mousedown", (e) => {
+        drag_handle = right_handle;
+        console.log('left handle');
+        startDrag(e);
+    })
+
+    const startDrag = (e) => {
+        console.log('start drag');
+
+        svg.addEventListener("mousemove", drag);
+        svg.addEventListener("mouseup", stopDrag);
+        svg.addEventListener("mouseleave", stopDrag);
+    }
+
+    const stopDrag = () => {
+        console.log('stopDrag')
+        svg.removeEventListener("mousemove", drag);
+        svg.removeEventListener("mouseup", stopDrag);
+        svg.removeEventListener("mouseleave", stopDrag);
+    }
+
+    const drag = (e) => {
+        let x = e.offsetX;
+        let y = e.offsetY;
+        if(x < 10){
+            x = 10;
+        } else if(x > 490){
+            x = 490;
+        }
+
+        if(y < 10){
+            y = 10;
+        } else if(y > 490){
+            y = 490;
+        }
+        updateHandlePosition(x, y);
+        updateGradient(x, y);
+        updateGradientString();
+    }
+
+    const updateHandlePosition = (x, y) => {
+        drag_handle.setAttribute("cx", x);
+        drag_handle.setAttribute("cy", y);
+    }
+
+    const updateGradient = (x, y)=>{
+        const xpos = `${x/5}%`;
+        const ypos = `${y/5}%`;
+        if(drag_handle == left_handle){
+            gradient.setAttribute('x1', xpos);
+            gradient.setAttribute('y1', ypos);
+        } else {
+            gradient.setAttribute('x2', xpos);
+            gradient.setAttribute('y2', ypos);
+        }
+    }
+
+    const updateGradientString = ()=>{
+        const x1 = gradient.getAttribute('x1');
+        const y1 = gradient.getAttribute('y1');
+        const x2 = gradient.getAttribute('x2');
+        const y2 = gradient.getAttribute('y2');
+        const str = `<linearGradient x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}">`;
+        console.log(str);
+        info.innerText = str;
+    }
+
+    updateGradientString();
+</script>
+
+</html>

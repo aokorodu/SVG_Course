@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Viewbox</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="external_stylesheet.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="content-holder">
+        <div class="info-holder">
+            <div class="title">SVG Styles </div>
+            <div class="subtitle">presentation attributes vs. inline styles</div>
+            <div class="description"></div>
+        </div>
+        <div class="svg-holder">
+            <!--
+                1.  presentation attributes
+                2.  inline style
+                3.  external style
+            -->
+
+            <svg width="500" height="500" viewbox="0 0 500 500">
+                <circle 
+                    cx="120" cy="140" r="100" 
+                    fill="rgb(0, 206, 0)" 
+                    stroke="grey" 
+                    stroke-width="2px">
+                </circle>
+
+                <circle 
+                    cx="380" cy="140" r="100" 
+                    style="fill:yellow; stroke: black; stroke-width: 5">
+                </circle>
+
+                <circle 
+                    class="externally_styled_circle"
+                    cx="250" cy="370" r="100" >
+                </circle>
+            </svg>
+
+        </div>
+        <div class="info">container size: 500px x 500px </div>
+    </div>
+</body>
+
+</html>
