@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Filters - 2</title>
+    <script src="./custom-slider-component.js"></script>
+    <link rel="stylesheet" href="main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="content-holder">
+        <div class="info-holder">
+            <div class="title">&lt;filter&gt;</div>
+            <div class="subtitle">drop shadow, guassian blur, and displacement maps</div>
+            <!-- <div class="description">Used to set the width and height of the svg (in pixels) on the page that contains it.
+            </div> -->
+        </div>
+        <div class="svg-holder">
+            <!--
+               for the lesson
+            -->
+            <svg width="500" height="500" viewbox="0 0 500 500">
+                <defs>
+                    
+                    <!-- <filter id="turbulence-filter">
+                        <feTurbulence id="feturb" baseFrequency="1" result="turbulence" numOctaves="10" />
+                        <feDisplacementMap in="SourceGraphic" in2="turbulence" scale="20" ></feDisplacementMap>
+                    </filter> -->
+
+                    <filter id="blur-filter" x="-50%" y="-50%" width="200%" height="200%">
+                        <feGaussianBlur id="gauss-blur" stdDeviation="10" />
+                    </filter>
+
+                    <image id="image" x="0" y="0" href="../_graphics/zuubaDigitalLogo.png" width="400" height="400"></image>
+
+                </defs>
+
+                <use href="#image" x="50" y="50" filter="url(#blur-filter)" />
+
+                <!-- <image x="175" y="310" href="../_graphics/zuubaDigitalLogo.png" width="150" height="150" filter="url(#turbulence-filter)"></image> -->
+            </svg>
+
+        </div>
+        <div class="info">container size: 500px x 500px </div>
+        <div style="width:500px; height:100px">
+            <custom-slider id="blur_x"></custom-slider>
+            <custom-slider id="blur_y"></custom-slider>
+        </div>
+        
+    </div>
+</body>
+<script>
+    const blur_x_slider = document.querySelector("#blur_x");
+    const blur_y_slider = document.querySelector("#blur_y");
+    blur_x_slider.initTitle("blur x stdDeviation");
+    blur_y_slider.initTitle("blur y stdDeviation");
+    blur_x_slider.addEventListener("value", (e)=>{
+        updateBlur(e.detail.value, true)
+    })
+    blur_y_slider.addEventListener("value", (e)=>{
+        updateBlur(e.detail.value, false)
+    })
+
+    const updateBlur = (val, isX)=>{
+        const newval = val/2;
+        
+        const gauss_blur = document.getElementById('gauss-blur');
+        const currrent_blur_str = gauss_blur.getAttribute("stdDeviation");
+        const arr = currrent_blur_str.split(" ");
+        let xval = arr[0];
+        let yval = arr[1] || xval;
+        console.log('xval:', xval, ' yval: ', yval);
+        console.log('current blur string: ', currrent_blur_str);
+        isX ? xval = val : yval = val;
+        gauss_blur.setAttribute("stdDeviation", `${xval} ${yval}`)
+    }
+
+    updateBlur(blur_x_slider.value, true);
+    updateBlur(blur_x_slider.value, false);
+</script>
+</html>

@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Viewbox</title>
+    <title>Radial Gradients - Interactive Demo</title>
     <link rel="stylesheet" href="main.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -28,15 +28,16 @@
                 -->
                 <defs>
                     <!-- radial gradient -->
-                    <radialGradient id="radial_gradient" cx=".5" cy=".5" fx=".5" fy=".5" r=".5">
+                    <radialGradient id="radial_gradient" cx=".5" cy=".5" fx=".5" fy=".5" r=".5" fr="0">
                         <stop offset="0%" stop-color="red" />
                         <stop offset="100%" stop-color="blue" />
                     </radialGradient>
                 </defs>
+                <rect x="0" y="0" width="500" height="500" stroke="none" fill="#111111"></rect>
                 <rect x="0" y="0" width="500" height="500" stroke="none" fill="url(#radial_gradient)"></rect>
 
                 <circle id="outer_boundry_circle" cx="250" cy="250" r="250" fill="transparent" stroke="white"
-                    stroke-width="1" stroke-opacity=".5"></circle>
+                    stroke-width="1" stroke-opacity=".2"></circle>
 
                 <circle id="outer_boundry_handle" cx="250" cy="250" r="10" fill="transparent" stroke="white"
                     stroke-width="5" stroke-opacity=".5"></circle>
@@ -45,6 +46,14 @@
                     stroke-width="5" stroke-opacity=".5"></circle>
             </svg>
         </div>
+        <div class="slidecontainer">
+            <label class="label">
+              <input id="radius_slider" type="range" min="0" max="2" step=".01" value=".5" class="slider" id="radius_length"
+                autocomplete="off" />
+                <span>outer-boundry radius</span>
+            </label>
+            <button id="hide_controls_button">hide controls</button>
+          </div>
         <div id="info" class="info">container size: 500px x 500px </div>
     </div>
 </body>
@@ -55,10 +64,21 @@
     const outer_boundry_circle = document.getElementById("outer_boundry_circle");
     const focal_point_handle = document.getElementById("focal_point_handle");
     const info = document.getElementById("info");
+    const radius_slider = document.getElementById("radius_slider");
+    const hide_controls_button = document.getElementById("hide_controls_button");
     let drag_handle = null;
+    let controls_visible = true;
 
+    hide_controls_button.addEventListener("mousedown", ()=>{
+        hideControls();
+    })
 
-
+    radius_slider.addEventListener("input", ()=>{
+        console.log(radius_slider.value);
+        gradient.setAttribute("r", radius_slider.value);
+        outer_boundry_circle.setAttribute("r", 500*radius_slider.value);
+        updateGradientString();
+    })
     outer_boundry_handle.addEventListener("mousedown", (e) => {
         console.log('left handle');
         drag_handle = outer_boundry_handle;
@@ -70,6 +90,16 @@
         console.log('left handle');
         startDrag(e);
     })
+
+    const hideControls = ()=>{
+        controls_visible = !controls_visible;
+        const stroke = controls_visible ? "white" : "none";
+        const button_text = controls_visible ? "hide controls" : "show controls";
+        focal_point_handle.setAttribute("stroke", stroke);
+        outer_boundry_handle.setAttribute("stroke", stroke);
+        outer_boundry_circle.setAttribute("stroke", stroke);
+        hide_controls_button.innerText = button_text;
+    }
 
     const startDrag = (e) => {
         console.log('start drag');
@@ -139,15 +169,10 @@
         const cy = gradient.getAttribute('cy');
         const fx = gradient.getAttribute('fx');
         const fy = gradient.getAttribute('fy');
-        const str = `<radialGradient cx="${cx}" cy="${cy}" fx="${fx}" fy="${fy}">`;
+        const r = gradient.getAttribute('r');
+        const str = `<radialGradient cx="${cx}" cy="${cy}" r="${r}" fx="${fx}" fy="${fy}">`;
         console.log(str);
         info.innerText = str;
-    }
-
-    const positionEverything = (x, y)=>{
-        updateHandlePosition(x, y);
-        updateGradient(x, y);
-        updateGradientString();
     }
 
     const init = ()=>{
@@ -162,7 +187,9 @@
         updateGradient(cx, cy);
         updateGradientString();
     }
+
     init();
+
 </script>
 
 </html>
