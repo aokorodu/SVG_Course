@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Filters - 2</title>
+    <title>Blur Filter Interactive</title>
     <script src="./custom-slider-component.js"></script>
     <link rel="stylesheet" href="main.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,9 +14,7 @@
     <div class="content-holder">
         <div class="info-holder">
             <div class="title">&lt;filter&gt;</div>
-            <div class="subtitle">horizontal and vertical blur</div>
-            <!-- <div class="description">Used to set the width and height of the svg (in pixels) on the page that contains it.
-            </div> -->
+            <div class="subtitle">horizontal and vertical blur filter</div>
         </div>
         <div class="svg-holder">
             <!--
@@ -38,7 +36,7 @@
 
         </div>
         <div id="info" class="info">container size: 500px x 500px </div>
-        <div style="width:500px; height:100px">
+        <div style="width:500px;">
             <custom-slider id="blur_x"></custom-slider>
             <custom-slider id="blur_y"></custom-slider>
         </div>
@@ -66,11 +64,9 @@
         const arr = currrent_blur_str.split(" ");
         let xval = arr[0];
         let yval = arr[1] || xval;
-        console.log('xval:', xval, ' yval: ', yval);
-        console.log('current blur string: ', currrent_blur_str);
         isX ? xval = val : yval = val;
         let str = `${xval} ${yval}`;
-        if(xval == yval) str = xval;
+        if(xval == yval) str = `${xval}`;
         gauss_blur.setAttribute("stdDeviation", str)
         updateBlurText(str)
     }

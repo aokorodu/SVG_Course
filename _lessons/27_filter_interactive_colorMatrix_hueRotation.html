@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>hue rotation</title>
+    <script src="./custom-slider-component.js"></script>
+    <link rel="stylesheet" href="main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="content-holder">
+        <div class="info-holder">
+            <div class="title">&lt;feColorMatrix&gt;</div>
+            <div class="subtitle">hue rotation</div>
+        </div>
+        <div class="svg-holder">
+            <!--
+               for the lesson
+            -->
+            <svg width="500" height="500" viewbox="0 0 500 500">
+                <defs>
+
+                    <filter id="colormatrix-filter" x="-50%" y="-50%" width="200%" height="200%">
+                        <feColorMatrix id="hue-rotation" type="hueRotate"
+                        values="0" />
+                    </filter>
+
+                    <image id="image" x="0" y="0" href="../_graphics/zuubaDigitalLogo.png" width="400" height="400"></image>
+
+                </defs>
+
+                <use href="#image" x="50" y="50" filter="url(#colormatrix-filter)" />
+            </svg>
+
+        </div>
+        <div id="info" class="info"></div>
+        <div style="width:500px;">
+            <custom-slider id="hueRot"></custom-slider>
+        </div>
+        
+    </div>
+</body>
+<script>
+    let hueRot = 0;
+
+
+    const info = document.querySelector('#info');
+
+    const hueRotation_slider = document.querySelector("#hueRot");
+    
+    const hue_rotation_filter = document.getElementById('hue-rotation');
+
+    hueRotation_slider.initTitle("hue rotation");
+    hueRotation_slider.positionElements(0);
+
+    hueRotation_slider.addEventListener("value", (e)=>{
+        updateHueRotation(e.detail.value)
+    })
+
+    const updateHueRotation = (val)=>{
+        console.log('val: ', val)
+        hueRot= (val/100) * 360;
+        let str = `${hueRot}`;
+        hue_rotation_filter.setAttribute("values", str)
+        updateHueRotationText()
+    }
+
+
+    const updateHueRotationText = ()=>{
+        info.innerText = `<feColorMatrix id="hue-rotation" type="hueRotate" values="${hueRot}" />`
+
+
+    }
+
+    updateHueRotation(hueRotation_slider.value);
+</script>
+</html>

@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Filters - 2</title>
+    <title>Filters - Comparison</title>
     <link rel="stylesheet" href="main.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,8 +13,8 @@
     <div class="content-holder">
         <div class="info-holder">
             <div class="title">&lt;filter&gt;</div>
-            <div class="subtitle">drop shadow, guassian blur, and displacement maps</div>
-            <!-- <div class="description">Used to set the width and height of the svg (in pixels) on the page that contains it.
+            <div class="subtitle">drop shadow, guassian blur, color matrix and displacement maps</div>
+            <!-- <div class="description">
             </div> -->
         </div>
         <div class="svg-holder">
@@ -27,27 +27,27 @@
                         <feDropShadow dx="15" dy="15" stdDeviation="5" flood-color="black" flood-opacity=".5" />
                     </filter>
 
-                    <filter id="blur" x="-50%" y="-50%" width="200%" height="200%">
-                        <feGaussianBlur stdDeviation="10" />
-                    </filter>
-
-                    <filter id="motion-blur-y" x="-50%" y="-50%" width="200%" height="200%">
-                        <feGaussianBlur stdDeviation="0 10" />
-                    </filter>
-
                     <filter id="motion-blur-x" x="-50%" y="-50%" width="200%" height="200%">
                         <feGaussianBlur stdDeviation="10 0" />
                     </filter>
 
-                    <filter id="turbulence">
-                        <feTurbulence baseFrequency="1" result="turbulence" numOctaves="10" />
-                        <feDisplacementMap in="SourceGraphic" in2="turbulence" scale="20" ></feDisplacementMap>
+                    <filter id="colorMatrix" x="-50%" y="-50%" width="200%" height="200%">
+                        <feColorMatrix 
+                            in="SourceGraphic" 
+                            type="matrix" 
+                            values= "0 0 0 0 0
+                                    0 1 0 0 0
+                                    0 0 0 0 0
+                                    0 0 0 1 0" />
                     </filter>
 
+                    <filter id="turbulence">
+                        <feTurbulence baseFrequency=".1" result="turbulence" numOctaves="10" />
+                        <feDisplacementMap in="SourceGraphic" in2="turbulence" scale="20"></feDisplacementMap>
+                    </filter>
 
-                    <rect id="filtered-object" x="0" y="0" width="400" height="50" fill="green" stroke="none" stroke-width="1"></rect>
-
-                    <image id="image" x="0" y="0" href="../_graphics/zuubaDigitalLogo.png" width="200" height="200"></image>
+                    <image id="image" x="0" y="0" href="../_graphics/zuubaDigitalLogo.png" width="200" height="200">
+                    </image>
 
                 </defs>
 
@@ -55,11 +55,9 @@
 
                 <use href="#image" x="275" y="25" filter="url(#motion-blur-x)" />
 
-                <use href="#image" x="25" y="275" filter="url(#blur)" />
+                <use href="#image" x="25" y="275" filter="url(#colorMatrix)" />
 
                 <use href="#image" x="275" y="275" filter="url(#turbulence)" />
-
-                <!-- <image x="175" y="310" href="../_graphics/zuubaDigitalLogo.png" width="150" height="150" filter="url(#turbulence)"></image> -->
             </svg>
 
         </div>

@@ -9,7 +9,7 @@ template.innerHTML = `
   grid-template-columns: 1fr 3fr;
   column-gap: 1em;
   font-size: .9rem;
-  margin: 1rem 0;
+  margin: .5rem 0;
 }
 
 #title-holder {
@@ -91,7 +91,7 @@ template.innerHTML = `
     <div id="title-holder">hello world</div>
     <div id="progress-holder">
         <div id="progress" class="progress"></div>
-        <input id="slider" class="slider" type="range" value="50" />
+        <input id="slider" class="slider" type="range" value="0" />
     </div>
 </div>
 `;
@@ -100,13 +100,13 @@ class CustomSliderComponent extends HTMLElement {
   constructor() {
     super();
     this.valueChosen = false;
-    this.value = 50;
+    this.value = 0;
     this.max = 100;
     this.min = 0;
     this.initShadow();
     this.initSlider();
     this.initProgress();
-    this.positionElements(50);
+    this.positionElements(0);
   }
 
   initShadow() {

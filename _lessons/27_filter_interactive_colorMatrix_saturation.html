@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Color Filter Interactive</title>
+    <script src="./custom-slider-component.js"></script>
+    <link rel="stylesheet" href="main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="content-holder">
+        <div class="info-holder">
+            <div class="title">&lt;feColorMatrix&gt;</div>
+            <div class="subtitle">color saturation</div>
+        </div>
+        <div class="svg-holder">
+            <!--
+               for the lesson
+            -->
+            <svg width="500" height="500" viewbox="0 0 500 500">
+                <defs>
+
+                    <filter id="colormatrix-filter" x="-50%" y="-50%" width="200%" height="200%">
+                        <feColorMatrix id="saturate" type="saturate"
+                        values="0.2" />
+                    </filter>
+
+                    <image id="image" x="0" y="0" href="../_graphics/zuubaDigitalLogo.png" width="400" height="400"></image>
+
+                </defs>
+
+                <use href="#image" x="50" y="50" filter="url(#colormatrix-filter)" />
+            </svg>
+
+        </div>
+        <div id="info" class="info"></div>
+        <div style="width:500px;">
+            <custom-slider id="colSat"></custom-slider>
+        </div>
+        
+    </div>
+</body>
+<script>
+    let colSat = 1;
+
+
+    const info = document.querySelector('#info');
+
+    const colorSaturation_slider = document.querySelector("#colSat");
+    
+    const drop_shadow_filter = document.getElementById('saturate');
+
+    colorSaturation_slider.initTitle("color saturation");
+
+    colorSaturation_slider.addEventListener("value", (e)=>{
+        updateColorSaturation(e.detail.value)
+    })
+
+    const updateColorSaturation = (val)=>{
+        colSat= (val/50).toFixed(2);
+        let str = `${colSat}`;
+        drop_shadow_filter.setAttribute("values", str)
+        updateColorSaturationText()
+    }
+
+
+    const updateColorSaturationText = ()=>{
+        info.innerText = `<feColorMatrix id="saturate" type="saturate" values="${colSat}" />`
+
+
+    }
+
+    updateColorSaturation(colorSaturation_slider.value);
+</script>
+</html>
