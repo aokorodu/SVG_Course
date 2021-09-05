@@ -175,8 +175,7 @@ class CustomSliderComponent extends HTMLElement {
 
   positionElements(val){
     this.slider.value = val;
-    const mod = this.slider.value % this.slider.step;
-    let percentage = this.slider.value/this.max * 100;
+    let percentage = (this.slider.value - this.min)/(this.max - this.min) * 100;
     if(this.max == 0 || this.max == '0') percentage = 0;
     this.progress.style.backgroundSize = `${percentage}% 100%`;
   }
