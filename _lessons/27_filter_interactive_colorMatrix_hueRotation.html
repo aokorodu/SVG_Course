@@ -3,7 +3,6 @@
 
 <head>
     <title>hue rotation</title>
-    <script src="./custom-slider-component.js"></script>
     <link rel="stylesheet" href="main.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -38,11 +37,12 @@
         </div>
         <div id="info" class="info"></div>
         <div style="width:500px;">
-            <custom-slider id="hueRot"></custom-slider>
+            <custom-slider id="hueRot" minimum="0" maximum="360" val="0" label="hue rotation"></custom-slider>
         </div>
         
     </div>
 </body>
+<script src="./custom-slider-component.js"></script>
 <script>
     let hueRot = 0;
 
@@ -53,7 +53,7 @@
     
     const hue_rotation_filter = document.getElementById('hue-rotation');
 
-    hueRotation_slider.initTitle("hue rotation");
+    //hueRotation_slider.initTitle("hue rotation");
     hueRotation_slider.positionElements(0);
 
     hueRotation_slider.addEventListener("value", (e)=>{
@@ -62,7 +62,7 @@
 
     const updateHueRotation = (val)=>{
         console.log('val: ', val)
-        hueRot= Math.round((val/100) * 360);
+        hueRot= val;//Math.round((val/100) * 360);
         let str = `${hueRot}`;
         hue_rotation_filter.setAttribute("values", str)
         updateHueRotationText()

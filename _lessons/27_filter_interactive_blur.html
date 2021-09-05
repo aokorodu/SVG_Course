@@ -37,8 +37,9 @@
         </div>
         <div id="info" class="info">container size: 500px x 500px </div>
         <div style="width:500px;">
-            <custom-slider id="blur_x"></custom-slider>
-            <custom-slider id="blur_y"></custom-slider>
+            <custom-slider id="blur_x" minimum="0" maximum="30" val="0" label="x stdDeviation"></custom-slider>
+            <custom-slider id="blur_y" minimum="0" maximum="30" val="0" label="y stdDeviation"></custom-slider>
+            
         </div>
         
     </div>
@@ -47,8 +48,6 @@
     const info = document.querySelector('#info');
     const blur_x_slider = document.querySelector("#blur_x");
     const blur_y_slider = document.querySelector("#blur_y");
-    blur_x_slider.initTitle("blur x stdDeviation");
-    blur_y_slider.initTitle("blur y stdDeviation");
     blur_x_slider.addEventListener("value", (e)=>{
         updateBlur(e.detail.value, true)
     })

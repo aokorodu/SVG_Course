@@ -38,7 +38,8 @@
         </div>
         <div id="info" class="info"></div>
         <div style="width:500px;">
-            <custom-slider id="colSat"></custom-slider>
+            <custom-slider id="colSat" minimum="0" maximum="2" val="1" label="saturation"></custom-slider>
+            
         </div>
         
     </div>
@@ -53,14 +54,12 @@
     
     const drop_shadow_filter = document.getElementById('saturate');
 
-    colorSaturation_slider.initTitle("color saturation");
-
     colorSaturation_slider.addEventListener("value", (e)=>{
         updateColorSaturation(e.detail.value)
     })
 
     const updateColorSaturation = (val)=>{
-        colSat= (val/50).toFixed(2);
+        colSat= val;
         let str = `${colSat}`;
         drop_shadow_filter.setAttribute("values", str)
         updateColorSaturationText()

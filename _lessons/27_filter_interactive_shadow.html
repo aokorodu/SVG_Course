@@ -24,7 +24,7 @@
                 <defs>
 
                     <filter id="shadow-filter" x="-50%" y="-50%" width="200%" height="200%">
-                        <feDropShadow id="drop-shadow" dx="10" dy="10" stdDeviation="15" flood-color="black" flood-opacity=".5" />
+                        <feDropShadow id="drop-shadow" dx="10" dy="10" stdDeviation="3" flood-color="black" flood-opacity=".5" />
                     </filter>
 
                     <image id="image" x="0" y="0" href="../_graphics/zuubaDigitalLogo.png" width="400" height="400"></image>
@@ -37,33 +37,26 @@
         </div>
         <div id="info" class="info">container size: 500px x 500px </div>
         <div style="width:500px;">
-            <custom-slider id="stdDev"></custom-slider>
-            <custom-slider id="dx"></custom-slider>
-            <custom-slider id="dy"></custom-slider>
+            <custom-slider id="stdDev" minimum="0" maximum="30" val="3" label="stdDeviation"></custom-slider>
+            <custom-slider id="dx" minimum="0" maximum="30" val="10" label="dx"></custom-slider>
+            <custom-slider id="dy" minimum="0" maximum="30" val="10" label="dy"></custom-slider>
+
         </div>
         
     </div>
 </body>
 <script>
-    let stDev = 15;
-    let dx = 15;
-    let dy = 15;
+    let stDev = 3;
+    let dx = 10;
+    let dy = 10;
 
     const info = document.querySelector('#info');
 
     const stdDev_slider = document.querySelector("#stdDev");
     const dx_slider = document.querySelector("#dx");
     const dy_slider = document.querySelector("#dy");
-
-    stdDev_slider.positionElements(50);
-    dx_slider.positionElements(50);
-    dy_slider.positionElements(50);
     
     const drop_shadow_filter = document.getElementById('drop-shadow');
-
-    stdDev_slider.initTitle("stdDeviation");
-    dx_slider.initTitle("dx");
-    dy_slider.initTitle("dy");
 
     stdDev_slider.addEventListener("value", (e)=>{
         updateStdDev(e.detail.value)
@@ -78,21 +71,21 @@
     })
 
     const updateStdDev = (val)=>{
-        stDev= Math.round((val/100) * 20);
+        stDev= val;
         let str = `${stDev}`;
         drop_shadow_filter.setAttribute("stdDeviation", str)
         updateStdDevText()
     }
 
     const updateDX = (val)=>{
-        dx = Math.round((val/100) * 30);
+        dx = val;
         let str = `${dx}`;
         drop_shadow_filter.setAttribute("dx", str)
         updateStdDevText()
     }
 
     const updateDY = (val)=>{
-        dy = Math.round((val/100) * 30);
+        dy = val;
         let str = `${dy}`;
         drop_shadow_filter.setAttribute("dy", str)
         updateStdDevText()
@@ -102,8 +95,8 @@
         info.innerText = `<feDropShadow id="drop-shadow"  stdDeviation="${stDev} dx="${dx}" dy="${dy}"" />`;
     }
 
-    updateStdDev(50);
-    updateDX(50);
-    updateDX(50);
+    updateStdDev(stDev);
+    updateDX(dx);
+    updateDX(dy);
 </script>
 </html>

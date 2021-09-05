@@ -6,7 +6,7 @@ template.innerHTML = `
   position: relative;
   width: 100%;
   display: grid;
-  grid-template-columns: 1fr 3fr;
+  grid-template-columns: 1fr 3fr .5fr;
   column-gap: 1em;
   font-size: .9rem;
   margin: .5rem 0;
@@ -16,6 +16,13 @@ template.innerHTML = `
   width: 100%;
   height: 26px;
   text-align: right;
+  line-height: 26px;
+}
+
+#value-holder {
+  width: 100%;
+  height: 26px;
+  text-align: left;
   line-height: 26px;
 }
 
@@ -91,22 +98,41 @@ template.innerHTML = `
     <div id="title-holder">hello world</div>
     <div id="progress-holder">
         <div id="progress" class="progress"></div>
-        <input id="slider" class="slider" type="range" value="0" />
+        <input id="slider" class="slider" type="range" value="0" min="0" max="100"/>
     </div>
+    <div id="value-holder">000</div>
 </div>
 `;
 
 class CustomSliderComponent extends HTMLElement {
   constructor() {
     super();
-    this.valueChosen = false;
-    this.value = 0;
-    this.max = 100;
-    this.min = 0;
+  }
+
+  connectedCallback() {
+    this.init()
+  }
+
+  init(){
+    this.initProps();
     this.initShadow();
     this.initSlider();
-    this.initProgress();
-    this.positionElements(0);
+    this.initProgress(this.val);
+    this.positionElements(this.val);
+    this.initLabel(this.label);
+    this.initValueHolder(this.val);
+  }
+
+  initValueHolder(val){
+    this.valueHolder = this.shadowRoot.getElementById("value-holder");
+    this.valueHolder.innerText = val;
+  }
+
+  initProps(){
+    this.value = this.getAttribute("val");
+    this.min = this.getAttribute("minimum");
+    this.max = this.getAttribute("maximum");
+    this.label = this.getAttribute("label");
   }
 
   initShadow() {
@@ -117,24 +143,27 @@ class CustomSliderComponent extends HTMLElement {
   initSlider() {
     this.slider = this.shadowRoot.getElementById("slider");
     this.slider.step = 0.1;
+    this.slider.min = this.min;
+    this.slider.max = this.max;
     this.slider.addEventListener("input", (e) => {
       this.valueChosen = true;
       this.updateProgress(e.target.value);
     });
   }
 
-  initTitle(newTitle) {
-    const title = this.shadowRoot.getElementById("title-holder");
-    title.innerText = newTitle;
-  }
-
   initProgress() {
     this.progress = this.shadowRoot.getElementById("progress");
   }
 
+  initLabel(label) {
+    const title = this.shadowRoot.getElementById("title-holder");
+    title.innerText = label;
+  }
+
   updateProgress(val) {
     this.value = Number(val);
-    this.positionElements(this.value);
+    this.positionElements(this.val);
+    this.valueHolder.innerText = this.value;
     this.dispatchEvent(
       new CustomEvent("value", {
         bubbles: true,
@@ -155,9 +184,6 @@ class CustomSliderComponent extends HTMLElement {
   get val(){
     return this.value;
   }
-
-  
-
 }
 
 window.customElements.define("custom-slider", CustomSliderComponent);
