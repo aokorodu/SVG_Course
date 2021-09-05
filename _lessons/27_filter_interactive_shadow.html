@@ -13,8 +13,8 @@
 <body>
     <div class="content-holder">
         <div class="info-holder">
-            <div class="title">&lt;filter&gt;</div>
-            <div class="subtitle">horizontal and vertical blur filter</div>
+            <div class="title">&lt;feDropShadow&gt;</div>
+            <div class="subtitle">interactive drop shadow</div>
         </div>
         <div class="svg-holder">
             <!--
@@ -46,14 +46,18 @@
 </body>
 <script>
     let stDev = 15;
-    let dx = 10;
-    let dy = 10;
+    let dx = 15;
+    let dy = 15;
 
     const info = document.querySelector('#info');
 
     const stdDev_slider = document.querySelector("#stdDev");
     const dx_slider = document.querySelector("#dx");
     const dy_slider = document.querySelector("#dy");
+
+    stdDev_slider.positionElements(50);
+    dx_slider.positionElements(50);
+    dy_slider.positionElements(50);
     
     const drop_shadow_filter = document.getElementById('drop-shadow');
 
@@ -98,6 +102,8 @@
         info.innerText = `<feDropShadow id="drop-shadow"  stdDeviation="${stDev} dx="${dx}" dy="${dy}"" />`;
     }
 
-    updateStdDev(stdDev_slider.value);
+    updateStdDev(50);
+    updateDX(50);
+    updateDX(50);
 </script>
 </html>

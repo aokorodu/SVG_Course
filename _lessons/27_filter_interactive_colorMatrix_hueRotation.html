@@ -62,17 +62,14 @@
 
     const updateHueRotation = (val)=>{
         console.log('val: ', val)
-        hueRot= (val/100) * 360;
+        hueRot= Math.round((val/100) * 360);
         let str = `${hueRot}`;
         hue_rotation_filter.setAttribute("values", str)
         updateHueRotationText()
     }
 
-
     const updateHueRotationText = ()=>{
         info.innerText = `<feColorMatrix id="hue-rotation" type="hueRotate" values="${hueRot}" />`
-
-
     }
 
     updateHueRotation(hueRotation_slider.value);
