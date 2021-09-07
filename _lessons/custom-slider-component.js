@@ -142,7 +142,7 @@ class CustomSliderComponent extends HTMLElement {
 
   initSlider() {
     this.slider = this.shadowRoot.getElementById("slider");
-    this.slider.step = 0.1;
+    this.slider.step = 0.01;
     this.slider.min = this.min;
     this.slider.max = this.max;
     this.slider.addEventListener("input", (e) => {

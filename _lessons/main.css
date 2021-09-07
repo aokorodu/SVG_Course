@@ -56,8 +56,22 @@ svg {
     font-style: italic;
     margin: 1rem 0;
     border-bottom: 1px solid #CCCCCC;
-    user-select: none; /* supported by Chrome and Opera */
-   -webkit-user-select: none; /* Safari */
+}
+
+.small-info {
+    width: 500px;
+    font-size: .6rem;
+    font-style: italic;
+    margin: .25rem 0;
+}
+
+.descriptive-info-holder {
+    width: 500px;
+    margin: .5rem 0;
+    background: #eeeeee;
+    color: black;
+    padding: .5rem;
+    border: 0.5px solid #eaeaea;
 }
 
 .description {
