@@ -5,65 +5,59 @@
     <title>SVG - SYNTAX</title>
     <link rel="stylesheet" href="main.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 </head>
 
 <body>
-    <div class="content-holder">
+    <div class="title-holder">
         <div class="info-holder">
             <div class="title">SVG Strokes </div>
         </div>
-        <div class="svg-holder">
-            <!-- -->
-            <svg width="500" height="500" viewbox="0 0 500 500">
+    </div>
+    <div class="content-holder">
+        <div class="section-holder">
+            <div class="svg-holder">
                 <!-- -->
-                <style></style>
-                <!-- -->
-                <defs>
-                    <path id="straight_line" d="M 0,0 h 300" stroke="black" stroke-width="20"></path>
+                <svg width="500" height="500" viewbox="0 0 500 500">
+                    <!-- -->
+                    <style></style>
+                    <!-- -->
+                    <defs>
+                        <path id="straight_line" d="M 0,0 h 300" stroke="black" stroke-width="20"></path>
 
-                    <path id="crooked_line" d="M 0,100 Q 75,100 150,0 Q 225, 100 300,100" stroke="black" stroke-width="20" fill="none"></path>
-                </defs>
+                        <path id="crooked_line" d="M 0,100 Q 75,100 150,0 Q 225, 100 300,100" stroke="black"
+                            stroke-width="20" fill="none"></path>
+                    </defs>
 
-                <!-- stroke-linecap -->
-                <use href="#straight_line" 
-                    x="100" y="50" 
-                    stroke-linecap="butt"></use>
+                    <!-- stroke-linecap -->
+                    <use href="#straight_line" x="100" y="50" stroke-linecap="butt"></use>
 
-                <use href="#straight_line" 
-                    x="100" y="100" 
-                    stroke-linecap="square"></use>
+                    <use href="#straight_line" x="100" y="100" stroke-linecap="square"></use>
 
-                <use href="#straight_line" 
-                    x="100" y="150" 
-                    stroke-linecap="round"></use>
+                    <use href="#straight_line" x="100" y="150" stroke-linecap="round"></use>
 
-                <!-- stroke-linejoin -->
-                <use href="#crooked_line" 
-                    x="100" y="200" 
-                    stroke-linejoin="miter"></use>
+                    <!-- stroke-linejoin -->
+                    <use href="#crooked_line" x="100" y="200" stroke-linejoin="miter"></use>
 
-                <use href="#crooked_line" 
-                    x="100" y="275" 
-                    stroke-linejoin="bevel"></use>
+                    <use href="#crooked_line" x="100" y="275" stroke-linejoin="bevel"></use>
 
-                <use href="#crooked_line" 
-                    x="100" y="350" 
-                    stroke-linejoin="round"></use>
+                    <use href="#crooked_line" x="100" y="350" stroke-linejoin="round"></use>
 
 
-                <path d="M 100,0 v 500" stroke="#cccccc"></path>
+                    <path d="M 100,0 v 500" stroke="#cccccc"></path>
 
-                <path d="M 400,0 v 500" stroke="#cccccc"></path>
+                    <path d="M 400,0 v 500" stroke="#cccccc"></path>
 
 
 
 
-            </svg>
-            
+                </svg>
+
+            </div>
+            <div class="info">container size: 500px x 500px </div>
+
         </div>
-        <div class="info">container size: 500px x 500px </div>
     </div>
 </body>
 

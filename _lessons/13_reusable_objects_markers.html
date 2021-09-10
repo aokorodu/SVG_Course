@@ -10,92 +10,66 @@
 </head>
 
 <body>
-    <div class="content-holder">
+    <div class="title-holder">
         <div class="info-holder">
             <div class="title">SVG reusable objects</div>
             <div class="subtitle">markers
             </div>
             <div class="description"></div>
         </div>
-        <div class="svg-holder">
-            <!--
-                base element <svg>
-                
-            -->
-
-            <svg id="svg" width="500" height="500" viewbox="0 0 500 500">
-
-                <!-- 
-                    1.  the "arrow" marker for the graph lines
-                    2.  the circular polymarker for the chart line
-                    3.  the polymarker arrow for the end of the chart line
+    </div>
+    <div class="content-holder">
+        <div class="section-holder">
+            <div class="svg-holder">
+                <!--
+                    base element <svg>
+                    
                 -->
 
-                <defs>
+                <svg id="svg" width="500" height="500" viewbox="0 0 500 500">
 
-                    <marker 
-                        id="arrow" 
-                        refX="5" 
-                        refY="5" 
-                        markerWidth="10" 
-                        markerHeight="10" 
-                        orient="auto-start-reverse">
-                        <path 
-                            d="M 0,0 L 0,10 L 10,5 Z">
-                        </path>
-                    </marker>
+                    <!-- 
+                        1.  the "arrow" marker for the graph lines
+                        2.  the circular polymarker for the chart line
+                        3.  the polymarker arrow for the end of the chart line
+                    -->
 
-                    <marker 
-                        id="polymarker" 
-                        refX="5" 
-                        refY="5" 
-                        markerWidth="10" 
-                        markerHeight="10">
-                        <circle 
-                            cx="5" 
-                            cy="5" 
-                            r="2.5" 
-                            fill="red">
-                        </circle>
-                    </marker>
+                    <defs>
 
-                    <marker 
-                        id="polymarker_arrow" 
-                        refX="5" 
-                        refY="5" 
-                        markerWidth="10" 
-                        markerHeight="10" 
-                        orient="auto">
-                        <path 
-                            d="M 0,0 L 0,10 L 10,5 Z" 
-                            fill="red">
-                        </path>
-                    </marker>
+                        <marker id="arrow" refX="5" refY="5" markerWidth="10" markerHeight="10"
+                            orient="auto-start-reverse">
+                            <path d="M 0,0 L 0,10 L 10,5 Z">
+                            </path>
+                        </marker>
 
-                </defs>
+                        <marker id="polymarker" refX="5" refY="5" markerWidth="10" markerHeight="10">
+                            <circle cx="5" cy="5" r="2.5" fill="red">
+                            </circle>
+                        </marker>
 
-                <polyline 
-                    marker-start="url(#arrow)" 
-                    marker-end="url(#arrow)" points="50,50 50,450 450,450"
-                    stroke="black" 
-                    stroke-width="3" 
-                    fill="none">
-                </polyline>
+                        <marker id="polymarker_arrow" refX="5" refY="5" markerWidth="10" markerHeight="10"
+                            orient="auto">
+                            <path d="M 0,0 L 0,10 L 10,5 Z" fill="red">
+                            </path>
+                        </marker>
 
-                <polyline 
-                    marker-start="url(#polymarker)" 
-                    marker-mid="url(#polymarker)"
-                    marker-end="url(#polymarker_arrow)"
-                    stroke="grey"
-                    stroke-width="2" 
-                    fill="none"
-                    points="50,450 100,350 200,400 250,100 300,250 350,275 400,200 450,50" >
-                </polyline>
+                    </defs>
 
-            </svg>
+                    <polyline marker-start="url(#arrow)" marker-end="url(#arrow)" points="50,50 50,450 450,450"
+                        stroke="black" stroke-width="3" fill="none">
+                    </polyline>
 
+                    <polyline marker-start="url(#polymarker)" marker-mid="url(#polymarker)"
+                        marker-end="url(#polymarker_arrow)" stroke="grey" stroke-width="2" fill="none"
+                        points="50,450 100,350 200,400 250,100 300,250 350,275 400,200 450,50">
+                    </polyline>
+
+                </svg>
+
+            </div>
+            <div class="info">container size: 500px x 500px </div>
         </div>
-        <div class="info">container size: 500px x 500px </div>
+
     </div>
 </body>
 

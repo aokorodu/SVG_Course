@@ -10,27 +10,31 @@
 </head>
 
 <body>
-    <div class="content-holder">
+    <div class="title-holder">
         <div class="info-holder">
             <div class="title">Cubic Bezier Curves Interactive</div>
             <div class="subtitle">two control points</div>
             <div class="description"></div>
         </div>
-        <div class="svg-holder">
-            
-            <svg id="svg" width="500" height="500" viewbox="0 0 500 500">
-                <g opacity="1" stroke="#cccccc" stroke-width="1">
-                    <line id="leftline" x1="50" y1="250" x2="50" y2="250"></line>
-                    <line id="rightline" x1="450" y1="250" x2="450" y2="250"></line>
-                </g>
-                <path id="path" d="M 0,250 L 500,250" fill="none"
-                    stroke="black" stroke-width="2"></path>
-                <circle id="left_handle" cx="50" cy="250" r="10" fill="black" stroke="none"></circle>
-                <circle id="right_handle" cx="450" cy="250" r="10" fill="black" stroke="none"></circle>
-            </svg>
+    </div>
+    <div class="content-holder">
+        <div class="section-holder">
+            <div class="svg-holder">
 
+                <svg id="svg" width="500" height="500" viewbox="0 0 500 500">
+                    <g opacity="1" stroke="#cccccc" stroke-width="1">
+                        <line id="leftline" x1="50" y1="250" x2="50" y2="250"></line>
+                        <line id="rightline" x1="450" y1="250" x2="450" y2="250"></line>
+                    </g>
+                    <path id="path" d="M 0,250 L 500,250" fill="none" stroke="black" stroke-width="2"></path>
+                    <circle id="left_handle" cx="50" cy="250" r="10" fill="black" stroke="none"></circle>
+                    <circle id="right_handle" cx="450" cy="250" r="10" fill="black" stroke="none"></circle>
+                </svg>
+
+            </div>
+            <div id="info_text" class="info">Drag the blue and red balls to change the curve of the line</div>
         </div>
-        <div id="info_text" class="info">Drag the blue and red balls to change the curve of the line</div>
+
     </div>
 </body>
 <script>
@@ -50,7 +54,7 @@
         x: 450,
         y: 250
     }
-    
+
     left_handle.setAttribute("fill", "red");
     right_handle.setAttribute("fill", "blue");
     left_handle.addEventListener("mousedown", (e) => {
@@ -95,7 +99,7 @@
 
     const updateLines = (x, y) => {
         let selected_line = null;
-        if(selected_handle == left_handle){
+        if (selected_handle == left_handle) {
             selected_line = leftline;
             left_control_point.x = x;
             left_control_point.y = y;

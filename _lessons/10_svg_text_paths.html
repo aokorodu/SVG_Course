@@ -10,53 +10,60 @@
 </head>
 
 <body>
-    <div class="content-holder">
+    <div class="title-holder">
         <div class="info-holder">
             <div class="title">SVG textPath</div>
             <div class="subtitle">textPaths with visible and hidden paths
             </div>
             <div class="description"></div>
         </div>
-        <div class="svg-holder">
-            <!--
-                base element <svg>
-                
-            -->
-
-            <svg width="500" height="500" viewbox="0 0 500 500">
-
-                <!-- text paths
-                1. textpath with visible path
-                2. textpath with hidden path (defined in <defs>)
-
-                Both paths have a startOffset
+    </div>
+    <div class="content-holder">
+        <div class="section-holder">
+            <div class="svg-holder">
+                <!--
+                    base element <svg>
+                    
                 -->
-                <style>
-                    text {
-                        font-size: 1.5rem;
-                        font-weight: bold;
-                    }
-                </style>
-                <defs>
-                    <path id="hidden_path" d="M 0,300 L 50,300 Q 150,200 250,300 Q 350,400 450,300 L 500,300"
+
+                <svg width="500" height="500" viewbox="0 0 500 500">
+
+                    <!-- text paths
+                    1. textpath with visible path
+                    2. textpath with hidden path (defined in <defs>)
+    
+                    Both paths have a startOffset
+                    -->
+                    <style>
+                        text {
+                            font-size: 1.5rem;
+                            font-weight: bold;
+                        }
+                    </style>
+                    <defs>
+                        <path id="hidden_path" d="M 0,300 L 50,300 Q 150,200 250,300 Q 350,400 450,300 L 500,300"
+                            fill="none" stroke="black" stroke-width="2"></path>
+                    </defs>
+
+                    <path id="visible_path" d="M 0,200 L 50,200 Q 150,100 250,200 Q 350,300 450,200 L 500,200"
                         fill="none" stroke="black" stroke-width="2"></path>
-                </defs>
 
-                <path id="visible_path" d="M 0,200 L 50,200 Q 150,100 250,200 Q 350,300 450,200 L 500,200" fill="none"
-                    stroke="black" stroke-width="2"></path>
+                    <text>
+                        <textPath href="#visible_path" startOffset="15%">This is a textpath with a visible path!
+                        </textPath>
+                    </text>
 
-                <text>
-                    <textPath href="#visible_path" startOffset="15%">This is a textpath with a visible path!</textPath>
-                </text>
+                    <text>
+                        <textPath href="#hidden_path" startOffset="15%">This is a textpath with a hidden path!
+                        </textPath>
+                    </text>
 
-                <text>
-                    <textPath href="#hidden_path" startOffset="15%">This is a textpath with a hidden path!</textPath>
-                </text>
+                </svg>
 
-            </svg>
-
+            </div>
+            <div class="info">container size: 500px x 500px </div>
         </div>
-        <div class="info">container size: 500px x 500px </div>
+
     </div>
 </body>
 

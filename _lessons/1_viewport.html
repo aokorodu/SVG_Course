@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <div class="content-holder">
+    <div class="title-holder">
         <div class="info-holder">
             <div class="title">viewport</div>
             <div class="subtitle">width and height attributes</div>
@@ -18,28 +18,33 @@
                 it.
             </div>
         </div>
-        <div class="svg-holder">
-            <!--
-                base element <svg>
-                viewport - width and height attributes
-                2nd example shows what happens when the viewport is bigger than the container
-                3nd example shows what happens when the viewport is smaller than the container
-                4th example shows what happens when the viewport is removed - the svg scales to fit the available space - change the svg-holder class width and height to demo
-            -->
-            <svg width="500" height="500" viewbox="0 0 500 500">
-                <circle cx="250" cy="250" r="200" fill="rgb(0, 206, 0)"></circle>
-            </svg>
-            <!-- <svg width="700" height="700" viewbox="0 0 500 500">
-                <circle cx="250" cy="250" r="200" fill="rgb(0, 206, 0)"></circle>
-            </svg> -->
-            <!-- <svg width="100" height="100" viewbox="0 0 500 500">
-                <circle cx="250" cy="250" r="200" fill="rgb(0, 206, 0)"></circle>
-            </svg> -->
-            <!-- <svg viewbox="0 0 500 500">
-                <circle cx="250" cy="250" r="200" fill="rgb(0, 206, 0)"></circle>
-            </svg> -->
+    </div>
+    <div class="content-holder">
+        <div class="section-holder">
+            <div class="svg-holder">
+                <!--
+                    base element <svg>
+                    viewport - width and height attributes
+                    2nd example shows what happens when the viewport is bigger than the container
+                    3nd example shows what happens when the viewport is smaller than the container
+                    4th example shows what happens when the viewport is removed - the svg scales to fit the available space - change the svg-holder class width and height to demo
+                -->
+                <svg width="500" height="500" viewbox="0 0 500 500">
+                    <circle cx="250" cy="250" r="200" fill="rgb(0, 206, 0)"></circle>
+                </svg>
+                <!-- <svg width="700" height="700" viewbox="0 0 500 500">
+                    <circle cx="250" cy="250" r="200" fill="rgb(0, 206, 0)"></circle>
+                </svg> -->
+                <!-- <svg width="100" height="100" viewbox="0 0 500 500">
+                    <circle cx="250" cy="250" r="200" fill="rgb(0, 206, 0)"></circle>
+                </svg> -->
+                <!-- <svg viewbox="0 0 500 500">
+                    <circle cx="250" cy="250" r="200" fill="rgb(0, 206, 0)"></circle>
+                </svg> -->
+            </div>
+            <div class="info">container size: 500px x 500px </div>
         </div>
-        <div class="info">container size: 500px x 500px </div>
+
     </div>
 </body>
 

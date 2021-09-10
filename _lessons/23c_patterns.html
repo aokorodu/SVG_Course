@@ -10,60 +10,68 @@
 </head>
 
 <body>
-    <div class="content-holder">
+    <div class="title-holder">
         <div class="info-holder">
             <div class="title">Patterns </div>
             <div class="subtitle">patternUnits: objectBoundingBox vs userSpaceOnUse</div>
             <!-- <div class="description">Used to set the width and height of the svg (in pixels) on the page that contains it.
             </div> -->
         </div>
-        <div class="svg-holder">
-            <!--
-               
-            -->
-            <svg width="500" height="500" viewbox="0 0 400 400">
-                <defs>
-
-                    <pattern id="tile_1" width="40" height="40" patternUnits="userSpaceOnUse" patternContentUnits="userSpaceOnUse">
-                        <rect x="0" y="0" width="40" height="40" stroke="black" stroke-width=".5" fill="none"></rect>
-                        <circle cx="20" cy="20" r="20" fill="none" stroke="black" stroke-width=".5"></circle>
-                        <circle cx="20" cy="20" r="10" fill="#eaeaea" stroke="black" stroke-width=".5"></circle>
-                        <circle cx="20" cy="20" r="5" fill="#cccccc" stroke="black" stroke-width=".5"></circle>
-                    </pattern>
-
-                    <pattern id="tile_2"width="40" height="40" patternUnits="userSpaceOnUse" patternContentUnits="objectBoundingBox">
-                        <rect x="0" y="0" width=".2" height=".2" stroke="black" stroke-width=".0025" fill="none"></rect>
-                        <circle cx=".1" cy=".1" r=".1" fill="none" stroke="black" stroke-width=".0025"></circle>
-                        <circle cx=".1" cy=".1" r=".05" fill="#eaeaea" stroke="black" stroke-width=".0025"></circle>
-                        <circle cx=".1" cy=".1" r=".025" fill="#cccccc" stroke="black" stroke-width=".0025"></circle>
-                    </pattern>
-
-                    <pattern id="tile_3"width=".2" height=".2" patternUnits="objectBoundingBox" patternContentUnits="objectBoundingBox">
-                        <rect x="0" y="0" width=".2" height=".2" stroke="black" stroke-width=".0025" fill="none"></rect>
-                        <circle cx=".1" cy=".1" r=".1" fill="none" stroke="black" stroke-width=".0025"></circle>
-                        <circle cx=".1" cy=".1" r=".05" fill="#eaeaea" stroke="black" stroke-width=".0025"></circle>
-                        <circle cx=".1" cy=".1" r=".025" fill="#cccccc" stroke="black" stroke-width=".0025"></circle>
-                    </pattern>
-
-                    <pattern id="tile_4"width=".2" height=".2" patternUnits="objectBoundingBox" patternContentUnits="userSpaceOnUse">
-                        <rect x="0" y="0" width="40" height="40" stroke="black" stroke-width=".5" fill="none"></rect>
-                        <circle cx="20" cy="20" r="20" fill="none" stroke="black" stroke-width=".5"></circle>
-                        <circle cx="20" cy="20" r="10" fill="#eaeaea" stroke="black" stroke-width=".5"></circle>
-                        <circle cx="20" cy="20" r="5" fill="#cccccc" stroke="black" stroke-width=".5"></circle>
-                    </pattern>
-
-                </defs>
-                <rect x="0" y="0" width="200" height="200" stroke="black" stroke-width="2" fill="url(#tile_1)"></rect>
-
-                <rect x="200" y="0" width="200" height="200" stroke="black" stroke-width="2" fill="url(#tile_2)" ></rect>
-
-                <rect x="0" y="200" width="200" height="200" stroke="black" stroke-width="2" fill="url(#tile_3)" ></rect>
-
-                <rect x="200" y="200" width="200" height="200" stroke="black" stroke-width="2" fill="url(#tile_4)" transform="translate(-200 -200) scale(2)"></rect>
-            </svg>
-
+    </div>
+    <div class="content-holder">
+        <div class="section-holder">
+            <div class="svg-holder">
+                <!--
+                   
+                -->
+                <svg width="500" height="500" viewbox="0 0 400 400">
+                    <defs>
+    
+                        <pattern id="tile_1" width="40" height="40" patternUnits="userSpaceOnUse" patternContentUnits="userSpaceOnUse">
+                            <rect x="0" y="0" width="40" height="40" stroke="black" stroke-width=".5" fill="none"></rect>
+                            <circle cx="20" cy="20" r="20" fill="none" stroke="black" stroke-width=".5"></circle>
+                            <circle cx="20" cy="20" r="10" fill="#eaeaea" stroke="black" stroke-width=".5"></circle>
+                            <circle cx="20" cy="20" r="5" fill="#cccccc" stroke="black" stroke-width=".5"></circle>
+                        </pattern>
+    
+                        <pattern id="tile_2"width="40" height="40" patternUnits="userSpaceOnUse" patternContentUnits="objectBoundingBox">
+                            <rect x="0" y="0" width=".2" height=".2" stroke="black" stroke-width=".0025" fill="none"></rect>
+                            <circle cx=".1" cy=".1" r=".1" fill="none" stroke="black" stroke-width=".0025"></circle>
+                            <circle cx=".1" cy=".1" r=".05" fill="#eaeaea" stroke="black" stroke-width=".0025"></circle>
+                            <circle cx=".1" cy=".1" r=".025" fill="#cccccc" stroke="black" stroke-width=".0025"></circle>
+                        </pattern>
+    
+                        <pattern id="tile_3"width=".2" height=".2" patternUnits="objectBoundingBox" patternContentUnits="objectBoundingBox">
+                            <rect x="0" y="0" width=".2" height=".2" stroke="black" stroke-width=".0025" fill="none"></rect>
+                            <circle cx=".1" cy=".1" r=".1" fill="none" stroke="black" stroke-width=".0025"></circle>
+                            <circle cx=".1" cy=".1" r=".05" fill="#eaeaea" stroke="black" stroke-width=".0025"></circle>
+                            <circle cx=".1" cy=".1" r=".025" fill="#cccccc" stroke="black" stroke-width=".0025"></circle>
+                        </pattern>
+    
+                        <pattern id="tile_4"width=".2" height=".2" patternUnits="objectBoundingBox" patternContentUnits="userSpaceOnUse">
+                            <rect x="0" y="0" width="40" height="40" stroke="black" stroke-width=".5" fill="none"></rect>
+                            <circle cx="20" cy="20" r="20" fill="none" stroke="black" stroke-width=".5"></circle>
+                            <circle cx="20" cy="20" r="10" fill="#eaeaea" stroke="black" stroke-width=".5"></circle>
+                            <circle cx="20" cy="20" r="5" fill="#cccccc" stroke="black" stroke-width=".5"></circle>
+                        </pattern>
+    
+                    </defs>
+                    <rect x="0" y="0" width="200" height="200" stroke="black" stroke-width="2" fill="url(#tile_1)"></rect>
+    
+                    <rect x="200" y="0" width="200" height="200" stroke="black" stroke-width="2" fill="url(#tile_2)" ></rect>
+    
+                    <rect x="0" y="200" width="200" height="200" stroke="black" stroke-width="2" fill="url(#tile_3)" ></rect>
+    
+                    <rect x="200" y="200" width="200" height="200" stroke="black" stroke-width="2" fill="url(#tile_4)" transform="translate(-200 -200) scale(2)"></rect>
+                </svg>
+    
+            </div>
+            <div class="descriptive-info-holder">
+                <div class="small-info">container size: 500px x 500px </div>
+            </div>
+            
         </div>
-        <div class="info">container size: 500px x 500px </div>
+        
     </div>
 </body>
 

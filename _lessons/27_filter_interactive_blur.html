@@ -11,53 +11,60 @@
 </head>
 
 <body>
-    <div class="content-holder">
+    <div class="title-holder">
         <div class="info-holder">
             <div class="title">&lt;filter&gt;</div>
             <div class="subtitle">horizontal and vertical blur filter</div>
         </div>
-        <div class="svg-holder">
-            <!--
-               for the lesson
-            -->
-            <svg width="500" height="500" viewbox="0 0 500 500">
-                <defs>
+    </div>
+    <div class="content-holder">
+        <div class="section-holder">
+            <div class="svg-holder">
+                <!--
+                   for the lesson
+                -->
+                <svg width="500" height="500" viewbox="0 0 500 500">
+                    <defs>
 
-                    <filter id="blur-filter" x="-50%" y="-50%" width="200%" height="200%">
-                        <feGaussianBlur id="gauss-blur" stdDeviation="10" />
-                    </filter>
+                        <filter id="blur-filter" x="-50%" y="-50%" width="200%" height="200%">
+                            <feGaussianBlur id="gauss-blur" stdDeviation="10" />
+                        </filter>
 
-                    <image id="image" x="0" y="0" href="../_graphics/zuubaDigitalLogo.png" width="400" height="400"></image>
+                        <image id="image" x="0" y="0" href="../_graphics/zuubaDigitalLogo.png" width="400" height="400">
+                        </image>
 
-                </defs>
+                    </defs>
 
-                <use href="#image" x="50" y="50" filter="url(#blur-filter)" />
-            </svg>
+                    <use href="#image" x="50" y="50" filter="url(#blur-filter)" />
+                </svg>
+
+            </div>
+            <div id="info" class="descriptive-info-holder">container size: 500px x 500px </div>
 
         </div>
-        <div id="info" class="info">container size: 500px x 500px </div>
-        <div style="width:500px;">
-            <custom-slider id="blur_x" minimum="0" maximum="30" val="0" label="x stdDeviation"></custom-slider>
-            <custom-slider id="blur_y" minimum="0" maximum="30" val="0" label="y stdDeviation"></custom-slider>
-            
+        <div class="section-holder">
+            <div class="slidecontainer">
+                <custom-slider id="blur_x" minimum="0" maximum="30" val="0" label="x stdDeviation"></custom-slider>
+                <custom-slider id="blur_y" minimum="0" maximum="30" val="0" label="y stdDeviation"></custom-slider>
+            </div>
         </div>
-        
+
     </div>
 </body>
 <script>
     const info = document.querySelector('#info');
     const blur_x_slider = document.querySelector("#blur_x");
     const blur_y_slider = document.querySelector("#blur_y");
-    blur_x_slider.addEventListener("value", (e)=>{
+    blur_x_slider.addEventListener("value", (e) => {
         updateBlur(e.detail.value, true)
     })
-    blur_y_slider.addEventListener("value", (e)=>{
+    blur_y_slider.addEventListener("value", (e) => {
         updateBlur(e.detail.value, false)
     })
 
-    const updateBlur = (val, isX)=>{
-        const newval = val/2;
-        
+    const updateBlur = (val, isX) => {
+        const newval = val / 2;
+
         const gauss_blur = document.getElementById('gauss-blur');
         const currrent_blur_str = gauss_blur.getAttribute("stdDeviation");
         const arr = currrent_blur_str.split(" ");
@@ -65,16 +72,17 @@
         let yval = arr[1] || xval;
         isX ? xval = val : yval = val;
         let str = `${xval} ${yval}`;
-        if(xval == yval) str = `${xval}`;
+        if (xval == yval) str = `${xval}`;
         gauss_blur.setAttribute("stdDeviation", str)
         updateBlurText(str)
     }
 
-    const updateBlurText = (str)=>{
+    const updateBlurText = (str) => {
         info.innerText = `<feGaussianBlur id="gauss-blur" stdDeviation="${str}" />`;
     }
 
     updateBlur(blur_x_slider.value, true);
     updateBlur(blur_x_slider.value, false);
 </script>
+
 </html>

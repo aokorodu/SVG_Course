@@ -11,37 +11,44 @@
 </head>
 
 <body>
-    <div class="content-holder">
+    <div class="title-holder">
         <div class="info-holder">
             <div class="title">&lt;feColorMatrix&gt;</div>
             <div class="subtitle">color saturation</div>
         </div>
-        <div class="svg-holder">
-            <!--
+    </div>
+    <div class="content-holder">
+        <div class="section-holder">
+            <div class="svg-holder">
+                <!--
                for the lesson
             -->
-            <svg width="500" height="500" viewbox="0 0 500 500">
-                <defs>
+                <svg width="500" height="500" viewbox="0 0 500 500">
+                    <defs>
 
-                    <filter id="colormatrix-filter" x="-50%" y="-50%" width="200%" height="200%">
-                        <feColorMatrix id="saturate" type="saturate"
-                        values="0.2" />
-                    </filter>
+                        <filter id="colormatrix-filter" x="-50%" y="-50%" width="200%" height="200%">
+                            <feColorMatrix id="saturate" type="saturate" values="0.2" />
+                        </filter>
 
-                    <image id="image" x="0" y="0" href="../_graphics/zuubaDigitalLogo.png" width="400" height="400"></image>
+                        <image id="image" x="0" y="0" href="../_graphics/zuubaDigitalLogo.png" width="400" height="400">
+                        </image>
 
-                </defs>
+                    </defs>
 
-                <use href="#image" x="50" y="50" filter="url(#colormatrix-filter)" />
-            </svg>
+                    <use href="#image" x="50" y="50" filter="url(#colormatrix-filter)" />
+                </svg>
 
+            </div>
+            <div id="info" class="info"></div>
         </div>
-        <div id="info" class="info"></div>
-        <div style="width:500px;">
-            <custom-slider id="colSat" minimum="0" maximum="2" val="1" label="saturation"></custom-slider>
-            
+        <div class="section-holder">
+            <div class="slidecontainer">
+                <custom-slider id="colSat" minimum="0" maximum="2" val="1" label="saturation"></custom-slider>
+    
+            </div>
         </div>
         
+
     </div>
 </body>
 <script>
@@ -51,22 +58,22 @@
     const info = document.querySelector('#info');
 
     const colorSaturation_slider = document.querySelector("#colSat");
-    
+
     const drop_shadow_filter = document.getElementById('saturate');
 
-    colorSaturation_slider.addEventListener("value", (e)=>{
+    colorSaturation_slider.addEventListener("value", (e) => {
         updateColorSaturation(e.detail.value)
     })
 
-    const updateColorSaturation = (val)=>{
-        colSat= val;
+    const updateColorSaturation = (val) => {
+        colSat = val;
         let str = `${colSat}`;
         drop_shadow_filter.setAttribute("values", str)
         updateColorSaturationText()
     }
 
 
-    const updateColorSaturationText = ()=>{
+    const updateColorSaturationText = () => {
         info.innerText = `<feColorMatrix id="saturate" type="saturate" values="${colSat}" />`
 
 
@@ -74,4 +81,5 @@
 
     updateColorSaturation(colorSaturation_slider.value);
 </script>
+
 </html>

@@ -10,29 +10,36 @@
 </head>
 
 <body>
-    <div class="content-holder">
+    <div class="title-holder">
         <div class="info-holder">
             <div class="title">Quadratic Bezier Curves Interactive</div>
             <div class="description"></div>
         </div>
-        <div class="svg-holder">
-            
-            <svg id="svg" width="500" height="500" viewbox="0 0 500 500">
-                <g opacity="0">
-                    <line id="leftline" x1="50" y1="250" x2="250" y2="250" stroke="#cccccc" stroke-width="1"></line>
-                    <line id="rightline" x1="450" y1="250" x2="250" y2="250" stroke="#cccccc" stroke-width="1"></line>
-                    <line id="tangentline" x1="150" y1="250" x2="350" y2="250" stroke="#cccccc" stroke-width="1"></line>
-                    <circle id="l_midpoint" cx="150" cy="250" r="2" fill="#cccccc"></circle>
-                    <circle id="r_midpoint" cx="350" cy="250" r="2" fill="#cccccc"></circle>
-                    <circle id="c_midpoint" cx="250" cy="250" r="2" fill="black"></circle>
-                </g>
-                <path id="path" transform="translate(0 0)" d="M 0,250 L 50,250 Q 250,250 450,250 L 500,250" fill="none"
-                    stroke="black" stroke-width="2"></path>
-                <circle id="handle" cx="250" cy="250" r="10" stroke="black" fill="black"></circle>
-            </svg>
+    </div>
+    <div class="content-holder">
+        <div class="section-holder">
+            <div class="svg-holder">
 
+                <svg id="svg" width="500" height="500" viewbox="0 0 500 500">
+                    <g opacity="0">
+                        <line id="leftline" x1="50" y1="250" x2="250" y2="250" stroke="#cccccc" stroke-width="1"></line>
+                        <line id="rightline" x1="450" y1="250" x2="250" y2="250" stroke="#cccccc" stroke-width="1">
+                        </line>
+                        <line id="tangentline" x1="150" y1="250" x2="350" y2="250" stroke="#cccccc" stroke-width="1">
+                        </line>
+                        <circle id="l_midpoint" cx="150" cy="250" r="2" fill="#cccccc"></circle>
+                        <circle id="r_midpoint" cx="350" cy="250" r="2" fill="#cccccc"></circle>
+                        <circle id="c_midpoint" cx="250" cy="250" r="2" fill="black"></circle>
+                    </g>
+                    <path id="path" transform="translate(0 0)" d="M 0,250 L 50,250 Q 250,250 450,250 L 500,250"
+                        fill="none" stroke="black" stroke-width="2"></path>
+                    <circle id="handle" cx="250" cy="250" r="10" stroke="black" fill="black"></circle>
+                </svg>
+
+            </div>
+            <div id="info_text" class="info">drag the red ball to change the curve of the line</div>
         </div>
-        <div id="info_text" class="info">drag the red ball to change the curve of the line</div>
+
     </div>
 </body>
 <script>
@@ -46,7 +53,7 @@
     const rightMidPointCirc = document.getElementById("r_midpoint");
     const centerMidPointCirc = document.getElementById("c_midpoint");
     const info_text = document.getElementById("info_text");
-    
+
     const rightMidPoint = {
         x: 150,
         y: 250
@@ -144,7 +151,7 @@
         tangentline.setAttribute("y2", rightMidPoint.y);
 
         const tangentLineLength = rightMidPoint.x - leftMidPoint.x;
-        centerMidPointCirc.setAttribute("cx", leftMidPoint.x + tangentLineLength/2);
+        centerMidPointCirc.setAttribute("cx", leftMidPoint.x + tangentLineLength / 2);
         centerMidPointCirc.setAttribute("cy", leftMidPoint.y);
 
     }

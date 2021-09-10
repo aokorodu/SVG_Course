@@ -11,40 +11,37 @@
 </head>
 
 <body>
-    <div class="content-holder">
+    <div class="title-holder">
         <div class="info-holder">
             <div class="title">SVG Styles </div>
             <div class="subtitle">presentation attributes vs. inline styles</div>
             <div class="description"></div>
         </div>
-        <div class="svg-holder">
-            <!--
-                1.  presentation attributes
-                2.  inline style
-                3.  external style
-            -->
+    </div>
+    <div class="content-holder">
+        <div class="section-holder">
+            <div class="svg-holder">
+                <!--
+                    1.  presentation attributes
+                    2.  inline style
+                    3.  external style
+                -->
 
-            <svg width="500" height="500" viewbox="0 0 500 500">
-                <circle 
-                    cx="120" cy="140" r="100" 
-                    fill="rgb(0, 206, 0)" 
-                    stroke="grey" 
-                    stroke-width="2px">
-                </circle>
+                <svg width="500" height="500" viewbox="0 0 500 500">
+                    <circle cx="120" cy="140" r="100" fill="rgb(0, 206, 0)" stroke="grey" stroke-width="2px">
+                    </circle>
 
-                <circle 
-                    cx="380" cy="140" r="100" 
-                    style="fill:yellow; stroke: black; stroke-width: 5">
-                </circle>
+                    <circle cx="380" cy="140" r="100" style="fill:yellow; stroke: black; stroke-width: 5">
+                    </circle>
 
-                <circle 
-                    class="externally_styled_circle"
-                    cx="250" cy="370" r="100" >
-                </circle>
-            </svg>
+                    <circle class="externally_styled_circle" cx="250" cy="370" r="100">
+                    </circle>
+                </svg>
 
+            </div>
+            <div class="info">container size: 500px x 500px </div>
         </div>
-        <div class="info">container size: 500px x 500px </div>
+
     </div>
 </body>
 

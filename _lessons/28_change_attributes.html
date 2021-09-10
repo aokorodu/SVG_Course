@@ -11,47 +11,59 @@
 </head>
 
 <body>
-    <div class="content-holder">
+    
+    <div class="title-holder">
         <div class="info-holder">
             <div class="title">Changing Attribute Values </div>
             <div class="subtitle">using javascript to dynamically change svg element attribute values</div>
         </div>
-        <div class="svg-holder">
-            <!--
-                
-            -->
-            <svg width="500" height="500" viewbox="0 0 500 500">
-                <defs>
-                    <radialGradient id="sun-gradient" cx="25%" cy="25%">
-                        <stop offset="0" stop-color="#FAEEB0"></stop>
-                        <stop offset="100%" stop-color="#FB9700"></stop>
-                    </radialGradient>
-                    <linearGradient id="sky-gradient" x1="0%" y1="0%" x2="50%" y2="100%">
-                        <stop offset="0%" stop-color="#99EDFF" />
-                        <stop offset="100%" stop-color="#29A1BB" />
+    </div>
+    
+    <div class="content-holder">
 
-                    </linearGradient>
-                </defs>
-                <rect x="0" y="0" width="500" height="500" fill="url(#sky-gradient)"></rect>
 
-                <circle id="my_circle" cx="250" cy="250" r="150" stroke="black" stroke-opacity=".2" stroke-width="3"
-                    fill="url(#sun-gradient)"></circle>
-            </svg>
+        <div class="section-holder">
 
+
+            <div class="svg-holder">
+                <!--
+                    
+                -->
+                <svg width="500" height="500" viewbox="0 0 500 500">
+                    <defs>
+                        <radialGradient id="sun-gradient" cx="25%" cy="25%">
+                            <stop offset="0" stop-color="#FAEEB0"></stop>
+                            <stop offset="100%" stop-color="#FB9700"></stop>
+                        </radialGradient>
+                        <linearGradient id="sky-gradient" x1="0%" y1="0%" x2="50%" y2="100%">
+                            <stop offset="0%" stop-color="#99EDFF" />
+                            <stop offset="100%" stop-color="#29A1BB" />
+    
+                        </linearGradient>
+                    </defs>
+                    <rect x="0" y="0" width="500" height="500" fill="url(#sky-gradient)"></rect>
+    
+                    <circle id="my_circle" cx="250" cy="250" r="150" stroke="black" stroke-opacity=".2" stroke-width="3"
+                        fill="url(#sun-gradient)"></circle>
+                </svg>
+    
+            </div>
+            <div class="descriptive-info-holder">
+                <div id="circle_info_text" class="small-info">container size: 500px x 500px </div>
+                <div id="gradient_info_text" class="small-info">container size: 500px x 500px </div>
+            </div>
         </div>
-        <div class="descriptive-info-holder">
-            <div id="circle_info_text" class="small-info">container size: 500px x 500px </div>
-            <div id="gradient_info_text" class="small-info">container size: 500px x 500px </div>
+        <div class="section-holder">
+            <div class="slidecontainer">
+                <custom-slider id="radius_size" minimum="1" maximum="300" val="150" label="radius" step=1></custom-slider>
+                <custom-slider id="cx" minimum="0" maximum="500" val="250" label="cx" step=1></custom-slider>
+                <custom-slider id="cy" minimum="0" maximum="500" val="250" label="cy" step=1></custom-slider>
+                <custom-slider id="radial_cx" minimum="0" maximum="100" val="25" label="radial grad. cx" step=1>
+                </custom-slider>
+            </div>
         </div>
-
-
-        <div class="slidecontainer">
-            <custom-slider id="radius_size" minimum="1" maximum="300" val="150" label="radius" step=1></custom-slider>
-            <custom-slider id="cx" minimum="0" maximum="500" val="250" label="cx" step=1></custom-slider>
-            <custom-slider id="cy" minimum="0" maximum="500" val="250" label="cy" step=1></custom-slider>
-            <custom-slider id="radial_cx" minimum="0" maximum="100" val="25" label="radial grad. cx" step=1>
-            </custom-slider>
-        </div>
+        
+        
     </div>
 </body>
 <script>

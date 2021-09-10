@@ -10,36 +10,42 @@
 </head>
 
 <body>
-    <div class="content-holder">
+    <div class="title-holder">
         <div class="info-holder">
             <div class="title">&lt;feColorMatrix&gt;</div>
             <div class="subtitle">hue rotation</div>
         </div>
-        <div class="svg-holder">
-            <!--
-               for the lesson
-            -->
-            <svg width="500" height="500" viewbox="0 0 500 500">
-                <defs>
+    </div>
+    <div class="content-holder">
+        <div class="section-holder">
+            <div class="svg-holder">
+                <!--
+                   for the lesson
+                -->
+                <svg width="500" height="500" viewbox="0 0 500 500">
+                    <defs>
 
-                    <filter id="colormatrix-filter" x="-50%" y="-50%" width="200%" height="200%">
-                        <feColorMatrix id="hue-rotation" type="hueRotate"
-                        values="0" />
-                    </filter>
+                        <filter id="colormatrix-filter" x="-50%" y="-50%" width="200%" height="200%">
+                            <feColorMatrix id="hue-rotation" type="hueRotate" values="0" />
+                        </filter>
 
-                    <image id="image" x="0" y="0" href="../_graphics/zuubaDigitalLogo.png" width="400" height="400"></image>
+                        <image id="image" x="0" y="0" href="../_graphics/zuubaDigitalLogo.png" width="400" height="400">
+                        </image>
 
-                </defs>
+                    </defs>
 
-                <use href="#image" x="50" y="50" filter="url(#colormatrix-filter)" />
-            </svg>
+                    <use href="#image" x="50" y="50" filter="url(#colormatrix-filter)" />
+                </svg>
 
+            </div>
+            <div id="info" class="info"></div>
         </div>
-        <div id="info" class="info"></div>
-        <div style="width:500px;">
-            <custom-slider id="hueRot" minimum="0" maximum="360" val="0" label="hue rotation"></custom-slider>
+        <div class="section-holder">
+            <div class="slidecontainer">
+                <custom-slider id="hueRot" minimum="0" maximum="360" val="0" label="hue rotation"></custom-slider>
+            </div>
         </div>
-        
+
     </div>
 </body>
 <script src="./custom-slider-component.js"></script>
@@ -50,28 +56,29 @@
     const info = document.querySelector('#info');
 
     const hueRotation_slider = document.querySelector("#hueRot");
-    
+
     const hue_rotation_filter = document.getElementById('hue-rotation');
 
     //hueRotation_slider.initTitle("hue rotation");
     hueRotation_slider.positionElements(0);
 
-    hueRotation_slider.addEventListener("value", (e)=>{
+    hueRotation_slider.addEventListener("value", (e) => {
         updateHueRotation(e.detail.value)
     })
 
-    const updateHueRotation = (val)=>{
+    const updateHueRotation = (val) => {
         console.log('val: ', val)
-        hueRot= val;//Math.round((val/100) * 360);
+        hueRot = val;//Math.round((val/100) * 360);
         let str = `${hueRot}`;
         hue_rotation_filter.setAttribute("values", str)
         updateHueRotationText()
     }
 
-    const updateHueRotationText = ()=>{
+    const updateHueRotationText = () => {
         info.innerText = `<feColorMatrix id="hue-rotation" type="hueRotate" values="${hueRot}" />`
     }
 
     updateHueRotation(hueRotation_slider.value);
 </script>
+
 </html>

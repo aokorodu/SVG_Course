@@ -11,37 +11,47 @@
 </head>
 
 <body>
-    <div class="content-holder">
+    <div class="title-holder">
         <div class="info-holder">
             <div class="title">&lt;feDropShadow&gt;</div>
             <div class="subtitle">interactive drop shadow</div>
         </div>
-        <div class="svg-holder">
-            <!--
-               for the lesson
-            -->
-            <svg width="500" height="500" viewbox="0 0 500 500">
-                <defs>
-
-                    <filter id="shadow-filter" x="-50%" y="-50%" width="200%" height="200%">
-                        <feDropShadow id="drop-shadow" dx="10" dy="10" stdDeviation="3" flood-color="black" flood-opacity=".5" />
-                    </filter>
-
-                    <image id="image" x="0" y="0" href="../_graphics/zuubaDigitalLogo.png" width="400" height="400"></image>
-
-                </defs>
-
-                <use href="#image" x="50" y="50" filter="url(#shadow-filter)" />
-            </svg>
-
+    </div>
+    <div class="content-holder">
+        <div class="section-holder">
+            <div class="svg-holder">
+                <!--
+                   for the lesson
+                -->
+                <svg width="500" height="500" viewbox="0 0 500 500">
+                    <defs>
+    
+                        <filter id="shadow-filter" x="-50%" y="-50%" width="200%" height="200%">
+                            <feDropShadow id="drop-shadow" dx="10" dy="10" stdDeviation="3" flood-color="black" flood-opacity=".5" />
+                        </filter>
+    
+                        <image id="image" x="0" y="0" href="../_graphics/zuubaDigitalLogo.png" width="400" height="400"></image>
+    
+                    </defs>
+    
+                    <use href="#image" x="50" y="50" filter="url(#shadow-filter)" />
+                </svg>
+    
+            </div>
+            <div class="descriptive-info-holder">
+                <div id="info" class="small-info">container size: 500px x 500px </div>
+            </div>
+            
         </div>
-        <div id="info" class="info">container size: 500px x 500px </div>
-        <div style="width:500px;">
-            <custom-slider id="stdDev" minimum="0" maximum="30" val="3" label="stdDeviation"></custom-slider>
-            <custom-slider id="dx" minimum="-30" maximum="30" val="10" label="dx"></custom-slider>
-            <custom-slider id="dy" minimum="-30" maximum="30" val="10" label="dy"></custom-slider>
-
+        <div class="section-holder">
+            <div style="width:500px;">
+                <custom-slider id="stdDev" minimum="0" maximum="30" val="3" label="stdDeviation"></custom-slider>
+                <custom-slider id="dx" minimum="-30" maximum="30" val="10" label="dx"></custom-slider>
+                <custom-slider id="dy" minimum="-30" maximum="30" val="10" label="dy"></custom-slider>
+    
+            </div>
         </div>
+        
         
     </div>
 </body>

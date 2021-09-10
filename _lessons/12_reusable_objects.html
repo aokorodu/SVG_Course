@@ -10,63 +10,68 @@
 </head>
 
 <body>
-    <div class="content-holder">
+    <div class="title-holder">
         <div class="info-holder">
             <div class="title">SVG reusable objects</div>
             <div class="subtitle">defs, use
             </div>
             <div class="description"></div>
         </div>
-        <div class="svg-holder">
-            <!--
-                base element <svg>
-                
-            -->
-
-            <svg id="svg" width="500" height="500" viewbox="0 0 500 500">
-
-                <!-- 
-                    in defs, two objects
-                    button_object: has cx and cy of 250
-                    button_object_zero: has cy and cy of 0
-
-                    NOTE: the x and y attributes of the <use> element change the position of the ORIGIN of the object.
-
-                    NOTE: the button_object is more difficult to move around than the button_object_zero, which is built at 0,0 so it's easier to move around by changing the x and y of the <use> object.
-
-                    NOTE: it's also much easier to generate and position the buttn_object_zero <use> objects. See the generate_buttons()javascript method below.
-                
-                    NOTE: You can set a presentation attribute on the <use> object if that same attribute isn't set on the <defs> object.  Attributes set on the <use> are overwritten by presentation attributes on the def object.
-                    -->
-
-                <defs>
-                    <g id="button_object" stroke="black" stroke-width="3" fill="none">
-                        <circle cx="300" cy="300" r="20"></circle>
-                        <path d="M 290, 300 h 20 M 300,290 v 20"></path>
-                    </g>
-
-
-                    <g id="button_object_zero" stroke="green" stroke-width="3" fill="none">
-                        <circle cx="0" cy="0" r="20"></circle>
-                        <path d="M-10, 0 H 10 M 0,-10 V 10"></path>
-                    </g>
-
-                    <g id="button_object_no_stroke_attribute"  fill="none">
-                        <circle cx="0" cy="0" r="20"></circle>
-                        <path d="M-10, 0 H 10 M 0,-10 V 10"></path>
-                    </g>
-
-
-                </defs>
-                <use href="#button_object" x="0" y="0"></use>
-                <use href="#button_object_zero" x="100" y="100"></use>
-                <use href="#button_object_zero" transform="translate(200,200)"></use>
-                <use href="#button_object_zero" transform="translate(400,400) scale(2) rotate(45)"></use>
-                <use href="#button_object_no_stroke_attribute" x="400" y="100" stroke="blue" stroke-width="5"></use>
-            </svg>
+    </div>
+    <div class="content-holder">
+        <div class="section-holder">
+            <div class="svg-holder">
+                <!--
+                    base element <svg>
+                    
+                -->
+    
+                <svg id="svg" width="500" height="500" viewbox="0 0 500 500">
+    
+                    <!-- 
+                        in defs, two objects
+                        button_object: has cx and cy of 250
+                        button_object_zero: has cy and cy of 0
+    
+                        NOTE: the x and y attributes of the <use> element change the position of the ORIGIN of the object.
+    
+                        NOTE: the button_object is more difficult to move around than the button_object_zero, which is built at 0,0 so it's easier to move around by changing the x and y of the <use> object.
+    
+                        NOTE: it's also much easier to generate and position the buttn_object_zero <use> objects. See the generate_buttons()javascript method below.
+                    
+                        NOTE: You can set a presentation attribute on the <use> object if that same attribute isn't set on the <defs> object.  Attributes set on the <use> are overwritten by presentation attributes on the def object.
+                        -->
+    
+                    <defs>
+                        <g id="button_object" stroke="black" stroke-width="3" fill="none">
+                            <circle cx="300" cy="300" r="20"></circle>
+                            <path d="M 290, 300 h 20 M 300,290 v 20"></path>
+                        </g>
+    
+    
+                        <g id="button_object_zero" stroke="green" stroke-width="3" fill="none">
+                            <circle cx="0" cy="0" r="20"></circle>
+                            <path d="M-10, 0 H 10 M 0,-10 V 10"></path>
+                        </g>
+    
+                        <g id="button_object_no_stroke_attribute"  fill="none">
+                            <circle cx="0" cy="0" r="20"></circle>
+                            <path d="M-10, 0 H 10 M 0,-10 V 10"></path>
+                        </g>
+    
+    
+                    </defs>
+                    <use href="#button_object" x="0" y="0"></use>
+                    <use href="#button_object_zero" x="100" y="100"></use>
+                    <use href="#button_object_zero" transform="translate(200,200)"></use>
+                    <use href="#button_object_zero" transform="translate(400,400) scale(2) rotate(45)"></use>
+                    <use href="#button_object_no_stroke_attribute" x="400" y="100" stroke="blue" stroke-width="5"></use>
+                </svg>
+    
+            </div>
+            <div class="info">container size: 500px x 500px </div>
 
         </div>
-        <div class="info">container size: 500px x 500px </div>
     </div>
 </body>
 <script>
