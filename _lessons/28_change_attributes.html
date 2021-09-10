@@ -11,7 +11,7 @@
 </head>
 
 <body>
-    
+
     <div class="title-holder">
         <div class="info-holder">
             <div class="title">Changing Attribute Values </div>
@@ -60,6 +60,8 @@
                 <custom-slider id="cy" minimum="0" maximum="500" val="250" label="cy" step=1></custom-slider>
                 <custom-slider id="radial_cx" minimum="0" maximum="100" val="25" label="radial grad. cx" step=1>
                 </custom-slider>
+                <custom-slider id="radial_cy" minimum="0" maximum="100" val="25" label="radial grad. cy" step=1>
+                </custom-slider>
             </div>
         </div>
         
@@ -73,6 +75,7 @@
     const cx_slider = document.querySelector("#cx");
     const cy_slider = document.querySelector("#cy");
     const radial_cx_slider = document.querySelector("#radial_cx");
+    const radial_cy_slider = document.querySelector("#radial_cy");
     const svg = document.querySelector('svg');
     const circle_info_text = document.querySelector('#circle_info_text');
 
@@ -81,7 +84,8 @@
     let r = 200;
     let cx = 250;
     let cy = 250;
-    let radial_cx = "25%"
+    let radial_cx = "25%";
+    let radial_cy = "25%";
 
 
     radius_size_slider.addEventListener("value", (e) => {
@@ -97,6 +101,10 @@
 
     radial_cx_slider.addEventListener("value", (e) => {
         updateRadialCX(e.detail.value)
+    })
+
+    radial_cy_slider.addEventListener("value", (e) => {
+        updateRadialCY(e.detail.value)
     })
 
     const updateRadius = (newRadius) => {
@@ -121,10 +129,18 @@
     }
 
     const updateRadialCX = (newCX) => {
-        console.log('newCY: ', newCX);
+        console.log('newCX: ', newCX);
         radial_cx = `${newCX}%`;
         console.log('radial_cx: ', radial_cx);
         sun_gradient.setAttribute("cx", radial_cx);
+        update_radial_info_text();
+    }
+
+    const updateRadialCY = (newCY) => {
+        console.log('newCY: ', newCY);
+        radial_cy = `${newCY}%`;
+        console.log('radial_cy: ', radial_cy);
+        sun_gradient.setAttribute("cy", radial_cy);
         update_radial_info_text();
     }
 
@@ -134,7 +150,7 @@
     }
 
     const update_radial_info_text = () => {
-        let str = `<radialGradient id="sun-gradient" cx="${radial_cx}%" cy="25%">...`;
+        let str = `<radialGradient id="sun-gradient" cx="${radial_cx}%" cy="${radial_cy}%">...`;
             gradient_info_text.innerText = str;
     }
 

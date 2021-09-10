@@ -3,6 +3,7 @@
 
 <head>
     <title>Radial Gradients - Interactive Demo</title>
+    <script src="./custom-slider-component.js"></script>
     <link rel="stylesheet" href="main.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -53,11 +54,12 @@
         </div>
         <div class="section-holder">
             <div class="slidecontainer">
-                <label class="label">
+                <!-- <label class="label">
                   <input id="radius_slider" type="range" min="0" max="2" step=".01" value=".5" class="slider" id="radius_length"
                     autocomplete="off" />
                     <span>outer-boundry radius</span>
-                </label>
+                </label> -->
+                <custom-slider id="radius_slider" minimum="0" maximum="2" val=".5" label="outer radius" step=0.01></custom-slider>
                 <button id="hide_controls_button">hide controls</button>
               </div>
         </div>
@@ -81,10 +83,11 @@
         hideControls();
     })
 
-    radius_slider.addEventListener("input", ()=>{
-        console.log(radius_slider.value);
-        gradient.setAttribute("r", radius_slider.value);
-        outer_boundry_circle.setAttribute("r", 500*radius_slider.value);
+    radius_slider.addEventListener("value", (e)=>{
+        const newR = e.detail.value;
+        console.log(newR);
+        gradient.setAttribute("r", newR);
+        outer_boundry_circle.setAttribute("r", 500*newR);
         updateGradientString();
     })
     outer_boundry_handle.addEventListener("mousedown", (e) => {

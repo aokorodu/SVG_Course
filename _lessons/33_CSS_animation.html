@@ -10,40 +10,43 @@
 </head>
 
 <body>
-    <div class="content-holder">
+    <div class="title-holder">
         <div class="info-holder">
             <div class="title">SVG Animation - CSS</div>
             <!-- <div class="subtitle">filter animation</div> -->
             <!-- <div class="description">Used to set the width and height of the svg (in pixels) on the page that contains it.
             </div> -->
         </div>
-        <div class="svg-holder">
-            <!--
-               for the lesson
-            -->
-            <svg width="500" height="500" viewbox="0 0 500 500">
-                <defs>
-                    <filter id="my-filter" x="-50%" y="-50%" width="200%" height="200%">
-                        <feGaussianBlur stdDeviation="10"/>
-                    </filter>
-                    <radialGradient id="my-gradient" cx=".5" cy=".25">
-                        <stop offset="0%" stop-color="white" />
-                        <stop offset="100%" stop-color="orange"/>
-                    </radialGradient>
+    </div>
+    <div class="content-holder">
+        <div class="section-holder">
+            <div class="svg-holder">
+                <!--
+                   for the lesson
+                -->
+                <svg width="500" height="500" viewbox="0 0 500 500">
+                    <defs>
+                        <filter id="my-filter" x="-50%" y="-50%" width="200%" height="200%">
+                            <feGaussianBlur stdDeviation="10" />
+                        </filter>
+                        <radialGradient id="my-gradient" cx=".5" cy=".25">
+                            <stop offset="0%" stop-color="white" />
+                            <stop offset="100%" stop-color="orange" />
+                        </radialGradient>
 
-                    <ellipse id="hover-ball-object" filter="url(#my-filter)" cx="0" cy="0" rx="100" ry="20" ></ellipse>
-                </defs>
+                        <ellipse id="hover-ball-object" filter="url(#my-filter)" cx="0" cy="0" rx="100" ry="20">
+                        </ellipse>
+                    </defs>
 
-                <circle id="hover-ball" cx="250" cy="250" r="100" fill="url(#my-gradient)"></circle>
-                <use id="hover-ball-shadow" href="#hover-ball-object" x="250" y="400" fill="black" fill-opacity=".2"></use>
-                
-            </svg>
+                    <circle id="hover-ball" cx="250" cy="250" r="100" fill="url(#my-gradient)"></circle>
+                    <use id="hover-ball-shadow" href="#hover-ball-object" x="250" y="400" fill="black"
+                        fill-opacity=".2"></use>
 
+                </svg>
+
+            </div>
+            <div class="info">container size: 500px x 500px </div>
         </div>
-        <div class="info">container size: 500px x 500px </div>
-
-            
-            
     </div>
 </body>
 

@@ -21,6 +21,7 @@
 
 .section-holder {
     padding: 0;
+    margin: 0px .5rem;
     width: 500px;
     display: flex;
     flex-direction: column;
@@ -82,8 +83,7 @@ svg {
 
 .small-info {
     width: 500px;
-    font-size: .6rem;
-    font-style: italic;
+    font-size: .8rem;
     margin: .25rem 0;
 }
 
