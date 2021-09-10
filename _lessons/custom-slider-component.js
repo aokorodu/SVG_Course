@@ -133,6 +133,7 @@ class CustomSliderComponent extends HTMLElement {
     this.min = this.getAttribute("minimum");
     this.max = this.getAttribute("maximum");
     this.label = this.getAttribute("label");
+    this.step = this.getAttribute("step") || 0.01;
   }
 
   initShadow() {
@@ -142,7 +143,7 @@ class CustomSliderComponent extends HTMLElement {
 
   initSlider() {
     this.slider = this.shadowRoot.getElementById("slider");
-    this.slider.step = 0.01;
+    this.slider.step = this.step;
     this.slider.min = this.min;
     this.slider.max = this.max;
     this.slider.addEventListener("input", (e) => {
