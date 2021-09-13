@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Filters - 1</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="title-holder">
+        <div class="info-holder">
+            <div class="title">CSS Animation</div>
+            <div class="subtitle">keyframe animation, example of Safari bug on zoom page with transform-origin</div>
+
+        </div>
+    </div>
+    <div class="content-holder">
+        <div class="section-holder">
+            <div class="svg-holder">
+                <!--
+                   for the lesson
+                -->
+                <svg width="500" height="500" viewbox="-50 -50 500 500">
+                    <defs>
+                        <g id="gear_obj" >
+                            <path
+                                d="M100 35C112.604 35 124.924 38.8122 135.404 45.9545C145.884 53.0968 154.051 63.2484 158.875 75.1256C163.698 87.0028 164.96 100.072 162.501 112.681C160.042 125.29 153.973 136.872 145.061 145.962C136.149 155.052 124.794 161.243 112.432 163.751C100.071 166.259 87.2576 164.972 75.6133 160.052C63.969 155.132 54.0164 146.801 47.0142 136.112C40.012 125.423 36.2745 112.856 36.2746 100C36.2745 91.4641 37.9229 83.0117 41.1254 75.1256C44.3279 67.2394 49.0219 60.0739 54.9393 54.0381C60.8568 48.0022 67.8818 43.2144 75.6134 39.9478C83.3449 36.6813 91.6315 35 100 35ZM100 18.948C84.2838 18.948 68.9205 23.7016 55.8529 32.6078C42.7853 41.5139 32.6003 54.1725 26.586 68.9828C20.5717 83.7931 18.998 100.09 22.0641 115.813C25.1302 131.535 32.6983 145.977 43.8114 157.312C54.9245 168.648 69.0834 176.367 84.4977 179.495C99.9119 182.622 115.889 181.017 130.409 174.882C144.929 168.748 157.339 158.359 166.071 145.03C174.802 131.701 179.463 116.031 179.463 100C179.439 78.5111 171.059 57.9093 156.162 42.7144C141.265 27.5195 121.068 18.9723 100 18.948Z"/>
+                            <path d="M106.863 0H88.2353V20H106.863V0Z"  />
+                            <path d="M140.083 8.10281L129.984 25.2462L145.951 35.0319L156.05 17.8885L140.083 8.10281Z"
+                                 />
+                            <path d="M179.76 40.8569L162.611 50.5531L171.642 67.1709L188.791 57.4747L179.76 40.8569Z"
+                                 />
+                            <path d="M172.754 131.884L162.883 147.997L179.511 158.595L189.382 142.482L172.754 131.884Z"
+                                 />
+                            <path d="M20.2396 40.857L11.2089 57.4747L28.3583 67.1709L37.389 50.5531L20.2396 40.857Z"
+                                 />
+                            <path d="M27.2464 131.884L10.618 142.482L20.489 158.595L37.1174 147.997L27.2464 131.884Z"
+                                 />
+                            <path d="M59.9172 8.10283L43.9503 17.8885L54.0491 35.0319L70.016 25.2462L59.9172 8.10283Z"
+                                 />
+                            <path d="M106.863 180H88.2353V200H106.863V180Z"  />
+                            <path d="M145.951 164.968L129.984 174.754L140.083 191.897L156.05 182.111L145.951 164.968Z"
+                                 />
+                            <path d="M54.0491 164.968L43.9503 182.111L59.9172 191.897L70.016 174.754L54.0491 164.968Z"
+                                 />
+                            <path d="M22.549 92H0V109H22.549V92Z"  />
+                            <path d="M177.451 109H200V92H177.451V109Z"  />
+                        </g>
+                    </defs>
+                    <style>
+                        #gear_orig {
+                            fill: blue;
+                            transform-box: fill-box;
+                            transform-origin: 50% 50%;
+                            transform: rotate(0deg);
+                            animation: spinner 10s linear infinite;
+                        }
+                        #gear {
+                            fill: blue;
+                            transform-box: fill-box;
+                            transform-origin: 50% 50%;
+                            transform: rotate(0deg);
+                            animation: spinner 10s linear infinite;
+                        }
+
+                        @keyframes spinner {
+                            from{
+                                transform: rotate(0deg)
+                            } to {
+                                transform: rotate(360deg)
+                            }
+                        }
+                    </style>
+                    <circle cx="250" cy="250" r="5" fill="black"></circle>
+                    <circle cx="0" cy="0" r="5" fill="black"></circle>
+                    <use id="gear" href="#gear_obj"></use>
+
+                </svg>
+
+            </div>
+            <div class="info">container size: 500px x 500px </div>
+        </div>
+    </div>
+</body>
+
+</html>

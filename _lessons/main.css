@@ -3,6 +3,10 @@
     font-family: 'Roboto', sans-serif;
 }
 
+em {
+    font-weight: bold;
+}
+
 .content-holder {
     padding: 0;
     margin-top: 1rem;
@@ -68,9 +72,9 @@ svg {
 .description {
     width: 100%;
     margin-top: 1rem;
-    font-size: .8rem;
-    user-select: none; /* supported by Chrome and Opera */
-   -webkit-user-select: none; /* Safari */
+    padding: 1rem;
+    font-size: 1rem;
+    border-top: 1px solid #CCCCCC
 }
 
 .info {
@@ -129,60 +133,69 @@ input[type=text] {
 
 
 
- /* The slider itself */
- .slidecontainer {
-    width: 500px; /* Width of the outside container */
-    margin: 20px 0;
-  }
-
-  label {
-    width: 500px;
-    font-size: .8rem;
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-}
-
- .slider {
-    -webkit-appearance: none;  /* Override default CSS styles */
-    appearance: none;
-    width: 500px; /* Full-width */
-    height: 1px; /* Specified height */
-    background:black; /* Grey background */
-    outline: none; /* Remove outline */
-    opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
-    -webkit-transition: .2s; /* 0.2 seconds transition on hover */
-    transition: opacity .2s;
-    margin: 15px 0;
-  }
-  
-  /* Mouse-over effects */
-  .slider:hover {
-    opacity: 1; /* Fully shown on mouse-over */
-  }
-  
-  /* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */ 
-  .slider::-webkit-slider-thumb {
-    -webkit-appearance: none; /* Override default look */
-    appearance: none;
-    width: 25px; /* Set a specific slider handle width */
-    height: 25px; /* Slider handle height */
-    background: white; /* Green background */
-    cursor: pointer; /* Cursor on hover */
-    border-radius: 50%;
-    border: 2px solid black;
-  }
-  
-  .slider::-moz-range-thumb {
-    width: 25px; /* Set a specific slider handle width */
-    height: 25px; /* Slider handle height */
-    background: #000000; /* Green background */
-    cursor: pointer; /* Cursor on hover */
-    border-radius: 50%;
-    border: 2px solid black;
-  }
+ 
 
   /* animation */
+
+  
+
+  #my_bird{
+    transform-box: fill-box;
+    transform: translateY(-5%);
+    animation: birdfloat 2s ease-in-out infinite alternate;
+}
+
+@keyframes birdfloat {
+
+    from {
+        transform:translateY(-5%);
+    }
+    to {
+        transform:translateY(-15%);
+    }
+}
+/* there's a bug with transform-origin with safari, where if you zoom the page in or out it messes up the transforms. */
+
+#right-wing{
+    transform-box: fill-box;
+    transform-origin: 0% 0%;
+    -webkit-transform-origin: 0% 0%;
+    transform:rotate(20deg);
+    animation: wingflapright .05s ease-in-out infinite alternate;
+    
+    
+    
+    filter:url(#wing-blur-filter);
+}
+
+#left-wing{
+    /* transform:rotate(10deg);
+    animation: wingflapleft .05s ease-in-out infinite alternate;
+    transform-box: fill-box;
+    transform-origin: right center;
+    filter:url(#wing-blur-filter);
+    opacity: .95; */
+}
+
+@keyframes wingflapright {
+
+    from {
+        transform:rotate(20deg);
+    }
+    to {
+        transform:rotate(0deg);
+    }
+}
+
+@keyframes wingflapleft {
+
+    from {
+        transform:rotate(20deg);
+    }
+    to {
+        transform:rotate(-30deg);
+    }
+}
 
   #hover-ball{
       animation: hover 2s infinite alternate ease-in-out;
@@ -190,7 +203,6 @@ input[type=text] {
 
   #hover-ball-shadow {
       animation: shadowGrow 2s infinite alternate ease-in-out;
-      transform-origin: 50% 50%;
   }
 
   @keyframes hover {
@@ -205,12 +217,12 @@ input[type=text] {
   @keyframes shadowGrow {
       from{
         fill-opacity: .5;
-        transform: scale(1, 1);
+        transform: scale(1);
       } 
       to {
         
         fill-opacity: .2;
-        transform: scale(.8, 1);
+        transform: scale(.8);
       }
   }
 
