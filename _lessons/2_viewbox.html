@@ -2,8 +2,10 @@
 <html lang="en">
 
 <head>
-    <title>Viewbox</title>
+    <title>Viewport</title>
     <script src="./custom-slider-component.js"></script>
+    <script src="./js/highlight/highlight.min.js"></script>
+    <link rel="stylesheet" href="js/highlight/styles/default.min.css">
     <link rel="stylesheet" href="main.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,9 +17,8 @@
         <div class="info-holder">
             <div class="title">viewbox </div>
             <div class="subtitle">svg coordinate system</div>
-            <div class="description">Defines the coordinate system of the viewport.
-            </div>
         </div>
+    </div>
     </div>
     <div class="content-holder">
         <div class="section-holder">
@@ -5055,14 +5056,25 @@
             <div class="slidecontainer">
                 <custom-slider id="viewbox_size" minimum="500" maximum="1400" val="900" label="viewbox size" step=1>
                 </custom-slider>
-                <custom-slider id="viewbox_x" minimum="0" maximum="1450" val="780" label="viewbox x" step=1></custom-slider>
-                <custom-slider id="viewbox_y" minimum="0" maximum="400" val="0" label="viewbox y" step=1></custom-slider>
+                <custom-slider id="viewbox_x" minimum="0" maximum="1450" val="780" label="viewbox x" step=1>
+                </custom-slider>
+                <custom-slider id="viewbox_y" minimum="0" maximum="400" val="0" label="viewbox y" step=1>
+                </custom-slider>
             </div>
+
+            <div class="description">
+                <p>
+                    The viewbox is the user-defined coordinate system of the viewport
+                </p>
+                <pre><code>&lt;svg width="500" height="500" viewbox="0 0 900 900"&gt;</svg></code></pre>
+            </div>
+
         </div>
-        
-    </div>
 </body>
 <script>
+    hljs.highlightAll();
+
+
     const viewbox_size_slider = document.querySelector("#viewbox_size");
     const viewbox_x_slider = document.querySelector("#viewbox_x");
     const viewbox_y_slider = document.querySelector("#viewbox_y");
