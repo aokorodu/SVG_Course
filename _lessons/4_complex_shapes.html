@@ -1,21 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <title>Viewbox</title>
-    <link rel="stylesheet" href="main.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-</head>
+    <head>
+        <title>complex paths</title>
+        <script src="./js/highlight/highlight.min.js"></script>
+        <link rel="stylesheet" href="js/highlight/styles/default.min.css">
+        <link rel="stylesheet" href="main.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    </head>
 
 <body>
     <div class="title-holder">
         <div class="info-holder">
-            <div class="title">SVG Paths </div>
+            <div class="title">SVG Paths</div>
             <div class="subtitle">horizontaal and vertical sub-paths, shortcuts, absolute and relative quadratic curves
             </div>
-            <div class="description"></div>
         </div>
     </div>
     <div class="content-holder">
@@ -63,8 +64,17 @@
             </div>
             <div class="info">container size: 500px x 500px </div>
         </div>
+        <div class="section-holder">
+            <div class="description">
+                <p>&lt;path&gt; is the most powerful shape element, used to create straight and curved lines and shapes.
+                    </p>
+                <pre><code>&lt;path d="M 0,350 L 50,350 q 200,150 400,0 L 500,350" &gt;</code></pre>
+            </div>
+        </div>
 
     </div>
 </body>
-
+<script>
+    hljs.highlightAll();
+    </script>
 </html>

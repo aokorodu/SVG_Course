@@ -1,19 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <title>Viewbox</title>
-    <link rel="stylesheet" href="main.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-</head>
+    <head>
+        <title>Interactive Quadratic Bezier Curve</title>
+        <script src="./js/highlight/highlight.min.js"></script>
+        <link rel="stylesheet" href="js/highlight/styles/default.min.css">
+        <link rel="stylesheet" href="main.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    </head>
 
 <body>
     <div class="title-holder">
         <div class="info-holder">
-            <div class="title">Quadratic Bezier Curves Interactive</div>
-            <div class="description"></div>
+            <div class="title">Interactive Quadratic Bezier Curve</div>
         </div>
     </div>
     <div class="content-holder">
@@ -39,7 +40,11 @@
             </div>
             <div id="info_text" class="info">drag the red ball to change the curve of the line</div>
         </div>
-
+        <div class="section-holder">
+            <div class="description">
+                <p>You can think of the control point as exerting a gravitational pull on the line that makes it curve. Quadratic bezier curves have a single control point.</p>
+            </div>
+        </div>
     </div>
 </body>
 <script>
