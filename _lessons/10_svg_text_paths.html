@@ -2,7 +2,10 @@
 <html lang="en">
 
 <head>
-    <title>Viewbox</title>
+    <title>Text Paths</title>
+    <script src="./custom-slider-component.js"></script>
+    <script src="./js/highlight/highlight.min.js"></script>
+    <link rel="stylesheet" href="js/highlight/styles/default.min.css">
     <link rel="stylesheet" href="main.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,10 +15,9 @@
 <body>
     <div class="title-holder">
         <div class="info-holder">
-            <div class="title">SVG textPath</div>
+            <div class="title">text paths</div>
             <div class="subtitle">textPaths with visible and hidden paths
             </div>
-            <div class="description"></div>
         </div>
     </div>
     <div class="content-holder">
@@ -63,8 +65,16 @@
             </div>
             <div class="info">container size: 500px x 500px </div>
         </div>
+        <div class="section-holder">
+            <div class="description">
+                <p>If you want the path to be hidden, link the texpath to a path defined in the defs section.</p>
+                <pre><code>&lt;textPath href="#path_in_defs" startOffset="15%"&gt;...</code></pre>
+            </div>
+        </div>
 
     </div>
 </body>
-
+<script>
+    hljs.highlightAll();
+</script>
 </html>

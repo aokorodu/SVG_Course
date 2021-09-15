@@ -2,17 +2,20 @@
 <html lang="en">
 
 <head>
-    <title>SVG - SYNTAX</title>
+    <title>Text Positioning</title>
+    <script src="./custom-slider-component.js"></script>
+    <script src="./js/highlight/highlight.min.js"></script>
+    <link rel="stylesheet" href="js/highlight/styles/default.min.css">
     <link rel="stylesheet" href="main.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 </head>
 
 <body>
     <div class="title-holder">
         <div class="info-holder">
-            <div class="title">Text - Styles </div>
+            <div class="title">Text Positioning </div>
             <div class="subtitle">positioning - text anchor vs dominant baseline</div>
         </div>
     </div>
@@ -95,8 +98,22 @@
             
             </div>
         </div>
-        
+        <div class="section-holder">
+            <div class="description">
+                <div>
+                    Use the text-anchor attribute for horizontal positioning
+                </div>
+                <div>
+                    Use dominant-baseline attribute for vertical text positioning
+                </div>
+
+                <pre><code>&lt;text... text-anchor="middle" dominant-baseline="middle"&sol;&gt;</code></pre>
+                
+            </div>
+        </div>
     </div>
 </body>
-
+<script>
+    hljs.highlightAll();
+</script>
 </html>

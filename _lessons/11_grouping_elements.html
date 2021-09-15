@@ -2,7 +2,10 @@
 <html lang="en">
 
 <head>
-    <title>Viewbox</title>
+    <title>Grouping Elements</title>
+    <script src="./custom-slider-component.js"></script>
+    <script src="./js/highlight/highlight.min.js"></script>
+    <link rel="stylesheet" href="js/highlight/styles/default.min.css">
     <link rel="stylesheet" href="main.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,7 +15,7 @@
 <body>
     <div class="title-holder">
         <div class="info-holder">
-            <div class="title">SVG groups</div>
+            <div class="title">Grouping Elements</div>
             <div class="subtitle"></div>
             <div class="description"></div>
         </div>
@@ -70,8 +73,15 @@
             </div>
             <div class="info">container size: 500px x 500px </div>
         </div>
-
+        <div class="section-holder">
+            <div class="description">
+                <p>The group element acts like a container for all of it's child elements. Styles applied to the group will be applied to the children. If the child has the same style attribute as the group element, the child style attribute overrides the parent style</p>
+                <pre><code>&lt;g fill="yellow" stroke="black" transform="translate(70, 70)"&gt;</code></pre>
+            </div>
+        </div>
     </div>
 </body>
-
+<script>
+    hljs.highlightAll();
+</script>
 </html>

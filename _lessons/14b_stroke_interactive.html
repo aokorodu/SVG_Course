@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <title>strokes interactive</title>
+        <script src="./custom-slider-component.js"></script>
+        <script src="./js/highlight/highlight.min.js"></script>
+        <link rel="stylesheet" href="js/highlight/styles/default.min.css">
+        <link rel="stylesheet" href="main.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    </head>
+
+<body>
+    <div class="title-holder">
+        <div class="info-holder">
+            <div class="title">strokes </div>
+        </div>
+    </div>
+    <div class="content-holder">
+        <div class="section-holder">
+            <div class="svg-holder">
+                <!--
+                    
+                -->
+                <svg width="500" height="500" viewbox="0 0 500 500">
+                    <!-- style for stroke-dashoffset animation -->
+                    <style>
+                        .animated_dash {
+                            animation: strokeAnimation 3s linear infinite;
+                            ;
+                        }
+
+                        @keyframes strokeAnimation {
+                            from {
+                                stroke-dashoffset: 0;
+                            }
+
+                            to {
+                                stroke-dashoffset: 70;
+                            }
+                        }
+                    </style>
+
+                    <!-- path object use in demos -->
+                    <defs>
+                        <path id="path_object" d="M 0,0 h 400"></path>
+                    </defs>
+
+                    <use id="my-stroke" href="#path_object" x="50" y="250" stroke="black" stroke-width="1" stroke-dashoffset="0"></use> 
+                    
+                    <!-- animating stroke-dashoffset using animation defined in style section -->
+                    <!-- <use id="animated_dash" href="#path_object" x="0" y="450" stroke="black" stroke-width="5"
+                        stroke-dasharray="20 50"></use> -->
+
+                </svg>
+
+            </div>
+            <div class="info">container size: 500px x 500px </div>
+
+        </div>
+
+        <div class="section-holder">
+            <div class="slidecontainer">
+                <custom-slider id="stroke_width" minimum="0" maximum="100" val="1" label="stroke width" step=0.1>
+                </custom-slider>
+                <custom-slider id="stroke_opacity" minimum="0" maximum="1" val="1" label="stroke opacity" step=0.01>
+                </custom-slider>
+                <custom-slider id="stroke_dasharray" minimum="0" maximum="400" val="0" label="stroke dasharray" step=1>
+                </custom-slider>
+                <custom-slider id="stroke_dashoffset" minimum="0" maximum="400" val="0" label="stroke dashoffset" step=1>
+                </custom-slider>
+            </div>
+
+            <div class="description">
+                <p>Use the sliders to change the stroke attributes
+                </p>
+            </div>
+
+        </div>
+    </div>
+</body>
+<script>
+    var stylesheet = document.styleSheets[document.styleSheets.length-1];
+            var fadeOutRule = stylesheet.cssRules;
+            console.log('name', fadeOutRule ); // alerts "fadeout"
+
+    // stroke
+    const my_stroke = document.querySelector("#my-stroke");
+    
+
+    // stroke width slider
+    const stroke_width_slider = document.querySelector('#stroke_width');
+    stroke_width_slider.addEventListener('value', (e)=>{
+        updateStrokeWidth(e.detail.value)
+    })
+
+    // stroke opacity slider
+    const stroke_opacity_slider = document.querySelector('#stroke_opacity');
+    stroke_opacity_slider.addEventListener('value', (e)=>{
+        updateStrokeOpacity(e.detail.value)
+    })
+    
+    // stroke dasharray slider
+    const stroke_dasharray_slider = document.querySelector('#stroke_dasharray');
+    stroke_dasharray_slider.addEventListener('value', (e)=>{
+        updateStrokeDashArray(e.detail.value)
+    })
+
+    // stroke dashoffset slider
+    const stroke_dashoffset_slider = document.querySelector('#stroke_dashoffset');
+    stroke_dashoffset_slider.addEventListener('value', (e)=>{
+        updateStrokeDashOffset(e.detail.value)
+    })
+
+
+    const  updateStrokeWidth = (newWidth)=>{
+        my_stroke.setAttribute("stroke-width", newWidth)
+    }
+
+    const  updateStrokeOpacity = (newOpacity)=>{
+        my_stroke.setAttribute("stroke-opacity", newOpacity)
+    }
+
+    const updateStrokeDashArray = (newArray)=>{
+        my_stroke.setAttribute("stroke-dasharray", newArray)
+    }
+
+    const updateStrokeDashOffset = (newOffset)=>{
+        my_stroke.setAttribute("stroke-dashoffset", newOffset)
+    }
+</script>
+</html>
