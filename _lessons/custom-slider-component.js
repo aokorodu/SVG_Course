@@ -8,7 +8,7 @@ template.innerHTML = `
   display: grid;
   grid-template-columns: 1fr 3fr .5fr;
   column-gap: 1em;
-  font-size: .9rem;
+  font-size: .8rem;
   margin: .5rem 0;
 }
 

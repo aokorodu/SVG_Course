@@ -45,15 +45,16 @@
 
                     <!-- path object use in demos -->
                     <defs>
-                        <path id="path_object" d="M 0,0 h 400"></path>
+                        <linearGradient id="radial_gradient">
+                            <stop offset="0%" stop-color="red" />
+                            <stop offset="100%" stop-color="purple" />
+                        </linearGradient>
+                        <path id="path_object" d="M108.579 420.421C80.6082 392.451 61.5601 356.814 53.843 318.018C46.126 279.222 50.0867 239.009 65.2242 202.463C80.3617 165.918 105.996 134.682 138.886 112.706C171.776 90.7298 210.444 79 250 79C289.556 79 328.224 90.7298 361.114 112.706C394.004 134.682 419.638 165.918 434.776 202.463C449.914 239.009 453.874 279.222 446.157 318.018C438.44 356.814 419.392 392.451 391.421 420.421" stroke="url(#radial_gradient)" fill="none"/>
                     </defs>
 
-                    <use id="my-stroke" href="#path_object" x="50" y="250" stroke="black" stroke-width="1" stroke-dashoffset="0"></use> 
-                    
-                    <!-- animating stroke-dashoffset using animation defined in style section -->
-                    <!-- <use id="animated_dash" href="#path_object" x="0" y="450" stroke="black" stroke-width="5"
-                        stroke-dasharray="20 50"></use> -->
+                    <rect x="0" y="0" width="500" height="500" fill="#eaeaea"></rect>
 
+                    <use id="my-stroke" href="#path_object" x="0" y="0" stroke-width="10" stroke-dasharray="0" stroke-dashoffset="0"></use> 
                 </svg>
 
             </div>
@@ -63,13 +64,13 @@
 
         <div class="section-holder">
             <div class="slidecontainer">
-                <custom-slider id="stroke_width" minimum="0" maximum="100" val="1" label="stroke width" step=0.1>
+                <custom-slider id="stroke_width" minimum="0" maximum="100" val="10" label="stroke width" step=0.1>
                 </custom-slider>
                 <custom-slider id="stroke_opacity" minimum="0" maximum="1" val="1" label="stroke opacity" step=0.01>
                 </custom-slider>
-                <custom-slider id="stroke_dasharray" minimum="0" maximum="400" val="0" label="stroke dasharray" step=1>
+                <custom-slider id="stroke_dasharray" minimum="0" maximum="943" val="0" label="stroke dasharray" step=1>
                 </custom-slider>
-                <custom-slider id="stroke_dashoffset" minimum="0" maximum="400" val="0" label="stroke dashoffset" step=1>
+                <custom-slider id="stroke_dashoffset" minimum="0" maximum="943" val="0" label="stroke dashoffset" step=1>
                 </custom-slider>
             </div>
 
@@ -82,9 +83,8 @@
     </div>
 </body>
 <script>
-    var stylesheet = document.styleSheets[document.styleSheets.length-1];
-            var fadeOutRule = stylesheet.cssRules;
-            console.log('name', fadeOutRule ); // alerts "fadeout"
+    // const testobject = document.querySelector("#test_object");
+    // console.log('|:', testobject.getTotalLength());
 
     // stroke
     const my_stroke = document.querySelector("#my-stroke");
