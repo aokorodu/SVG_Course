@@ -1,0 +1,17 @@
+.button {
+    padding: .5rem 1rem;
+    border-radius: 4px;
+    background-color: #eaeaea;
+    color: #000;
+    font-size: .8rem;
+    text-align: center;
+    transition-property: all;
+    transition-timing-function: ease-in-out;
+    transition-duration: 333ms;
+    
+  }
+
+.button:hover {
+    background-color: #787777;
+    color: #eaeaea;
+}

@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <head>
-        <title>strokes interactive</title>
-        <script src="./custom-slider-component.js"></script>
-        <script src="./js/highlight/highlight.min.js"></script>
-        <link rel="stylesheet" href="js/highlight/styles/default.min.css">
-        <link rel="stylesheet" href="main.css">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-    </head>
+<head>
+    <title>strokes interactive</title>
+    <script src="./custom-button-component.js"></script>
+    <script src="./custom-slider-component.js"></script>
+
+    <script src="./js/highlight/highlight.min.js"></script>
+    <link rel="stylesheet" href="js/highlight/styles/default.min.css">
+    <link rel="stylesheet" href="main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
 
 <body>
     <div class="title-holder">
@@ -49,12 +51,15 @@
                             <stop offset="0%" stop-color="red" />
                             <stop offset="100%" stop-color="purple" />
                         </linearGradient>
-                        <path id="path_object" d="M108.579 420.421C80.6082 392.451 61.5601 356.814 53.843 318.018C46.126 279.222 50.0867 239.009 65.2242 202.463C80.3617 165.918 105.996 134.682 138.886 112.706C171.776 90.7298 210.444 79 250 79C289.556 79 328.224 90.7298 361.114 112.706C394.004 134.682 419.638 165.918 434.776 202.463C449.914 239.009 453.874 279.222 446.157 318.018C438.44 356.814 419.392 392.451 391.421 420.421" stroke="url(#radial_gradient)"  fill="none"/>
+                        <path id="path_object"
+                            d="M108.579 420.421C80.6082 392.451 61.5601 356.814 53.843 318.018C46.126 279.222 50.0867 239.009 65.2242 202.463C80.3617 165.918 105.996 134.682 138.886 112.706C171.776 90.7298 210.444 79 250 79C289.556 79 328.224 90.7298 361.114 112.706C394.004 134.682 419.638 165.918 434.776 202.463C449.914 239.009 453.874 279.222 446.157 318.018C438.44 356.814 419.392 392.451 391.421 420.421"
+                            stroke="url(#radial_gradient)" fill="none" />
                     </defs>
 
                     <rect x="0" y="0" width="500" height="500" fill="#eaeaea"></rect>
 
-                    <use id="my-stroke" href="#path_object" x="0" y="0" stroke-width="10" stroke-dasharray="0" stroke-dashoffset="0" stroke-linecap="butt"></use> 
+                    <use id="my-stroke" href="#path_object" x="0" y="0" stroke-width="10" stroke-dasharray="0"
+                        stroke-dashoffset="0" stroke-linecap="butt"></use>
                 </svg>
 
             </div>
@@ -70,65 +75,94 @@
                 </custom-slider>
                 <custom-slider id="stroke_dasharray" minimum="0" maximum="943" val="0" label="stroke dasharray" step=1>
                 </custom-slider>
-                <custom-slider id="stroke_dashoffset" minimum="0" maximum="943" val="0" label="stroke dashoffset" step=1>
+                <custom-slider id="stroke_dashoffset" minimum="0" maximum="943" val="0" label="stroke dashoffset"
+                    step=1>
                 </custom-slider>
+
+                <!-- <custom-button val="testing one" label="testing"></custom-button> -->
+                <div class="radio-group-container">
+                    <label class="radio-button-container">butt
+                        <input type="radio" checked="checked" value="butt" name="linecap">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="radio-button-container">round
+                        <input type="radio" name="linecap" value="round" >
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="radio-button-container">square
+                        <input type="radio" name="linecap"
+                        value="square" >
+                        <span class="checkmark"></span>
+                    </label>
+                </div>
+                
             </div>
 
             <div class="description">
                 <p>Use the sliders to change the stroke attributes
                 </p>
+
             </div>
 
         </div>
     </div>
 </body>
 <script>
-    // const testobject = document.querySelector("#test_object");
-    // console.log('|:', testobject.getTotalLength());
+    var radios = document.querySelectorAll('input[type=radio][name="linecap"]');
+    for(let radio of radios){
+        radio.addEventListener('change', ()=>{
+            updateStrokeLinecap(radio.value)
+        })
+    }
 
     // stroke
     const my_stroke = document.querySelector("#my-stroke");
-    
+
 
     // stroke width slider
     const stroke_width_slider = document.querySelector('#stroke_width');
-    stroke_width_slider.addEventListener('value', (e)=>{
+    stroke_width_slider.addEventListener('value', (e) => {
         updateStrokeWidth(e.detail.value)
     })
 
     // stroke opacity slider
     const stroke_opacity_slider = document.querySelector('#stroke_opacity');
-    stroke_opacity_slider.addEventListener('value', (e)=>{
+    stroke_opacity_slider.addEventListener('value', (e) => {
         updateStrokeOpacity(e.detail.value)
     })
-    
+
     // stroke dasharray slider
     const stroke_dasharray_slider = document.querySelector('#stroke_dasharray');
-    stroke_dasharray_slider.addEventListener('value', (e)=>{
+    stroke_dasharray_slider.addEventListener('value', (e) => {
         updateStrokeDashArray(e.detail.value)
     })
 
     // stroke dashoffset slider
     const stroke_dashoffset_slider = document.querySelector('#stroke_dashoffset');
-    stroke_dashoffset_slider.addEventListener('value', (e)=>{
+    stroke_dashoffset_slider.addEventListener('value', (e) => {
         updateStrokeDashOffset(e.detail.value)
     })
 
 
-    const  updateStrokeWidth = (newWidth)=>{
+    const updateStrokeWidth = (newWidth) => {
         my_stroke.setAttribute("stroke-width", newWidth)
     }
 
-    const  updateStrokeOpacity = (newOpacity)=>{
+    const updateStrokeOpacity = (newOpacity) => {
         my_stroke.setAttribute("stroke-opacity", newOpacity)
     }
 
-    const updateStrokeDashArray = (newArray)=>{
+    const updateStrokeDashArray = (newArray) => {
         my_stroke.setAttribute("stroke-dasharray", newArray)
     }
 
-    const updateStrokeDashOffset = (newOffset)=>{
+    const updateStrokeDashOffset = (newOffset) => {
         my_stroke.setAttribute("stroke-dashoffset", newOffset)
     }
+
+    const updateStrokeLinecap = (newLinecap)=>{
+        my_stroke.setAttribute("stroke-linecap", newLinecap)
+    }
 </script>
+
 </html>
