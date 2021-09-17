@@ -12,8 +12,9 @@ button_template.innerHTML = `
   text-align: center;
   transition-property: all;
   transition-timing-function: ease-in-out;
-  transition-duration: 333ms;
-  width:fit-content
+  transition-duration: 150ms;
+  width:fit-content;
+  min-width: 100px;
 }
 
 .button:hover {

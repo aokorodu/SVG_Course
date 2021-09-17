@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>creating elements with javascript</title>
+    <script src="./custom-button-component.js"></script>
+    <script src="./js/highlight/highlight.min.js"></script>
+    <link rel="stylesheet" href="js/highlight/styles/default.min.css">
+    <link rel="stylesheet" href="main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="title-holder">
+        <div class="info-holder">
+            <div class="title">creating elements with javascript </div>
+            <!-- <div class="subtitle">svg interactivity</div> -->
+        </div>
+    </div>
+    </div>
+    <div class="content-holder">
+        <div class="section-holder">
+            <div class="svg-holder">
+                <!--
+                    
+                -->
+
+                <svg width="500" height="500" viewbox="0 0 500 500">
+
+                </svg>
+
+            </div>
+            <div id="info_text" class="info">container size: 500px x 500px </div>
+            <custom-button id="redraw-button" val="0" label="redraw"></custom-button>
+        </div>
+
+</body>
+<script>
+    //hljs.highlightAll();
+
+    const svg = document.querySelector("svg");
+    const namespace = "http://www.w3.org/2000/svg";
+    const num = 200;
+
+    const redrawButton = document.querySelector('#redraw-button');
+    redrawButton.addEventListener("click", (e) => {
+        redraw();
+        generateCircles();
+    })
+
+    const generateCircles = () => {
+        for (let i = 0; i < num; i++) {
+            const xpos = Math.round(Math.random() * 500);
+            const ypos = Math.round(Math.random() * 500);
+            const r = Math.round(Math.random() * 100);
+            const strokeWidth = Math.random() * 2;
+            const fill = getColor();
+            const circ = document.createElementNS(namespace, "circle");
+            circ.setAttribute("cx", xpos);
+            circ.setAttribute("cy", ypos);
+            circ.setAttribute("r", r);
+            circ.setAttribute("fill", getColor());
+            circ.setAttribute("stroke", "white");
+            circ.setAttribute("stroke-width", strokeWidth);
+            circ.setAttribute("stroke-opacity", ".5");
+            circ.setAttribute("opacity", .6)
+            svg.appendChild(circ)
+        }
+    }
+
+    const getColor = () => {
+        const h = Math.round(Math.random() * 360);
+        const s = 50 + Math.round(Math.random() * 50);
+        const l = 50 + Math.round(Math.random() * 50);
+
+        return `hsl(${h}, ${s}%, ${l}%)`
+    }
+
+    const redraw = () => {
+        const kids = document.querySelectorAll("circle");
+        console.log('kids.length: ', kids.length)
+        for (let child of kids) {
+            svg.removeChild(child);
+            child = null;
+        }
+    }
+
+    generateCircles();
+</script>
+
+</html>
