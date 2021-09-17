@@ -3,7 +3,6 @@
 
 <head>
     <title>strokes interactive</title>
-    <script src="./custom-button-component.js"></script>
     <script src="./custom-slider-component.js"></script>
 
     <script src="./js/highlight/highlight.min.js"></script>
@@ -79,23 +78,23 @@
                     step=1>
                 </custom-slider>
 
-                <!-- <custom-button val="testing one" label="testing"></custom-button> -->
-                <div class="radio-group-container">
-                    <label class="radio-button-container">butt
-                        <input type="radio" checked="checked" value="butt" name="linecap">
-                        <span class="checkmark"></span>
-                    </label>
-                    <label class="radio-button-container">round
-                        <input type="radio" name="linecap" value="round" >
-                        <span class="checkmark"></span>
-                    </label>
-                    <label class="radio-button-container">square
-                        <input type="radio" name="linecap"
-                        value="square" >
-                        <span class="checkmark"></span>
-                    </label>
+                <div class="radio-container">
+                    <div class="radio-label">stroke-linecap</div>
+                    <div class="radio-group-container">
+                        <label class="radio-button-container">butt
+                            <input type="radio" checked="checked" value="butt" name="linecap">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="radio-button-container">round
+                            <input type="radio" name="linecap" value="round">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="radio-button-container">square
+                            <input type="radio" name="linecap" value="square">
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
                 </div>
-                
             </div>
 
             <div class="description">
@@ -109,8 +108,8 @@
 </body>
 <script>
     var radios = document.querySelectorAll('input[type=radio][name="linecap"]');
-    for(let radio of radios){
-        radio.addEventListener('change', ()=>{
+    for (let radio of radios) {
+        radio.addEventListener('change', () => {
             updateStrokeLinecap(radio.value)
         })
     }
@@ -160,7 +159,7 @@
         my_stroke.setAttribute("stroke-dashoffset", newOffset)
     }
 
-    const updateStrokeLinecap = (newLinecap)=>{
+    const updateStrokeLinecap = (newLinecap) => {
         my_stroke.setAttribute("stroke-linecap", newLinecap)
     }
 </script>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>click and drag</title>
+    <script src="./custom-slider-component.js"></script>
+    <script src="./js/highlight/highlight.min.js"></script>
+    <link rel="stylesheet" href="js/highlight/styles/default.min.css">
+    <link rel="stylesheet" href="main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="title-holder">
+        <div class="info-holder">
+            <div class="title">click and drag </div>
+            <div class="subtitle">svg interactivity</div>
+        </div>
+    </div>
+    </div>
+    <div class="content-holder">
+        <div class="section-holder">
+            <div class="svg-holder">
+                <!--
+                    
+                -->
+
+                <svg width="500" height="500" viewbox="0 0 500 500">
+                    
+                    <ellipse id="dragger" cx="250" cy="250" rx="60" ry="60" fill="blue"></ellipse>
+                </svg>
+                
+            </div>
+            <div id="info_text" class="info">container size: 500px x 500px </div>
+        </div>
+
+</body>
+<script>
+    //hljs.highlightAll();
+    const svg = document.querySelector("svg");
+    const dragger = document.querySelector('#dragger');
+    const radius = eval(dragger.getAttribute("rx"));
+    const width = eval(svg.getAttribute("width"));
+    const height = eval(svg.getAttribute("height"));
+    const xmax = width - radius;
+    const ymax = height - radius;
+
+    const dragColor = "green";
+    const dropColor = "blue";
+
+    dragger.addEventListener("mousedown", ()=>{
+        startDrag();
+    })
+
+    const startDrag = ()=>{
+        console.log('startDrag')
+        svg.addEventListener("mousemove", drag);
+        svg.addEventListener("mouseup", stopDrag);
+        svg.addEventListener("mouseleave", stopDrag);
+        dragger.setAttribute("fill", dragColor);
+    }
+
+    const stopDrag = () => {
+        console.log('stopDrag')
+        svg.removeEventListener("mousemove", drag);
+        svg.removeEventListener("mouseup", stopDrag);
+        svg.removeEventListener("mouseleave", stopDrag);
+        dragger.setAttribute("fill", dropColor);
+    }
+
+    const drag = (e) => {
+        let x = e.offsetX;
+        let y = e.offsetY;
+        if (x < radius) {
+            x = radius;
+        } else if (x > xmax) {
+            x = xmax;
+        }
+
+        if (y < radius) {
+            y = radius;
+        } else if (y > ymax) {
+            y = ymax;
+        }
+        updatePosition(x, y);
+    }
+
+    const updatePosition = (x, y)=>{
+        dragger.setAttribute("cx", x);
+        dragger.setAttribute("cy", y);
+    }
+
+    
+
+</script>
+
+</html>

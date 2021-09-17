@@ -136,19 +136,34 @@ input[type=text] {
 
 
 /* radio */
+.radio-container {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 3.5fr;
+    gap: 1rem;
+}
+
+.radio-label {
+    font-size: .8rem;
+    text-align: right;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
 .radio-group-container
 {
     width: 100%;
     display: flex;
     flex-direction: row;
-    justify-content:center;
+    justify-content:flex-start;
 }
 /* The container */
 .radio-button-container {
     display: block;
     position: relative;
     padding-left: 35px;
-    margin: 12px;
+    margin: .8rem 1rem .8rem 0;
     cursor: pointer;
     font-size: .8rem;
     line-height: 25px;
@@ -174,6 +189,9 @@ input[type=text] {
     width: 25px;
     background-color: #eee;
     border-radius: 5%;
+    transition:ease-in-out;
+    transition-duration: .33s;
+    transition-property: all;
   }
   
   /* On mouse-over, add a grey background color */
