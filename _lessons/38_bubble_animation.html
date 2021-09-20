@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>bubble animation</title>
+    <script src="./custom-slider-component.js"></script>
+    <script src="./custom-button-component.js"></script>
+    <script src="./js/highlight/highlight.min.js"></script>
+    <link rel="stylesheet" href="js/highlight/styles/default.min.css">
+    <link rel="stylesheet" href="main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="title-holder">
+        <div class="info-holder">
+            <div class="title">bubble animation</div>
+        </div>
+    </div>
+    </div>
+    <div class="content-holder">
+        <div class="section-holder">
+            <div class="svg-holder">
+                <!--
+                    
+                -->
+                <svg width="500" height="500" viewbox="0 0 500 500">
+                    <defs>
+                        <linearGradient id="grey-gradient" x2="250" y2="500" x1="250" y1="0" gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#464545"/>
+                            <stop offset="1" stop-color="#464545" stop-opacity="0"/>
+                            </linearGradient>
+                        <linearGradient id="sea-gradient" x1="250" y1="0" x2="250" y2="500"
+                            gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#3ED1FF" />
+                            <stop offset="1" stop-color="#005A77" />
+                        </linearGradient>
+                        <radialGradient id="paint0_radial" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse"
+                            gradientTransform="translate(0 -25) rotate(90) scale(30.25)">
+                            <stop stop-color="white" stop-opacity="0.33" />
+                            <stop offset="1" stop-color="white" stop-opacity="0" />
+                        </radialGradient>
+                        <g id="bubble">
+                            <g id="main-body">
+                                <circle r="25" fill="url(#paint0_radial)" stroke="white" stroke-width="2" stroke-opacity=".1"/>
+                            </g>
+                            <ellipse id="large-reflection" cy="-18.375" rx="14.75" ry="6.625" fill="white"
+                                fill-opacity="0.05" />
+                            <ellipse id="small-reflection" cy="-21.625" rx="9" ry="3.375" fill="white"
+                                fill-opacity="0.05" />
+                        </g>
+                    </defs>
+                    <clipPath id="flask_clip">
+                        <path id="bottle-fill-clip" transform="translate(250 250) scale(1.5)"
+                            d="M-29.9737 -77L-29.5276 -28.3692L-92.8259 66.17C-108.144 91.6331 -97.7814 116.546 -72.6567 115.075L72.6328 115.221C99.7902 115.107 109.706 90.0167 88.66 63.5786L28.6167 -28.1342L27.4867 -76.8428L-29.9737 -77Z" />
+                    </clipPath>
+                    <g id="bubble-holder" clip-path="url(#flask_clip)">
+                        <rect id="blue_gradient" width="500" height="500" fill="url(#sea-gradient)" />
+                    </g>
+
+                    <g id="flask" transform="translate(250 250) scale(1.5)">
+                        <path id="bottle-outline" opacity="0.4"
+                            d="M-41.149 -114.96C-28.1536 -102.238 -30.115 -92.6201 -29.9737 -77.221L-29.5276 -28.5902L-92.8259 65.949C-108.144 91.412 -97.7814 116.325 -72.6567 114.854L72.6328 115C99.7902 114.886 109.706 89.7956 88.66 63.3576L28.6167 -28.3552L27.4867 -77.0638C27.3454 -92.4629 25.2079 -102.043 37.9678 -115L-41.149 -114.96Z"
+                            stroke="black" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"
+                            fill="none" />
+                        <path id="right-reflection" fill-rule="evenodd" clip-rule="evenodd"
+                            d="M72.6384 103.642C86.6146 104.938 92.0259 94.8 83.0304 77.7388L18.7891 -25.8734L19.2615 -94.6342C19.2167 -99.3439 19.8172 -104.053 23.5127 -108.763C15.4235 -104.963 13.294 -100.908 12.6484 -94.6342L12.176 -22.5766C12.0692 -6.28436 39.2252 25.9744 50.3883 45.6582C65.5822 72.4496 83.8004 94.6747 72.6384 103.642Z"
+                            fill="white" fill-opacity="0.1" />
+                    </g>
+
+                </svg>
+
+            </div>
+            <div id="info_text" class="info">container size: 500px x 500px </div>
+            <div class="slidecontainer">
+                <custom-slider id="flask_scale" minimum="1" maximum="10" step="0.1" val="1" label="flask scale"></custom-slider>
+            </div>
+        </div>
+
+</body>
+<script>
+
+    const svg = document.querySelector("svg");
+    const bubbleHolder = document.querySelector("#bubble-holder");
+    const bottleFillClip = document.querySelector("#bottle-fill-clip");
+    const flask = document.querySelector("#flask");
+    const flaskScaleSlider = document.querySelector("#flask_scale")
+    const namespace = "http://www.w3.org/2000/svg";
+    const numBubbles = 200;
+    const bubbles = [];
+
+    flaskScaleSlider.addEventListener("value", (e)=>{
+        console.log(e.detail.value);
+        scaleFlask(e.detail.value)
+    })
+
+
+    const makeBubbles = () => {
+        for (let i = 0; i < numBubbles; i++) {
+
+            const bubble = document.createElementNS(namespace, "use");
+            const xpos = -50 + Math.random() * 600;
+            const ypos = -75 + Math.random() * 650;
+            const scale = .2 + Math.random() * .8;
+            bubble.setAttribute("href", "#bubble");
+            bubble.setAttribute("x", xpos / scale);
+            bubble.setAttribute("y", ypos);
+            bubble.setAttribute("transform", `scale(${scale})`);
+            bubble.setAttribute("opacity", scale);
+
+
+            const bubbleObj = {
+                x: xpos,
+                y: ypos,
+                scale: scale,
+                speed: scale * 1,
+                element: bubble,
+                maxY: 500 / scale,
+                move: function () {
+                    this.y -= this.speed;
+                    if (this.y < -100) this.y = this.maxY;
+                },
+                pop: function () {
+                    this.x = Math.random() * this.maxY;
+                    this.y = this.maxY;
+                    console.log('pop', this.y)
+                }
+
+
+            }
+
+            bubbles.push(bubbleObj);
+
+            // bubble.addEventListener("mouseover", ()=>{
+
+            //     bubbleObj.pop();
+            // })
+            bubbleHolder.appendChild(bubble);
+        }
+    }
+
+    const floatBubbles = () => {
+        for (let bubble of bubbles) {
+            bubble.move();
+            bubble.element.setAttribute("y", bubble.y);
+        }
+        requestAnimationFrame(floatBubbles)
+    }
+
+    const scaleFlask = (newScale)=>{
+        const str = `translate(250 250) scale(${newScale})`;
+        bottleFillClip.setAttribute("transform", str);
+        flask.setAttribute("transform", str);
+    }
+
+    makeBubbles();
+    floatBubbles();
+
+
+</script>
+
+</html>

@@ -16,7 +16,7 @@
     <div class="title-holder">
         <div class="info-holder">
             <div class="title">creating elements with javascript </div>
-            <!-- <div class="subtitle">svg interactivity</div> -->
+            <div class="subtitle">random circle generation</div>
         </div>
     </div>
     </div>
@@ -26,9 +26,10 @@
                 <!--
                     
                 -->
-
                 <svg width="500" height="500" viewbox="0 0 500 500">
-
+                    <!--
+                    elements created using Javascript will be added as children of the svg element using "addChild()"
+                -->
                 </svg>
 
             </div>
@@ -47,27 +48,53 @@
     const redrawButton = document.querySelector('#redraw-button');
     redrawButton.addEventListener("click", (e) => {
         redraw();
-        generateCircles();
+        generateShapes();
     })
 
-    const generateCircles = () => {
+    const generateShapes = () => {
         for (let i = 0; i < num; i++) {
-            const xpos = Math.round(Math.random() * 500);
-            const ypos = Math.round(Math.random() * 500);
-            const r = Math.round(Math.random() * 100);
-            const strokeWidth = Math.random() * 2;
-            const fill = getColor();
-            const circ = document.createElementNS(namespace, "circle");
-            circ.setAttribute("cx", xpos);
-            circ.setAttribute("cy", ypos);
-            circ.setAttribute("r", r);
-            circ.setAttribute("fill", getColor());
-            circ.setAttribute("stroke", "white");
-            circ.setAttribute("stroke-width", strokeWidth);
-            circ.setAttribute("stroke-opacity", ".5");
-            circ.setAttribute("opacity", .6)
-            svg.appendChild(circ)
+            const shape = Math.random() < .5 ?createSquareElement() : createCircleElement();
+            svg.appendChild(shape)
         }
+    }
+
+    const createCircleElement = () => {
+        const xpos = Math.round(Math.random() * 500);
+        const ypos = Math.round(Math.random() * 500);
+        const r = Math.round(Math.random() * 100);
+        const strokeWidth = Math.random() * 2;
+        const fill = getColor();
+        const circ = document.createElementNS(namespace, "circle");
+        circ.setAttribute("cx", xpos);
+        circ.setAttribute("cy", ypos);
+        circ.setAttribute("r", r);
+        circ.setAttribute("fill", getColor());
+        circ.setAttribute("stroke", "white");
+        circ.setAttribute("stroke-width", strokeWidth);
+        circ.setAttribute("stroke-opacity", ".5");
+        circ.setAttribute("opacity", .6);
+
+        return circ;
+    }
+
+    const createSquareElement = () => {
+        const xpos = Math.round(Math.random() * 500);
+        const ypos = Math.round(Math.random() * 500);
+        const width = Math.round(Math.random() * 100);
+        const strokeWidth = Math.random() * 2;
+        const fill = getColor();
+        const square = document.createElementNS(namespace, "rect");
+        square.setAttribute("x", xpos - width/2);
+        square.setAttribute("y", ypos - width/2);
+        square.setAttribute("width", width);
+        square.setAttribute("height", width);
+        square.setAttribute("fill", getColor());
+        square.setAttribute("stroke", "white");
+        square.setAttribute("stroke-width", strokeWidth);
+        square.setAttribute("stroke-opacity", ".5");
+        square.setAttribute("opacity", .6);
+
+        return square;
     }
 
     const getColor = () => {
@@ -79,7 +106,7 @@
     }
 
     const redraw = () => {
-        const kids = document.querySelectorAll("circle");
+        const kids = document.querySelectorAll("svg > *");
         console.log('kids.length: ', kids.length)
         for (let child of kids) {
             svg.removeChild(child);
@@ -87,7 +114,7 @@
         }
     }
 
-    generateCircles();
+    generateShapes();
 </script>
 
 </html>

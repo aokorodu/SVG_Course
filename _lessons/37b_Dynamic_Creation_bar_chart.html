@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>bar graph</title>
+    <script src="./custom-button-component.js"></script>
+    <script src="./js/highlight/highlight.min.js"></script>
+    <link rel="stylesheet" href="js/highlight/styles/default.min.css">
+    <link rel="stylesheet" href="main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="title-holder">
+        <div class="info-holder">
+            <div class="title">creating a bar graph </div>
+        </div>
+    </div>
+    </div>
+    <div class="content-holder">
+        <div class="section-holder">
+            <div class="svg-holder">
+                <!--
+                    
+                -->
+                <svg width="500" height="500" viewbox="0 0 500 500">
+                    <!--
+                    elements created using Javascript will be added as children of the svg element using "addChild()"
+                -->
+                </svg>
+
+            </div>
+            <div id="info_text" class="info">container size: 500px x 500px </div>
+            <custom-button id="redraw-button" val="0" label="redraw"></custom-button>
+        </div>
+
+</body>
+<script>
+    //hljs.highlightAll();
+
+    const svg = document.querySelector("svg");
+    const namespace = "http://www.w3.org/2000/svg";
+    const values = [];
+    const numBars = 10;
+    const maxVal = 500;
+    const w = 500;
+    const h = 500;
+    const barWidth = w / numBars;
+
+    const makeBarValues = () => {
+        const min = 20;
+        for (let i = 0; i < numBars; i++) {
+            const val = min + (Math.random() * (maxVal - min));
+            values[i] = val;
+        }
+    }
+
+    const makeBars = () => {
+        for (let i = 0; i < numBars; i++) {
+            const val = values[i];
+            const xpos = i * barWidth;
+            const el = makeRect(xpos, val);
+            svg.appendChild(el)
+        }
+    }
+
+    const makeRect = (xpos, barHeight) => {
+        const ypos = h - barHeight;
+        const square = document.createElementNS(namespace, "rect");
+        square.setAttribute("x", xpos);
+        square.setAttribute("y", ypos);
+        square.setAttribute("width", barWidth);
+        square.setAttribute("height", barHeight);
+        square.setAttribute("fill", getColor());
+        square.setAttribute("stroke", "#eaeaea");
+
+        return square;
+    }
+
+    const redrawButton = document.querySelector('#redraw-button');
+    redrawButton.addEventListener("click", (e) => {
+
+        redraw();
+    })
+
+    const redraw = () => {
+        clearBars();
+        makeBarValues();
+        makeBars();
+    }
+
+
+
+    const getColor = () => {
+        const h = Math.round(Math.random() * 360);
+        const s = 50 + Math.round(Math.random() * 50);
+        const l = 50 + Math.round(Math.random() * 50);
+
+        return `hsl(${h}, ${s}%, ${l}%)`
+    }
+
+    const clearBars = () => {
+        const kids = document.querySelectorAll("rect");
+        console.log('kids.length: ', kids.length)
+        for (let child of kids) {
+            svg.removeChild(child);
+            child = null;
+        }
+    }
+
+    redraw();
+
+
+</script>
+
+</html>

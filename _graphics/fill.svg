@@ -1,0 +1,14 @@
+<svg width="100" height="116" viewBox="0 0 100 116" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="100" height="116" fill="#E5E5E5"/>
+<g id="Frame 1" clip-path="url(#clip0)">
+<rect width="500" height="500" fill="#938E8E"/>
+<g id="fill">
+<path id="bottle-outline&#39;" opacity="0.25" d="M-29.9737 -77L-29.5276 -28.3692L-92.8259 66.17C-108.144 91.6331 -97.7814 116.546 -72.6567 115.075L72.6328 115.221C99.7902 115.107 109.706 90.0167 88.66 63.5786L28.6167 -28.1342L27.4867 -76.8428L-29.9737 -77Z" fill="black"/>
+</g>
+</g>
+<defs>
+<clipPath id="clip0">
+<rect width="500" height="500" fill="white"/>
+</clipPath>
+</defs>
+</svg>
