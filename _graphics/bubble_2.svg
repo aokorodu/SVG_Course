@@ -1,0 +1,8 @@
+<svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="bubble_2">
+<circle id="Ellipse 1" cx="25" cy="25" r="25" fill="#FFFEFE" fill-opacity="0.05"/>
+<path id="Line 1" d="M7.96531 23.0898C7.96531 23.0898 7.55757 18.1362 11.4332 13.7802C15.3089 9.42423 20.2762 9.25304 20.2762 9.25304" stroke="white" stroke-opacity="0.08" stroke-width="9" stroke-linecap="round"/>
+<ellipse id="Ellipse 2" cx="37.1296" cy="36.4422" rx="3.05556" ry="4.02778" transform="rotate(29.6541 37.1296 36.4422)" fill="#FFFEFE" fill-opacity="0.06"/>
+<ellipse id="Ellipse 3" cx="32.2215" cy="43.1089" rx="1.61656" ry="1.97652" transform="rotate(53.7931 32.2215 43.1089)" fill="#FFFEFE" fill-opacity="0.06"/>
+</g>
+</svg>

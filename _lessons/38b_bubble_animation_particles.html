@@ -33,19 +33,19 @@
                             <stop stop-color="#3ED1FF" />
                             <stop offset="1" stop-color="#005A77" />
                         </linearGradient>
-                        <radialGradient id="paint0_radial" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse"
-                            gradientTransform="translate(0 -25) rotate(90) scale(30.25)">
-                            <stop stop-color="white" stop-opacity="0.33" />
-                            <stop offset="1" stop-color="white" stop-opacity="0" />
-                        </radialGradient>
+
                         <g id="bubble">
-                            <g id="main-body">
-                                <circle r="25" fill="none" stroke="white" stroke-width="4" stroke-opacity=".1" />
-                            </g>
-                            <ellipse id="large-reflection" cy="-18.375" rx="14.75" ry="6.625" fill="white"
-                                fill-opacity="0.05" />
-                            <ellipse id="small-reflection" cy="-21.625" rx="9" ry="3.375" fill="white"
-                                fill-opacity="0.05" />
+                            <circle id="Ellipse 1" cx="25" cy="25" r="25" fill="#FFFEFE" fill-opacity="0.05" />
+                            <path id="Line 1"
+                                d="M7.96531 23.0898C7.96531 23.0898 7.55757 18.1362 11.4332 13.7802C15.3089 9.42423 20.2762 9.25304 20.2762 9.25304"
+                                stroke="white" stroke-opacity="0.08" stroke-width="9" stroke-linecap="round"
+                                fill="none" />
+                            <ellipse id="Ellipse 2" cx="37.1296" cy="36.4422" rx="3.05556" ry="4.02778"
+                                transform="rotate(29.6541 37.1296 36.4422)" fill="#FFFEFE" fill-opacity="0.06" />
+                            <ellipse id="Ellipse 3" cx="32.2215" cy="43.1089" rx="1.61656" ry="1.97652"
+                                transform="rotate(53.7931 32.2215 43.1089)" fill="#FFFEFE" fill-opacity="0.06" />
+
+
                         </g>
                     </defs>
                     <g id="bubble-holder" clip-path="url(#flask_clip)">
@@ -69,7 +69,7 @@
     const bubbleHolder = document.querySelector("#bubble-holder");
     const flaskScaleSlider = document.querySelector("#flask_scale")
     const namespace = "http://www.w3.org/2000/svg";
-    const numBubbles = 40;
+    const numBubbles = 60;
     const bubbles = [];
     const bubbleSpeed = 1;
 
@@ -90,12 +90,12 @@
             const bubble = document.createElementNS(namespace, "use");
             const xpos = -50 + Math.random() * 600;
             const ypos = -75 + Math.random() * 650;
-            const scale = .2 + Math.random() * 1;
+            const scale = .1 + Math.random() * 1;
             bubble.setAttribute("href", "#bubble");
             bubble.setAttribute("x", xpos / scale);
             bubble.setAttribute("y", ypos);
             bubble.setAttribute("transform", `scale(${scale})`);
-            bubble.setAttribute("opacity", scale);
+            bubble.setAttribute("opacity", .8 + Math.random()*2);
 
 
             const bubbleObj = {
