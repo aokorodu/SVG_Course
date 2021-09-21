@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>preserveAspectRatio</title>
+    <script src="./custom-slider-component.js"></script>
+    <script src="./custom-button-component.js"></script>
+    <script src="./js/highlight/highlight.min.js"></script>
+    <link rel="stylesheet" href="js/highlight/styles/default.min.css">
+    <link rel="stylesheet" href="main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="title-holder">
+        <div class="info-holder">
+            <div class="title">preserveAspectRatio</div>
+        </div>
+    </div>
+    </div>
+    <div class="content-holder">
+        <div class="section-holder">
+            <div class="svg-holder-slim">
+                <!--
+                    
+                -->
+                <svg width="250" height="500" viewbox="0 0 500 500" preserveAspectRatio="xMidYMid meet">
+                    <circle cx="250" cy="250" r="250" fill="green"></circle>
+
+
+                </svg>
+
+            </div>
+            
+            <!-- <div class="slidecontainer">
+                <custom-slider id="flask_scale" minimum="-20" maximum="20" step="0.1" val="1" label="bubble speed">
+                </custom-slider>
+            </div> -->
+        </div>
+        <div class="section-holder">
+            <div id="info_text" class="info">container size: 500px x 500px </div>
+            <div class="slidecontainer">
+                <div class="radio-container">
+                    <div class="radio-label">x</div>
+                    <div class="radio-group-container">
+                        <label class="radio-button-container">xMin
+                            <input type="radio" value="xMin" name="xAlignment">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="radio-button-container">xMid
+                            <input type="radio" name="xAlignment" value="xMid" checked="checked">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="radio-button-container">xMax
+                            <input type="radio" name="xAlignment" value="xMax">
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
+                </div>
+                <div class="radio-container">
+                    <div class="radio-label">y</div>
+                    <div class="radio-group-container">
+                        <label class="radio-button-container">yMin
+                            <input type="radio" name="yAlignment" value="YMin">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="radio-button-container">yMid
+                            <input type="radio" name="yAlignment" value="YMid" checked="checked">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="radio-button-container">yMax
+                            <input type="radio" name="yAlignment" value="YMax">
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="radio-container">
+                    <div class="radio-label">meet/slice</div>
+                    <div class="radio-group-container">
+                        <label class="radio-button-container">meet
+                            <input type="radio" value="meet" name="meet-slice" checked="checked">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="radio-button-container">slice
+                            <input type="radio" name="meet-slice" value="slice">
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+</body>
+<script>
+    let xAlignmentValue = "xMid";
+    let yAlignmentValue = "YMid";
+    let meetSliceValue = "meet";
+
+    const svg = document.querySelector("svg");
+    const infoText = document.querySelector('#info_text');
+
+    const xAlignmentRadios = document.querySelectorAll('input[type=radio][name="xAlignment"]');
+    for (const radio of xAlignmentRadios) {
+        radio.addEventListener('change', () => {
+            console.log(radio.value);
+            xAlignmentValue = radio.value;
+            updateAspectRatioSettings();
+        })
+    }
+
+    const yAlignmentRadios = document.querySelectorAll('input[type=radio][name="yAlignment"]');
+    for (const radio of yAlignmentRadios) {
+        radio.addEventListener('change', () => {
+            console.log(radio.value);
+            yAlignmentValue = radio.value;
+            updateAspectRatioSettings();
+        })
+    }
+
+    const meetSlice = document.querySelectorAll('input[type=radio][name="meet-slice"]');
+    for (const radio of meetSlice) {
+        radio.addEventListener('change', () => {
+            console.log(radio.value);
+            meetSliceValue = radio.value;
+            updateAspectRatioSettings();
+        })
+    }
+
+    const updateAspectRatioSettings = ()=>{
+        const str = `${xAlignmentValue}${yAlignmentValue} ${meetSliceValue}`;
+        svg.setAttribute("preserveAspectRatio", str)
+        infoText.innerText = `preserveAspectRatio="${str}"`;
+    }
+
+
+
+</script>
+
+</html>

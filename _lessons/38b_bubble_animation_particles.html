@@ -28,10 +28,10 @@
                 -->
                 <svg width="500" height="500" viewbox="0 0 500 500">
                     <defs>
-                        <linearGradient id="sea-gradient" x1="250" y1="0" x2="250" y2="500"
+                        <linearGradient id="sea-gradient" x1="0" y1="0" x2="0" y2="500"
                             gradientUnits="userSpaceOnUse">
-                            <stop stop-color="#3ED1FF" />
-                            <stop offset="1" stop-color="#005A77" />
+                            <stop offset="0%" stop-color="#0EA8FF" />
+                            <stop offset="100%" stop-color="#004CA5" />
                         </linearGradient>
 
                         <g id="bubble">
@@ -57,7 +57,7 @@
             </div>
             <div id="info_text" class="info">container size: 500px x 500px </div>
             <div class="slidecontainer">
-                <custom-slider id="flask_scale" minimum="-10" maximum="10" step="0.1" val="1" label="bubble speed">
+                <custom-slider id="flask_scale" minimum="-20" maximum="20" step="0.1" val="1" label="bubble speed">
                 </custom-slider>
             </div>
         </div>
@@ -67,13 +67,12 @@
 
     const svg = document.querySelector("svg");
     const bubbleHolder = document.querySelector("#bubble-holder");
-    const flaskScaleSlider = document.querySelector("#flask_scale")
+    const bubbleSpeedSlider = document.querySelector("#flask_scale")
     const namespace = "http://www.w3.org/2000/svg";
     const numBubbles = 60;
     const bubbles = [];
-    const bubbleSpeed = 1;
 
-    flaskScaleSlider.addEventListener("value", (e) => {
+    bubbleSpeedSlider.addEventListener("value", (e) => {
         changeSpeed(e.detail.value);
     })
 
@@ -95,7 +94,7 @@
             bubble.setAttribute("x", xpos / scale);
             bubble.setAttribute("y", ypos);
             bubble.setAttribute("transform", `scale(${scale})`);
-            bubble.setAttribute("opacity", .8 + Math.random()*2);
+            bubble.setAttribute("opacity", .8 + Math.random() * 2);
 
 
             const bubbleObj = {
@@ -127,9 +126,6 @@
                     this.element.setAttribute("x", this.x);
                     this.element.setAttribute("y", this.y);
 
-                },
-                resetScale: function () {
-                    this.scale = .2 + Math.random() * 1;
                 },
                 resetX: function () {
                     this.x = -50 + Math.random() * 600 / this.scale;
