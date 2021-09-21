@@ -100,12 +100,16 @@
                 <div class="radio-container">
                     <div class="radio-label">container dimensions</div>
                     <div class="radio-group-container">
-                        <label class="radio-button-container">250px x 500px
+                        <label class="radio-button-container">portrait
                             <input type="radio" value="portrait" name="containerDimensions" checked="checked">
                             <span class="checkmark"></span>
                         </label>
-                        <label class="radio-button-container">500px x 250px
+                        <label class="radio-button-container">landscape
                             <input type="radio" name="containerDimensions" value="landscape">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="radio-button-container">square
+                            <input type="radio" name="containerDimensions" value="square">
                             <span class="checkmark"></span>
                         </label>
                     </div>
@@ -176,13 +180,21 @@
         if(containerDimensionsValue == "portrait") {
             svg.setAttribute("width", "250");
             svg.setAttribute("height", "500");
+            svgHolder.classList.remove("svg-holder");
             svgHolder.classList.remove("svg-holder-fat");
             svgHolder.classList.add("svg-holder-slim");
-        } else {
+        } else if(containerDimensionsValue == "landscape"){
             svg.setAttribute("width", "500");
             svg.setAttribute("height", "250");
+            svgHolder.classList.remove("svg-holder");
             svgHolder.classList.remove("svg-holder-slim");
             svgHolder.classList.add("svg-holder-fat");
+        } else {
+            svg.setAttribute("width", "500");
+            svg.setAttribute("height", "500");
+            svgHolder.classList.remove("svg-holder-slim");
+            svgHolder.classList.remove("svg-holder-fat");
+            svgHolder.classList.add("svg-holder");
         }
         
     }
