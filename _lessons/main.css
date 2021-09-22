@@ -162,6 +162,7 @@ input[type=text] {
 
 .radio-label {
     font-size: .8rem;
+    font-weight: bold;
     text-align: right;
     height: 100%;
     display: flex;

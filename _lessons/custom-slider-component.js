@@ -6,7 +6,7 @@ template.innerHTML = `
   position: relative;
   width: 100%;
   display: grid;
-  grid-template-columns: 1fr 3fr .5fr;
+  grid-template-columns: 1fr 1.5fr .5fr;
   column-gap: 1em;
   font-size: .8rem;
   margin: .5rem 0;
@@ -17,6 +17,7 @@ template.innerHTML = `
   height: 26px;
   text-align: right;
   line-height: 26px;
+  font-weight: bold;
 }
 
 #value-holder {
