@@ -33,7 +33,7 @@
                     <defs>
                         <!-- radial gradient -->
                         <radialGradient id="radial_gradient" cx=".5" cy=".5" fx=".5" fy=".5" r=".5" fr="0">
-                            <stop offset="0%" stop-color="red" />
+                            <stop offset="0%" stop-color="coral" />
                             <stop offset="100%" stop-color="blue" />
                         </radialGradient>
                     </defs>
@@ -42,12 +42,17 @@
     
                     <circle id="outer_boundry_circle" cx="250" cy="250" r="250" fill="transparent" stroke="white"
                         stroke-width="1" stroke-opacity=".2"></circle>
+
+                        <circle id="focal_point_circle" cx="250" cy="300" r="0" fill="transparent" stroke="white"
+                        stroke-width="1" stroke-opacity=".2"></circle>
     
                     <circle id="outer_boundry_handle" cx="250" cy="250" r="10" fill="transparent" stroke="white"
                         stroke-width="5" stroke-opacity=".5"></circle>
     
                     <circle id="focal_point_handle" cx="250" cy="300" r="10" fill="transparent" stroke="white"
                         stroke-width="5" stroke-opacity=".5"></circle>
+
+                        
                 </svg>
             </div>
             <div id="info" class="info">container size: 500px x 500px </div>
@@ -60,6 +65,7 @@
                     <span>outer-boundry radius</span>
                 </label> -->
                 <custom-slider id="radius_slider" minimum="0" maximum="2" val=".5" label="outer radius" step=0.01></custom-slider>
+                <custom-slider id="focal_radius_slider" minimum="0" maximum="1" val="0" label="focal radius" step=0.01></custom-slider>
                 <button id="hide_controls_button">hide controls</button>
               </div>
         </div>
@@ -73,8 +79,10 @@
     const outer_boundry_handle = document.getElementById("outer_boundry_handle");
     const outer_boundry_circle = document.getElementById("outer_boundry_circle");
     const focal_point_handle = document.getElementById("focal_point_handle");
+    const focal_point_circle = document.getElementById("focal_point_circle");
     const info = document.getElementById("info");
     const radius_slider = document.getElementById("radius_slider");
+    const focal_radius_slider = document.getElementById('focal_radius_slider');
     const hide_controls_button = document.getElementById("hide_controls_button");
     let drag_handle = null;
     let controls_visible = true;
@@ -90,6 +98,16 @@
         outer_boundry_circle.setAttribute("r", 500*newR);
         updateGradientString();
     })
+
+    focal_radius_slider.addEventListener("value", (e)=>{
+        const newR = e.detail.value;
+        console.log(newR);
+        gradient.setAttribute("fr", newR);
+        focal_point_circle.setAttribute("r", 500*newR);
+        updateGradientString();
+    })
+
+
     outer_boundry_handle.addEventListener("mousedown", (e) => {
         console.log('left handle');
         drag_handle = outer_boundry_handle;
@@ -109,6 +127,7 @@
         focal_point_handle.setAttribute("stroke", stroke);
         outer_boundry_handle.setAttribute("stroke", stroke);
         outer_boundry_circle.setAttribute("stroke", stroke);
+        focal_point_circle.setAttribute("stroke", stroke);
         hide_controls_button.innerText = button_text;
     }
 
@@ -173,6 +192,9 @@
     const initFocalStuff = (x, y) => {
         gradient.setAttribute('fx', x);
         gradient.setAttribute('fy', y);
+
+        focal_point_circle.setAttribute('cx', x);
+        focal_point_circle.setAttribute('cy', y);
     }
 
     const updateGradientString = () => {
