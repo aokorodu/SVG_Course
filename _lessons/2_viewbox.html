@@ -29,7 +29,7 @@
                     2nd example - offset the min-x and min-y position
                     3rd, 4th example - change the w and height of the viewbox
                 -->
-                <svg width="500" height="500" viewbox="780 0 900 900">
+                <svg width="500" height="500" viewbox="0 0 900 900">
                     <g i:extraneous="self">
                         <linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="1425" y1="-6.1989" x2="1425"
                             y2="1044.4939">
@@ -5056,7 +5056,7 @@
             <div class="slidecontainer">
                 <custom-slider id="viewbox_size" minimum="500" maximum="1400" val="900" label="viewbox size" step=1>
                 </custom-slider>
-                <custom-slider id="viewbox_x" minimum="0" maximum="1450" val="780" label="viewbox x" step=1>
+                <custom-slider id="viewbox_x" minimum="0" maximum="1450" val="0" label="viewbox x" step=1>
                 </custom-slider>
                 <custom-slider id="viewbox_y" minimum="0" maximum="400" val="0" label="viewbox y" step=1>
                 </custom-slider>
@@ -5080,7 +5080,7 @@
     const viewbox_y_slider = document.querySelector("#viewbox_y");
     const svg = document.querySelector('svg');
     const info_text = document.querySelector('#info_text');
-    let vb_x = 780;
+    let vb_x = 0;
     let vb_y = 0;
     let size = "900 900";
 
