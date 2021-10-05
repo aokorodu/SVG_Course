@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>wave experiment</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="title-holder">
+        <div class="info-holder">
+            <div class="title">wave animation using curves</div>
+            <!-- <div class="subtitle">two control points</div> -->
+        </div>
+    </div>
+    <div class="content-holder">
+        <div class="section-holder">
+            <div class="svg-holder">
+
+                <svg width="500" height="500" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <radialGradient id="sunrise_gradient">
+                            <stop stop-color="yellow" offset="30%"/>
+                            <stop stop-color="orange" offset="100%"/>
+                        </radialGradient>
+                        <linearGradient id="my_gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop stop-color="cornflowerblue" offset="0%"/>
+                            <stop stop-color="cyan" offset="100%"/>
+                        </linearGradient>
+                    </defs>
+                    <rect id="sky-bg" x="0" y="0" width="500" height="500" fill="url(#sunrise_gradient)"/>
+                    <path id="my_path" d="M 0,250 Q 125,200 250,250 T 500,250" stroke="none" stroke-width="2"
+                        fill="url(#my_gradient)" fill-opacity="1" />
+                </svg>
+            </div>
+            <div id="info_text" class="info"></div>
+        </div>
+        <div class="section-holder">
+            <div class="description">
+                <p></p>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    const w = 500;
+    const h = 500;
+    const numWaves = 2;
+    const waveLength = w / numWaves;
+
+    const svg = document.querySelector("svg");
+    const myPath = document.querySelector("#my_path");
+    let maxAmplitude = 30;
+    let currentAmplitude = maxAmplitude;
+    let dy = 0;
+    let startAngle = 0;
+    let angle = 0;
+    let angleIncrement = .025;
+    let ypos = 250;
+
+    const drawLine = () => {
+        let str = `M0,${ypos}`;
+        let currentDY = dy;
+        let xpos = 0;
+        while(xpos <= w) {
+            const mid = xpos + waveLength/2;
+            const end = xpos + waveLength;
+            let snip = `Q ${mid},${ypos-currentDY} ${end},${ypos}`;
+            str = `${str} ${snip}`;
+            xpos = end;
+            currentDY *= -1;
+        }
+
+        str = `${str} v ${h - ypos} h${-xpos} Z`;
+
+        myPath.setAttribute("d", str)
+    }
+
+    const updateAngle = () => {
+        angle += angleIncrement;
+        if(angle > 360){
+            angle = angle - 360
+        }
+    }
+
+    const updateDY = ()=>{
+        dy = Math.sin(angle) * currentAmplitude;
+    }
+
+
+    const draw = () => {
+        updateAngle();
+        updateDY();
+        drawLine();
+        requestAnimationFrame(draw);
+    }
+
+    draw();
+
+
+</script>
+
+</html>

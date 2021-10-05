@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>whole greater than the sum</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="title-holder">
+        <div class="info-holder">
+            <div class="title">whole greater than the sum</div>
+            <!-- <div class="subtitle">two control points</div> -->
+        </div>
+    </div>
+    <div class="content-holder">
+        <div class="section-holder">
+            <div class="svg-holder">
+
+                <svg width="500" height="500" xmlns="http://www.w3.org/2000/svg">
+                    <style>
+                        .windmill-blade {
+                            animation: spin 5s linear infinite;
+                        }
+
+                        @keyframes spin {
+                            from {
+                                transform: rotate(0deg)
+                            }
+
+                            to {
+                                transform: rotate(360deg)
+                            }
+                        }
+
+                        .plane {
+                            animation: flight 30s linear infinite;
+                        }
+
+                        @keyframes flight {
+                            from {
+                                transform: translateX(120%) translateY(12%)
+                            }
+
+                            to {
+                                transform: translateX(-50%) translateY(12%)
+                            }
+
+                        }
+
+                        .balloon {
+                            animation: float 5s ease-in-out infinite alternate;
+                        }
+
+                        @keyframes float {
+                            0% {
+                                transform: translateX(10%) translateY(55%)
+                            }
+
+                            100% {
+                                transform: translateX(10%) translateY(50%)
+                            }
+                        }
+
+                        .beam {
+                            stroke-opacity: .6;
+                            animation: sunray 7s linear infinite;
+                        }
+
+                        .beam-2 {
+                            stroke-opacity: .6;
+                            animation: sunray 6s linear infinite;
+                        }
+
+                        @keyframes sunray {
+                            from {
+                                stroke-dashoffset: 0;
+                            }
+
+                            to {
+                                stroke-dashoffset: -50;
+                            }
+                        }
+                    </style>
+                    <defs>
+
+                        <!-- gradients -->
+                        <radialGradient id="paint0_radial" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse"
+                            gradientTransform="translate(9.33372 15.2303) rotate(43.8196) scale(70.5673 59.0459)">
+                            <stop stop-color="#FEB291" />
+                            <stop offset="0.395819" stop-color="#FF6C63" />
+                        </radialGradient>
+                        <radialGradient id="sunrise_gradient">
+                            <stop stop-color="#FEEBA9" offset="0%" />
+                            <stop stop-color="#F9C40B" offset="100%" />
+                        </radialGradient>
+                        <linearGradient id="sky" x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop stop-color="#20B5E4" offset="0%" />
+                            <stop stop-color="#DEF7FF" offset="90%" />
+                        </linearGradient>
+                        <linearGradient id="chem_trail" x1="100%" y1="0%" x2="0%" y2="0%"
+                            gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#FFFEFE" stop-opacity="0" />
+                            <stop offset="0" stop-color="#FFFEFE" stop-opacity="0.4" />
+                        </linearGradient>
+
+                        <!-- sunbeams -->
+                        <path id="sunbeam-1" d="M0,0 h25" stroke="#FFFFFF" stroke-width="3" stroke-dasharray="10 5 5 5" />
+
+                        <path id="sunbeam-2" d="M0,0 h12.5" stroke="#FFFFFF" stroke-width="2"
+                            stroke-dasharray="5 2.5 2.5 2.5" />
+
+                        <!-- stars -->
+                        <g id="star">
+                            <!-- <path d="M 0,-3 v6" fill="none" stroke="white" stroke-width="2" />
+                            <path d="M -3,0 h6" fill="none" stroke="white" stroke-width="2" /> -->
+                            <circle cx="0" cy="0" r="2" fill="white"/>
+                        </g>
+
+                        <!-- tree -->
+                        <g id="tree">
+                            <rect x="-3" y="-10" width="6" height="10" stroke="none" fill="darkbrown"></rect>
+                            <path d="M0,-10 h-20 L0,-80 z" fill="darkgreen"></path>
+                            <path d="M0,-10 h20 L0,-80 z" fill="green"></path>
+                        </g>
+
+                        <!-- mountain -->
+                        <g id="mountain">
+                            <path
+                                d="M279.674 153.524H0.325851C0.325851 153.524 29.9232 95.9023 37.3226 92.9284C44.7219 89.9544 52.4258 87.3459 52.4258 87.3459C52.4258 87.3459 66.92 53.1505 72.7867 49.4356C78.6534 45.7207 91.5946 44.2287 94.3656 39.7627C96.9234 35.7027 114.564 5.84139 120.999 1.02014C121.396 0.664601 121.892 0.43806 122.42 0.370544C127.049 0.370544 167.08 53.9016 167.08 53.9016C167.08 53.9016 179.26 53.3535 185.35 55.7692C186.254 56.0879 187.083 56.5888 187.786 57.241C191.795 61.301 210.603 83.2656 213.993 83.2656C216.622 83.2656 229.087 86.3918 236.993 89.7108C238.888 90.4383 240.687 91.3926 242.353 92.5528C247.59 96.6433 275.665 128.24 279.674 153.524Z"
+                                fill="#68E1FD" />
+                            <path opacity="0.2"
+                                d="M119.964 17.4733C115.64 25.5933 109.52 33.3174 106.322 42.1987C102.069 54.0234 103.379 71.9382 103.968 84.6967C98.8925 80.5251 95.949 72.1513 89.8895 71.2074C84.9972 70.4461 80.7545 75.1354 77.9023 80.0277C76.47 82.309 75.504 84.8515 75.0603 87.5083C74.5934 91.0202 75.5475 94.5625 75.9434 98.0846C76.3392 101.607 76.0144 105.707 73.7104 107.94C72.3198 109.29 70.4725 109.676 68.7775 110.366C63.1341 112.65 58.6985 118.801 57.6125 125.855C56.5264 132.909 58.8203 138.877 62.3221 144.216C63.8243 146.51 68.0669 153.524 70.6247 153.524H0.325851C0.325851 153.524 29.9232 95.9023 37.3226 92.9284C44.7219 89.9544 52.4258 87.3459 52.4258 87.3459C52.4258 87.3459 66.92 53.1505 72.7867 49.4356C78.6534 45.7207 91.5946 44.2287 94.3656 39.7627C96.9234 35.7027 114.564 5.84139 120.999 1.02014L122.42 0.370544C122.42 0.370544 122.745 12.2562 119.964 17.4733Z"
+                                fill="black" />
+                            <path opacity="0.2"
+                                d="M170.217 125.733C170.146 135.782 173.394 149.718 174.226 153.524H126.592C126.592 153.524 142.304 139.953 145.552 137.162C150.18 133.173 151.642 119.542 153.093 113.401C154.23 108.499 156.139 106.905 158.798 102.967C161.65 98.5052 163.739 93.6 164.979 88.4523C166.674 81.8751 168.095 73.9378 167.933 67.0053C167.933 65.5437 165.903 53.9626 167.131 53.9017C167.131 53.9017 179.311 53.3536 185.401 55.7693C184.386 58.1545 183.442 60.5905 183.056 61.8593C182.397 64.0923 183.269 66.1832 183.645 68.2944C184.203 71.3394 184.427 74.3844 184.731 77.5918C185.431 85.2043 186.822 92.7051 187.827 100.267C189.227 110.874 189.857 121.998 186.913 132.148C185.523 128.941 184.782 125.388 183.442 122.15C182.102 118.912 179.95 115.867 177.027 115.045C171.901 113.736 170.267 118.811 170.217 125.733Z"
+                                fill="black" />
+                            <path opacity="0.2"
+                                d="M232.812 98.8763C230.65 106.306 232.812 134.188 232.812 134.188C229.919 126.977 227.746 119.497 226.326 111.858C224.478 100.693 214.004 83.2453 214.004 83.2453C216.633 83.2453 229.097 86.3715 237.004 89.6905C235.301 92.6038 233.897 95.6813 232.812 98.8763V98.8763Z"
+                                fill="black" />
+                            <!-- <path d="m131 0 134.913 150H0L131 0Z" fill="#68E1FD"/><path d="m131 0-11.5 36.513 1 28.037-17 8.413v33.129H82v17.353L52.5 150H.087L131 0ZM168.561 71.053l9.593 16.447L180 101.979l-7.639-7.9 2.588 30.979h-6.388l-.752 10.139h-6.207L159.724 150H144l9.327-16.447 7.448-9.321v-10.964l5.793-11.289 1.993-30.926Z" fill="#3EB0CB"/><path d="M112.5 21.217 131 0l19.5 21.71-10-5.538 2.5 8.413-7.5-5.784 2 7.888L130 18.8l-2 5.784-1.5-6.836-7 8.94 1-8.94-8 3.468Z" fill="#FFFFFF" fill-opacity=".75"/> -->
+
+                        </g>
+
+                    </defs>
+                    <rect x="0" y="0" width="500" height="500" fill="url(#sky)"></rect>
+
+                    <g id="star-holder"></g>
+                    <g id="sun-holder" transform="translate(250 200)">
+                        <circle cx="0" cy="0" r="40" stroke="none" stroke-width="2" fill="url(#sunrise_gradient)">
+                        </circle>
+                    </g>
+
+                    <g id="mountain-holder" opacity="1">
+                        <!-- <use href="#mountain" x="100" y="350"></use>
+                        <use href="#mountain" x="250" y="400"></use>
+                        <use href="#mountain" x="0" y="375"></use> -->
+                    </g>
+
+                    <g id="plane" class="plane" opacity=".75">
+                        <path
+                            d="M46.3974 8.94097C45.9082 9.20028 45.0257 9.47731 43.9965 9.74357C41.1982 10.4676 37.3166 11.1133 37.3166 11.1133C37.3166 11.1133 17.5083 15.4704 1.66225 11.3114C1.66225 11.3114 -0.675783 10.4601 1.14555 8.64653C1.42618 8.37403 1.73046 8.127 2.05481 7.90835C2.05481 7.90835 2.06204 7.89868 2.07653 7.88057C2.2783 7.63645 2.50156 7.41092 2.74363 7.20669C3.45367 6.5993 4.68695 5.82606 6.32168 5.88114L46.6122 6.95328C46.6122 6.95328 48.2163 7.9764 46.3974 8.94097Z"
+                            fill="#FAFAFE" />
+                        <path
+                            d="M37.9598 6.75179L45.8464 0.262104L49.5537 0.63331L46.4141 7.12427C46.4141 7.12427 38.1295 7.78351 37.9598 6.75179Z"
+                            fill="#FAFAFE" />
+                        <path
+                            d="M15.319 6.71411L35.4083 0.301732L38.7633 0.545295L29.8017 4.68069L27.1399 7.5022L15.319 6.71411Z"
+                            fill="#FAFAFE" />
+                        <path
+                            d="M43.9964 9.74357C41.1982 10.4676 37.3165 11.1133 37.3165 11.1133C37.3165 11.1133 17.5082 15.4704 1.66222 11.3114C1.66222 11.3114 -0.675819 10.4601 1.14551 8.64653L1.15619 8.67376C1.15619 8.67376 4.69041 10.4275 20.4158 10.1728L43.9964 9.74357Z"
+                            fill="#E0DFDF" />
+                        <path
+                            d="M3.86256 8.63604C3.51235 8.68942 2.62955 8.209 2.07671 7.88056C2.27849 7.63645 2.50174 7.41091 2.74381 7.20668C3.18811 7.4616 3.97235 7.86562 4.36846 7.79418C4.94021 7.69102 4.38938 8.55585 3.86256 8.63604Z"
+                            fill="#C4FBFF" />
+                        <path d="M174 8.5L44 10L44 6.99999L174 8.5Z" fill="url(#chem_trail)" />
+
+
+                    </g>
+
+                    <g id="balloon" class="balloon">
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                            d="M85.129 39.943c0 14.859-14.733 33.435-30.634 44.674-12.962-.202-7.934-.262-22.666.221C14.688 74.272.876 54.856.876 39.943c0-21.492 21.178-41.234 42.622-38.934 21.373-2.748 41.63 17.442 41.63 38.934Z"
+                            fill="#BA0505" />
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                            d="M71.317 40.088c0 14.869-10.776 34.148-18.957 44.764-9.974.005-5.878-.055-16.594.151-8.052-10.598-21.538-30.024-21.538-44.915C14.227 18.481 29.431.944 44.33.944c12.634 0 23.249 12.614 26.188 29.625.522 3.047.799 6.237.799 9.52Z"
+                            fill="#FFC875" />
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                            d="M53.236 39.942c0 14.756-3.963 33.885-6.977 44.442-5.876.043.153-.002-6.166.064-2.964-10.56-6.757-29.769-6.757-44.506 0-21.473 4.457-38.9 9.95-38.9 5.492 0 9.95 17.427 9.95 38.9Z"
+                            fill="#BA0505" />
+                        <path
+                            d="M32.53 84.826c1.954 6.816 3.497 13.822 4.535 20.859M39.404 84.823l2.437 20.807M46.804 84.848l-1.051 20.767M53.446 84.828c-1.883 7.095-3.02 13.942-3.761 20.817"
+                            stroke="#696767" />
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                            d="m32.051 85.213-.697-.836 23.357.024-.52.984-22.14-.172Z" fill="#600070" />
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                            d="M34.378 105.463c-.831 0-1.502.655-1.502 1.46 0 .806.67 1.46 1.502 1.46h.534a3.727 3.727 0 0 0-.038.564v6.948c0 2.829 2.347 5.105 5.256 5.105h6.886c2.91 0 5.255-2.276 5.255-5.105v-6.948c0-.211-.012-.393-.038-.564h.535c.83 0 1.501-.654 1.501-1.46 0-.805-.67-1.46-1.501-1.46h-18.39v0Z"
+                            fill="#431102" stroke="#000" stroke-width=".057" stroke-linecap="round" />
+
+                    </g>
+
+                    <g id="tree-holder"></g>
+
+                    <g id="windmill" transform="translate(350 375)">
+                        <path d="M3,0 L7,125 h-14 L-3,0 z" stroke="none" fill="#cccccc"></path>
+                        <g id="windmill-blade" class="windmill-blade">
+                            <path id="Triangle-1" d="M0 -70 L-5 0 5 0 Z" fill="#fafafa" fill-opacity="1"
+                                stroke="none" />
+                            <path id="Triangle-2" transform="scale(-1 1)" d="M67.311 39.5 L9.189 0.17 4.189 8.83 Z"
+                                fill="#fafafa" fill-opacity="1" stroke="none" />
+                            <path id="Triangle-3" d="M67.311 39.5 L9.189 0.17 4.189 8.83 Z" fill="#fafafa"
+                                fill-opacity="1" stroke="none" />
+                            <g id="center">
+                                <circle cx="0" cy="0" r="6" stroke="green" stroke-width="3" fill="white" />
+                                <!-- <circle cx="0" cy="0" r="25" stroke="white" stroke-width=".1" fill="none" />
+                                <circle cx="0" cy="0" r="50" stroke="white" stroke-width=".1" fill="none" />
+                                <circle cx="0" cy="0" r="75" stroke="white" stroke-width=".1"  fill="none" /> -->
+                            </g>
+                        </g>
+                    </g>
+
+
+                </svg>
+            </div>
+            <div id="info_text" class="info"></div>
+        </div>
+        <div class="section-holder">
+            <div class="description">
+                <p></p>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    const w = 500;
+    const h = 500;
+    const svg = document.querySelector('svg');
+    const namespace = "http://www.w3.org/2000/svg";
+    const sunHolder = document.querySelector('#sun-holder');
+    const mountainHolder = document.querySelector("#mountain-holder");
+    const treeHolder = document.querySelector("#tree-holder");
+    const starHolder = document.querySelector("#star-holder");
+
+    const drawSunbeams = () => {
+        let num = 8;
+        let incr = 360 / num;
+        let dr = incr / 2;
+
+        for (let i = 0; i < num; i++) {
+            const angle = `${i * incr}`;
+            const beam = document.createElementNS(namespace, "use")
+            beam.setAttribute("href", "#sunbeam-1");
+            beam.setAttribute("class", "beam");
+            beam.setAttribute("transform", `rotate(${angle})`);
+            beam.setAttribute("x", "50");
+            sunHolder.appendChild(beam);
+        }
+
+        for (let i = 0; i < num; i++) {
+            const angle = `${i * incr + dr}`;
+            const beam = document.createElementNS(namespace, "use")
+            beam.setAttribute("href", "#sunbeam-2");
+            beam.setAttribute("class", "beam-2");
+            beam.setAttribute("transform", `rotate(${angle})`);
+            beam.setAttribute("x", "45");
+            sunHolder.appendChild(beam);
+        }
+    }
+
+    const drawTree = () => {
+        const group = document.createElementNS(namespace, "g");
+        const xpos = Math.round(Math.random() * 500);
+        const scale = .1 + Math.random() * 1;
+        group.setAttribute("transform", `translate(${xpos},500) scale(${scale})`);
+
+        const tree = document.createElementNS(namespace, "use")
+        tree.setAttribute("href", "#tree");
+        tree.setAttribute("x", "0");
+        tree.setAttribute("y", `0`);
+
+        group.appendChild(tree);
+        treeHolder.appendChild(group)
+    }
+
+    const drawTrees = () => {
+        const num = 70;
+        for (let i = 0; i < num; i++) {
+            drawTree();
+        }
+    }
+
+    const drawMountain = () => {
+        const xpos = -200 + Math.random() * 600;
+        const ypos = 450 - (Math.random() * 100);
+        const mountain = document.createElementNS(namespace, "use");
+        mountain.setAttribute("href", "#mountain");
+        mountain.setAttribute("x", xpos);
+        mountain.setAttribute("y", ypos);
+        mountainHolder.appendChild(mountain);
+    }
+
+    const drawMountains = () => {
+        const num = 10;
+        for (let i = 0; i < num; i++) {
+            drawMountain();
+        }
+    }
+
+    const drawStars = () => {
+        const num = 10;
+        for (let i = 0; i < num; i++) {
+            const xpos = 75 + Math.random() * (w-150);
+            const ypos = 10 + Math.random() * 100;
+            const rotation = Math.round(Math.random() * 360);
+            const star = document.createElementNS(namespace, "use");
+            star.setAttribute("href", "#star");
+            star.setAttribute("x", xpos);
+            star.setAttribute("y", ypos);
+            star.setAttribute("opacity", .1 + Math.random()* .5);
+            //star.setAttribute("transform", `rotate(${rotation})`);
+            starHolder.appendChild(star)
+        }
+    }
+    const draw = () => {
+        requestAnimationFrame(draw);
+    }
+
+    drawSunbeams();
+    drawStars();
+    drawTrees();
+    drawMountains();
+
+
+</script>
+
+</html>
