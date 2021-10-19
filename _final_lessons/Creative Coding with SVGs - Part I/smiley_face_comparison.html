@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comparison - SVG vs. PNG</title>
+</head>
+<style>
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    .holder {
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .content-holder {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+
+    }
+    .image-holder {
+        width: 200px;
+        height: 200px;
+    }
+</style>
+<body>
+    <div class="holder">
+        <div class="content-holder">
+            <div class="image-holder">
+                <img src="smiley_face_small.png" width="200px" height="200px">
+            </div>
+            <div class="image-holder">
+                <svg viewBox="0 0 200 200" fill="none">
+                    <circle cx="100" cy="100" r="100" fill="#F3C729"/>
+                    <ellipse cx="65.4696" cy="77.6243" rx="6.90608" ry="6.90608" fill="black"/>
+                    <ellipse cx="134.53" cy="77.6243" rx="6.90608" ry="6.90608" fill="black"/>
+                    <path d="M44.199 123.757C66.8509 149.724 133.149 152.486 160.774 123.757" stroke="black" stroke-width="13"/>
+                    <line x1="60.4332" y1="64.473" x2="51.2133" y2="71.611" stroke="black" stroke-width="10" stroke-linecap="round"/>
+                    <line x1="5" y1="-5" x2="16.66" y2="-5" transform="matrix(0.790724 0.612173 0.612173 -0.790724 134.807 54.6961)" stroke="black" stroke-width="10" stroke-linecap="round"/>
+                    </svg>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>
