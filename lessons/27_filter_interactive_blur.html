@@ -26,7 +26,7 @@
                 <svg width="500" height="500" viewbox="0 0 500 500">
                     <defs>
 
-                        <filter id="blur-filter" x="-50%" y="-50%" width="200%" height="200%">
+                        <filter id="blur-filter" >
                             <feGaussianBlur id="gauss-blur" stdDeviation="10" />
                         </filter>
 
@@ -35,7 +35,11 @@
 
                     </defs>
 
-                    <use href="#image" x="50" y="50" filter="url(#blur-filter)" />
+                    <!-- <use href="#image" x="50" y="50" filter="url(#blur-filter)" /> -->
+
+                    
+                        <rect x="100" y="100" width="300" height="300" fill="orange" stroke="none" filter="url(#blur-filter)"></rect>
+                    
                 </svg>
 
             </div>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Dynamically Changing Attribute Values</title>
+    <script src="./custom-slider-component.js"></script>
+    <link rel="stylesheet" href="main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="title-holder">
+        <div class="info-holder">
+            <div class="title">Changing Attribute Values </div>
+            <div class="subtitle">using javascript to dynamically change svg element attribute values</div>
+        </div>
+    </div>
+    
+    <div class="content-holder">
+
+
+        <div class="section-holder">
+
+
+            <div class="svg-holder">
+                <!--
+                    
+                -->
+                <svg id="my_svg" width="500" height="500" viewbox="0 0 500 500">
+                    
+                </svg>
+    
+            </div>
+            <div class="descriptive-info-holder">
+                <div id="circle_info_text" class="small-info">container size: 500px x 500px </div>
+                <div id="gradient_info_text" class="small-info">container size: 500px x 500px </div>
+            </div>
+        </div>
+       
+    </div>
+
+</body>
+<script>
+    const my_svg = document.querySelector("svg")
+    const namespace = "http://www.w3.org/2000/svg";
+    const svg_width = 500;
+    const svg_height = 500;
+
+    for(let i = 0; i < 30; i++){
+        const cx = Math.random() * svg_width;
+        const cy = Math.random() * svg_height;
+        const r = Math.random() * 100 + 10;
+        const fill_opacity = Math.random() * .3 + .1;
+        const fill = ["red", "green", "blue", "purple", "yellow", "orange"][Math.round(Math.random()*5)];
+        
+        const stroke = "none";
+        let my_circle = document.createElementNS(namespace, "circle");
+        my_circle.setAttribute('cx', cx);
+        my_circle.setAttribute('cy', cy);
+        my_circle.setAttribute('r', r);
+        my_circle.setAttribute('fill', fill);
+        my_circle.setAttribute('fill-opacity', fill_opacity);
+        my_circle.setAttribute('stroke', stroke);
+
+        my_svg.appendChild(my_circle)
+
+    }
+
+    //my_circle.setAttribute('fill', 'blue')
+    //my_circle.setAttribute('stroke', 'orange');
+    //my_circle.setAttribute('stroke-opacity', '1');
+    //my_circle.setAttribute('stroke-width', '20');
+
+
+</script>
+
+</html>

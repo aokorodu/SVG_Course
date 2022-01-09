@@ -30,11 +30,19 @@
                             <feDropShadow id="drop-shadow" dx="10" dy="10" stdDeviation="3" flood-color="black" flood-opacity=".5" />
                         </filter>
     
-                        <image id="image" x="0" y="0" href="../_graphics/zuubaDigitalLogo.png" width="400" height="400"></image>
+                        <image id="image" x="0" y="0" href="../_graphics/zuubaDigitalLogo_2.png" width="400" height="400"></image>
+
+                        <!-- <g id="box">
+                            <rect x="0" y="0" width="300" height="300" fill="orange" stroke="none"></rect>
+                        </g> -->
     
                     </defs>
     
-                    <use href="#image" x="50" y="50" filter="url(#shadow-filter)" />
+                    <!-- <use href="#box" x="100" y="100" filter="url(#shadow-filter)" /> -->
+
+                    <g id="box">
+                        <rect x="100" y="100" width="300" height="300" fill="orange" stroke="none" filter="url(#shadow-filter)"></rect>
+                    </g>
                 </svg>
     
             </div>

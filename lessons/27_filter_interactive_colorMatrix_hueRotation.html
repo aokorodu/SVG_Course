@@ -29,7 +29,7 @@
                             <feColorMatrix id="hue-rotation" type="hueRotate" values="0" />
                         </filter>
 
-                        <image id="image" x="0" y="0" href="../_graphics/zuubaDigitalLogo.png" width="400" height="400">
+                        <image id="image" x="0" y="0" href="../_graphics/zuubaDigitalLogo_2.png" width="400" height="400">
                         </image>
 
                     </defs>
@@ -67,8 +67,7 @@
     })
 
     const updateHueRotation = (val) => {
-        console.log('val: ', val)
-        hueRot = val;//Math.round((val/100) * 360);
+        hueRot = val;
         let str = `${hueRot}`;
         hue_rotation_filter.setAttribute("values", str)
         updateHueRotationText()

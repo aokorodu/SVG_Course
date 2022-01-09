@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Dynamically Changing Attribute Values</title>
+    <script src="./custom-slider-component.js"></script>
+    <link rel="stylesheet" href="main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="title-holder">
+        <div class="info-holder">
+            <div class="title">Changing Attribute Values </div>
+            <div class="subtitle">using javascript to dynamically change svg element attribute values</div>
+        </div>
+    </div>
+    
+    <div class="content-holder">
+
+
+        <div class="section-holder">
+
+
+            <div class="svg-holder">
+                <!--
+                    
+                -->
+                <svg width="500" height="500" viewbox="0 0 500 500">
+                    <circle id="my_circle" cx="250" cy="250" r="150" stroke="black" stroke-opacity=".2" stroke-width="3"
+                        fill="purple"></circle>
+                </svg>
+    
+            </div>
+            <div class="descriptive-info-holder">
+                <div id="circle_info_text" class="small-info">container size: 500px x 500px </div>
+                <div id="gradient_info_text" class="small-info">container size: 500px x 500px </div>
+            </div>
+        </div>
+       
+    </div>
+
+</body>
+<script>
+    let my_circle = document.getElementById("my_circle");
+
+    let color = my_circle.getAttribute("fill");
+    console.log("color: ", color);
+
+    //my_circle.setAttribute('fill', 'blue')
+    //my_circle.setAttribute('stroke', 'orange');
+    my_circle.setAttribute('stroke-opacity', '1');
+    //my_circle.setAttribute('stroke-width', '20');
+
+
+</script>
+
+</html>
