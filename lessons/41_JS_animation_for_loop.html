@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Javascript Animation Fail</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="title-holder">
+        <div class="info-holder">
+            <div class="title">Javascript Animation</div>
+            <div class="subtitle">_</div>
+
+        </div>
+    </div>
+    <div class="content-holder">
+        <div class="section-holder">
+            <div class="svg-holder">
+                <style>
+                    #my-circle {
+                        fill: green;
+                    }
+                </style>
+                <svg width="500" height="500" viewbox="0 0 500 500">
+                    <circle id="my-circle" cx="50" cy="250" r="20"></circle>
+                </svg>
+
+            </div>
+            <div class="info">container size: 500px x 500px </div>
+        </div>
+    </div>
+</body>
+<script>
+    const circ = document.querySelector("#my-circle");
+    let xpos = 250; let ypos = 250;
+    let x_speed = Math.random()*2; let y_speed = Math.random()*2;
+    moveCircle();
+
+    function moveCircle(){
+        circ.setAttribute("cx", xpos);
+        circ.setAttribute("cy", ypos);
+        xpos += x_speed;
+        ypos += y_speed;
+
+        if(xpos > 480){
+            xpos = 480;
+            x_speed *= -1;
+        } else if(xpos < 20){
+            xpos = 20;
+            x_speed *= -1;
+        }
+
+        if(ypos > 480){
+            ypos = 480;
+            y_speed *= -1;
+        } else if(ypos < 20){
+            ypos = 20;
+            y_speed *= -1;
+        }
+        window.requestAnimationFrame(moveCircle)
+    }
+
+    // let xpos = 50; let speed = 2;
+    // moveCircle();
+
+    // function moveCircle(){
+    //     circ.setAttribute("cx", xpos);
+    //     xpos += speed;
+    //     if(xpos > 480){
+    //         xpos = 480;
+    //         speed *= -1;
+    //     } else if(xpos < 20){
+    //         xpos = 20;
+    //         speed *= -1;
+    //     }
+    //     window.requestAnimationFrame(moveCircle)
+    // }
+</script>
+</html>

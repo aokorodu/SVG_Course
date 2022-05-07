@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>reusable objects - use</title>
+    <link rel="stylesheet" href="../js/highlight/styles/default.min.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="title-holder">
+        <div class="info-holder">
+            <div class="title">reusable objects</div>
+            <div class="subtitle">&lt;use&gt;</div>
+            <div class="description"></div>
+        </div>
+    </div>
+    <div class="content-holder">
+        <div class="section-holder">
+            <div class="svg-holder">
+                <svg id="svg" width="500" height="500" viewbox="0 0 500 500">
+
+
+
+                    <!-- this button object has no fill, so use can set it -->
+                    <g id="button_object">
+                        <circle cx="250" cy="250" r="50"></circle>
+                        <path d="M 200, 250 h 100 M 250,200 v 100"></path>
+                    </g>
+
+                    <!-- this button object has a fill, so it can't be overriden by a fill set on the use object -->
+                    <!-- <g id="button_object" stroke="black" stroke-width="3" fill="blue">
+                        <circle cx="250" cy="250" r="50"></circle>
+                        <path d="M 200, 250 h 100 M 250,200 v 100"></path>
+                    </g> -->
+
+                    <!-- The x and y attributes are required. x and y don’t designate the actual position of the graphic.  The x and y attributes set the position of the origin (the 0,0 point) of the use object’s coordinate system. -->
+
+                    <!-- cant see this because it has the same coordinate system so it sits right on top of original -->
+                    <!-- <use href="#button_object" x="0" y="0"></use> -->
+
+                    <!-- shift use object x and y so we can see it -->
+                    <!-- <use href="#button_object" x="-100" y="-100"></use> -->
+
+                    <!-- shift use object x and y so we can see it - set fill and stroke -->
+                    <!-- <use href="#button_object" x="-100" y="-100" stroke="black" stroke-width="5" fill="yellow"></use> -->
+                </svg>
+
+            </div>
+            <div class="info">container size: 500px x 500px </div>
+
+        </div>
+    </div>
+</body>
+
+
+</html>

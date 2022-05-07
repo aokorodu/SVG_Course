@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Filters - 1</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+<style>
+    #my-circle {
+        cx: 250;
+        cy: 250;
+        r: 100px;
+        stroke-width: 10;
+        transition-property: r cy;
+        transition-duration: .33s;
+        transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    }
+
+    #my-circle:hover {
+        r: 150px;
+        cy: 225;
+    }
+
+    /* #circle_path {
+        transition-property: stroke-dashoffset;
+        transition-duration: 1s;
+        transition-timing-function: ease-in-out;
+        stroke-dasharray: 100;
+        stroke-dashoffset: 100;
+    } */
+
+    /* #circle_path:hover {
+        stroke-dashoffset: 0;
+    }
+
+    #my_text {
+        font-size: 2rem;
+        stroke: black;
+    } */
+</style>
+
+<body>
+    <div class="title-holder">
+        <div class="info-holder">
+            <div class="title">CSS transitions</div>
+            <!-- <div class="subtitle">filter animation</div> -->
+            <!-- <div class="description">Used to set the width and height of the svg (in pixels) on the page that contains it.
+            </div> -->
+        </div>
+    </div>
+    <div class="content-holder">
+        <div class="section-holder">
+            <div class="svg-holder">
+                <!--
+                   for the lesson
+                -->
+                <svg width="500" height="500" viewbox="0 0 500 500">
+
+                    <circle id="my-circle" fill="#eaeaea" stroke="black"></circle>
+                    <!-- <circle id="circle_path" cx="250" cy="250"  r="150" fill="#eaeaea" stroke="black" stroke-width="10"
+                        pathLength="100"></circle> -->
+                    <!-- <circle id="my-circle"></circle> -->
+                    <!-- <text id="my_text" x="250" y="400" text-anchor="middle">css transition animations</text> -->
+                </svg>
+
+            </div>
+            <div class="info">container size: 500px x 500px </div>
+        </div>
+    </div>
+</body>
+
+</html>

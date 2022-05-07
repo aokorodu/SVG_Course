@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>transforms css interactive</title>
+    <script src="../js/custom-slider-component.js"></script>
+    <script src="../js/highlight/highlight.min.js"></script>
+    <link rel="stylesheet" href="../js/highlight/styles/default.min.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="title-holder">
+        <div class="info-holder">
+            <div class="title">transforms css interactive </div>
+        </div>
+    </div>
+    <div class="content-holder">
+        <div class="section-holder">
+            <div class="svg-holder">
+                <svg width="500" height="500" viewbox="0 0 500 500">
+
+                    <rect id="rect" x="150" y="150" width="200" height="200" fill="#eaeaea"></rect>
+                    <rect id="indicator" x="0" y="0" width="499" height="499" fill="none" stroke="red" stroke-dasharray="5 5" stroke-width="2">
+                    </rect>
+                    <g id="target" transform="translate(0 0)">
+                        <path d="M 0,-25 v50" stroke="red" stroke-width="2"></path>
+                        <path d="M -25,0 h50" stroke="red" stroke-width="2"></path>
+                        <circle cx="0" cy="0" r="10" stroke="red" stroke-width="2" fill="none"></circle>
+                    </g>
+                </svg>
+
+            </div>
+            <div class="info">container size: 500px x 500px </div>
+
+        </div>
+        <div class="section-holder">
+            <div class="slidecontainer">
+                <custom-slider id="rotation_angle" minimum="0" maximum="360" val="0" label="rotation angle" step=1>
+                </custom-slider>
+                <custom-slider id="transform_origin_x" minimum="0" maximum="100" val="0" label="transform origin x"
+                    step=1>
+                </custom-slider>
+                <custom-slider id="transform_origin_y" minimum="0" maximum="100" val="0" label="transform origin y"
+                    step=1>
+                </custom-slider>
+            </div>
+
+            <div class="radio-container">
+                <div class="radio-label">transform-box</div>
+                <div class="radio-group-container">
+                    <label class="radio-button-container">view-box
+                        <input type="radio" checked="checked" value="view-box" name="transform-box">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="radio-button-container">fill-box
+                        <input type="radio" name="transform-box" value="fill-box">
+                        <span class="checkmark"></span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="description">
+                <p>Use the sliders to change the location of the transform origin point. See the difference between the view-box and fill-box transform-box values.
+                </p>
+
+            </div>
+
+        </div>
+    </div>
+</body>
+<script>
+    // transform-box css can be "view-box" (default) or "fill-box"
+    const rect = document.querySelector("#rect");
+    const indicator = document.querySelector("#indicator");
+    const target = document.querySelector("#target");
+
+    let transformBox = "view-box"
+    let rotationAngle = 0;
+    let transOriginX = "0"
+    let transOriginY = "0";
+    var radios = document.querySelectorAll('input[type=radio][name="transform-box"]');
+    for (let radio of radios) {
+        radio.addEventListener('change', () => {
+            console.log('radio.value: ', radio.value)
+            updateTransformBox(radio.value);
+            updateStyle();
+        })
+    }
+
+
+    // rotation angle slider
+    const rotation_angle_slider = document.querySelector('#rotation_angle');
+    rotation_angle_slider.addEventListener('value', (e) => {
+        updateRotationAngle(e.detail.value)
+    })
+
+    // transform origin x slider
+    const transform_origin_x_slider = document.querySelector('#transform_origin_x');
+    transform_origin_x_slider.addEventListener('value', (e) => {
+        updateTransformX(e.detail.value)
+    })
+
+    // transform origin y slider
+    const transform_origin_y_slider = document.querySelector('#transform_origin_y');
+    transform_origin_y_slider.addEventListener('value', (e) => {
+        updateTransformY(e.detail.value);
+        updateStyle();
+    })
+
+    function updateTransformBox(val){
+        transformBox = val;
+        let x = 0; let y=0; let width=499; let height=499;
+        if(transformBox == "fill-box"){
+            x = 150; y=150; width=200; height=200;
+        }
+
+        indicator.setAttribute("x", x);
+        indicator.setAttribute("y", y);
+        indicator.setAttribute("width", width);
+        indicator.setAttribute("height", height);
+    }
+
+
+
+    function updateRotationAngle(angle) {
+        rotationAngle = angle;
+        updateStyle();
+    }
+
+    function updateTransformX(percentage) {
+        //console.log('updateTransformX: ', percentage)
+        transOriginX = percentage;
+        updateStyle();
+    }
+
+    function updateTransformY(percentage) {
+        transOriginY = percentage;
+        updateStyle();
+    }
+
+    function updateStyle() {
+        const str = `transform:rotate(${rotationAngle}deg); transform-origin:${transOriginX}% ${transOriginY}%; transform-box: ${transformBox}`;
+        //console.log('style string: ', str);
+
+        rect.setAttribute("style", str);
+
+        updateTarget();
+    }
+
+    function updateTarget(){
+        let x, y;
+
+        if(transformBox == "view-box"){
+            x = transOriginX/100 * 500;
+            y = transOriginY/100 * 500;
+        } else {
+            x = 150 + (transOriginX/100 * 200);
+            y = 150 + (transOriginY/100 * 200)
+        }
+
+        let str = `translate(${x} ${y})`
+        target.setAttribute("transform", str)
+    }
+
+</script>
+
+</html>

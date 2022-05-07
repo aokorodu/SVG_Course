@@ -27,11 +27,11 @@
                     
                 -->
 
-                <svg width="500" height="500" viewbox="0 0 500 500">
-                    
+                <svg width="500" height="500" viewbox="0 0 300 300">
+
                     <ellipse id="dragger" cx="250" cy="250" rx="60" ry="60" fill="blue"></ellipse>
                 </svg>
-                
+
             </div>
             <div id="info_text" class="info">container size: 500px x 500px </div>
         </div>
@@ -41,20 +41,22 @@
     //hljs.highlightAll();
     const svg = document.querySelector("svg");
     const dragger = document.querySelector('#dragger');
+    const info_text = document.querySelector("#info_text");
     const radius = eval(dragger.getAttribute("rx"));
     const width = eval(svg.getAttribute("width"));
     const height = eval(svg.getAttribute("height"));
-    const xmax = width - radius;
-    const ymax = height - radius;
+    const xmax = 1000; width - radius;
+    const ymax = 1000; height - radius;
+
 
     const dragColor = "green";
     const dropColor = "blue";
 
-    dragger.addEventListener("mousedown", ()=>{
+    dragger.addEventListener("mousedown", () => {
         startDrag();
     })
 
-    const startDrag = ()=>{
+    const startDrag = () => {
         console.log('startDrag')
         svg.addEventListener("mousemove", drag);
         svg.addEventListener("mouseup", stopDrag);
@@ -71,8 +73,12 @@
     }
 
     const drag = (e) => {
-        let x = e.offsetX;
-        let y = e.offsetY;
+        let p = getSVGPoint(e.target, e.clientX, e.clientY);
+        console.log(`x: ${p.x} - y: ${p.y}`);
+
+
+        let x = p.x;
+        let y = p.y;
         if (x < radius) {
             x = radius;
         } else if (x > xmax) {
@@ -87,12 +93,20 @@
         updatePosition(x, y);
     }
 
-    const updatePosition = (x, y)=>{
+    const updatePosition = (x, y) => {
         dragger.setAttribute("cx", x);
         dragger.setAttribute("cy", y);
     }
 
-    
+    const getSVGPoint = (svg, x, y) => {
+        let p = new DOMPoint(x, y);
+        console.log('DOMPOINT:', p)
+        return p.matrixTransform(svg.getScreenCTM().inverse());
+    };
+
+
+
+
 
 </script>
 

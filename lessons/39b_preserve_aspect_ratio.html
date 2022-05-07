@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>preserveAspectRatio</title>
+    <script src="./custom-slider-component.js"></script>
+    <script src="./custom-button-component.js"></script>
+    <script src="./js/highlight/highlight.min.js"></script>
+    <link rel="stylesheet" href="js/highlight/styles/default.min.css">
+    <link rel="stylesheet" href="main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="title-holder">
+        <div class="info-holder">
+            <div class="title">preserveAspectRatio</div>
+        </div>
+    </div>
+    </div>
+    <div class="content-holder">
+        <div class="section-holder">
+            <div id="svg-holder" class="svg-holder-slim">
+                <!--
+                    
+                -->
+                <svg width="250" height="500" viewbox="0 0 500 500" preserveAspectRatio="xMidYMid meet">
+                    
+                    <rect x="0" y="0" width="500" height="500" fill="#eaeaea" stroke="black"></rect>
+                    <g transform="translate(70, 70)" stroke="black" stroke-width="10" stroke-linecap="round">
+                        <circle cx="180" cy="180" r="181" fill="#F3C729" />
+                        <circle cx="117.5" cy="139.5" r="12.5" fill="black" />
+                        <circle cx="242.5" cy="139.5" r="12.5" fill="black" />
+                        <path d="M80 224 C 121 271 241 276 291 224" fill="none" />
+                        <line x1="110.107" y1="111.014" x2="87.0145" y2="128.893" />
+                        <line x1="5" y1="-5" x2="34.2046" y2="-5"
+                            transform="matrix(0.790724 0.612173 0.612173 -0.790724 244 99)" />
+                    </g>
+                </svg>
+
+            </div>
+            
+            <!-- <div class="slidecontainer">
+                <custom-slider id="flask_scale" minimum="-20" maximum="20" step="0.1" val="1" label="bubble speed">
+                </custom-slider>
+            </div> -->
+        </div>
+        <div class="section-holder">
+            <div id="info_text" class="info">preserveAspectRatio="xMidYMid meet"</div>
+            <div class="slidecontainer">
+                <div class="radio-container">
+                    <div class="radio-label">x</div>
+                    <div class="radio-group-container">
+                        <label class="radio-button-container">xMin
+                            <input type="radio" value="xMin" name="xAlignment">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="radio-button-container">xMid
+                            <input type="radio" name="xAlignment" value="xMid" checked="checked">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="radio-button-container">xMax
+                            <input type="radio" name="xAlignment" value="xMax">
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
+                </div>
+                <div class="radio-container">
+                    <div class="radio-label">y</div>
+                    <div class="radio-group-container">
+                        <label class="radio-button-container">yMin
+                            <input type="radio" name="yAlignment" value="YMin">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="radio-button-container">yMid
+                            <input type="radio" name="yAlignment" value="YMid" checked="checked">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="radio-button-container">yMax
+                            <input type="radio" name="yAlignment" value="YMax">
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="radio-container">
+                    <div class="radio-label">meet/slice</div>
+                    <div class="radio-group-container">
+                        <label class="radio-button-container">meet
+                            <input type="radio" value="meet" name="meet-slice" checked="checked">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="radio-button-container">slice
+                            <input type="radio" name="meet-slice" value="slice">
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div id="info_text" class="info">container aspect ratio: portrait</div>
+            
+
+
+            <div class="slidecontainer">
+                <div class="radio-container">
+                    <div class="radio-label">svg dimensions</div>
+                    <div class="radio-group-container">
+                        <label class="radio-button-container">250x250
+                            <input type="radio" value="small-square" name="containerDimensions" checked="checked">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="radio-button-container">250x500
+                            <input type="radio" value="portrait" name="containerDimensions" checked="checked">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="radio-button-container">500x250
+                            <input type="radio" name="containerDimensions" value="landscape">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="radio-button-container">500x500
+                            <input type="radio" name="containerDimensions" value="square">
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+
+</body>
+<script>
+    let xAlignmentValue = "xMid";
+    let yAlignmentValue = "YMid";
+    let meetSliceValue = "meet";
+    let containerDimensionsValue = "portrait"
+
+    const svg = document.querySelector("svg");
+    const infoText = document.querySelector('#info_text');
+    const svgHolder = document.querySelector("#svg-holder");
+
+    const xAlignmentRadios = document.querySelectorAll('input[type=radio][name="xAlignment"]');
+    for (const radio of xAlignmentRadios) {
+        radio.addEventListener('change', () => {
+            console.log(radio.value);
+            xAlignmentValue = radio.value;
+            updateAspectRatioSettings();
+        })
+    }
+
+    const yAlignmentRadios = document.querySelectorAll('input[type=radio][name="yAlignment"]');
+    for (const radio of yAlignmentRadios) {
+        radio.addEventListener('change', () => {
+            console.log(radio.value);
+            yAlignmentValue = radio.value;
+            updateAspectRatioSettings();
+        })
+    }
+
+    const meetSlice = document.querySelectorAll('input[type=radio][name="meet-slice"]');
+    for (const radio of meetSlice) {
+        radio.addEventListener('change', () => {
+            console.log(radio.value);
+            meetSliceValue = radio.value;
+            updateAspectRatioSettings();
+        })
+    }
+
+    const containerDimensionsRadios = document.querySelectorAll('input[type=radio][name="containerDimensions"]');
+    for (const radio of containerDimensionsRadios) {
+        radio.addEventListener('change', () => {
+            console.log(radio.value);
+            containerDimensionsValue = radio.value;
+            updateContainerDimensionsSettings();
+        })
+    }
+
+    const updateContainerDimensionsSettings = ()=>{
+        console.log('current dimensions: ', containerDimensionsValue);
+        if(containerDimensionsValue == "portrait") {
+            svg.setAttribute("width", "250");
+            svg.setAttribute("height", "500");
+            svgHolder.classList.remove("svg-holder");
+            svgHolder.classList.remove("svg-holder-fat");
+            svgHolder.classList.add("svg-holder-slim");
+        } else if(containerDimensionsValue == "landscape"){
+            svg.setAttribute("width", "500");
+            svg.setAttribute("height", "250");
+            svgHolder.classList.remove("svg-holder");
+            svgHolder.classList.remove("svg-holder-slim");
+            svgHolder.classList.add("svg-holder-fat");
+        } else if(containerDimensionsValue == "square"){
+            svg.setAttribute("width", "500");
+            svg.setAttribute("height", "500");
+            svgHolder.classList.remove("svg-holder-slim");
+            svgHolder.classList.remove("svg-holder-fat");
+            svgHolder.classList.add("svg-holder");
+        } else {
+            svg.setAttribute("width", "250");
+            svg.setAttribute("height", "250");
+            svgHolder.classList.remove("svg-holder-slim");
+            svgHolder.classList.remove("svg-holder-fat");
+            svgHolder.classList.add("svg-holder-small");
+        }
+        
+    }
+
+    const updateAspectRatioSettings = ()=>{
+        const str = `${xAlignmentValue}${yAlignmentValue} ${meetSliceValue}`;
+        svg.setAttribute("preserveAspectRatio", str)
+        infoText.innerText = `preserveAspectRatio="${str}"`;
+    }
+
+
+
+</script>
+
+</html>

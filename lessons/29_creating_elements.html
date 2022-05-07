@@ -14,11 +14,11 @@
 
     <div class="title-holder">
         <div class="info-holder">
-            <div class="title">Changing Attribute Values </div>
-            <div class="subtitle">using javascript to dynamically change svg element attribute values</div>
+            <div class="title">Creating Elements </div>
+            <div class="subtitle"></div>
         </div>
     </div>
-    
+
     <div class="content-holder">
 
 
@@ -30,16 +30,46 @@
                     
                 -->
                 <svg id="my_svg" width="500" height="500" viewbox="0 0 500 500">
-                    
+                    <defs>
+                        <g id="leaf">
+                            <path id="surface"
+                                d="M51.4655 0C63.6939 34.1153 106.134 64.906 99.2498 105.295C93.1444 141.114 23.6633 135.225 5.41848 105.295C-12.8264 75.3643 18.1546 42.0639 51.4655 0Z" />
+                            <g id="capillaries">
+                                <path id="Polygon 2"
+                                    d="M49.4997 11L50.7988 122.75C49.7852 123.929 49.216 124.034 48.2007 122.75L49.4997 11Z"
+                                    fill="#2D2A2A" />
+                                <path id="Polygon 3" d="M74.3059 62.6975L49.2432 89.5L49.2433 87.2264L74.3059 62.6975Z"
+                                    fill="#2D2A2A" />
+                                <path id="Polygon 4"
+                                    d="M58.1587 32.2976L49.743 44.2409L49.7428 42.9458L58.1587 32.2976Z"
+                                    fill="#2D2A2A" />
+                                <path id="Polygon 5"
+                                    d="M64.4692 56.7018L50.2685 72.3493L49.0346 71.1337L64.4692 56.7018Z"
+                                    fill="#2D2A2A" />
+                                <path id="Polygon 6" d="M71.799 79.5947L49.9991 110.52L48.6066 109.49L71.799 79.5947Z"
+                                    fill="#2D2A2A" />
+                                <path id="Polygon 3_2" d="M26.6744 55.6575L49.5 80.5L50.2469 80.1863L26.6744 55.6575Z"
+                                    fill="#2D2A2A" />
+                                <path id="Polygon 4_2"
+                                    d="M41.8615 25.2575L49.7769 37.2008L49.777 35.9058L41.8615 25.2575Z"
+                                    fill="#2D2A2A" />
+                                <path id="Polygon 5_2"
+                                    d="M35.9261 49.6622L49.2825 65.3097L49.2821 63.752L35.9261 49.6622Z"
+                                    fill="#2D2A2A" />
+                                <path id="Polygon 6_2" d="M29.0319 72.5548L49.0002 104L50 102.5L29.0319 72.5548Z"
+                                    fill="#2D2A2A" />
+                            </g>
+                        </g>
+                    </defs>
                 </svg>
-    
+
             </div>
             <div class="descriptive-info-holder">
                 <div id="circle_info_text" class="small-info">container size: 500px x 500px </div>
                 <div id="gradient_info_text" class="small-info">container size: 500px x 500px </div>
             </div>
         </div>
-       
+
     </div>
 
 </body>
@@ -49,13 +79,21 @@
     const svg_width = 500;
     const svg_height = 500;
 
-    for(let i = 0; i < 30; i++){
+    const getColor = () => {
+        const h = Math.round(Math.random() * 360);
+        const s = 50 + Math.round(Math.random() * 50);
+        const l = 40 + Math.round(Math.random() * 50);
+
+        return `hsl(${h}, ${s}%, ${l}%)`
+    }
+
+    const createCircle = () => {
         const cx = Math.random() * svg_width;
         const cy = Math.random() * svg_height;
         const r = Math.random() * 100 + 10;
         const fill_opacity = Math.random() * .3 + .1;
-        const fill = ["red", "green", "blue", "purple", "yellow", "orange"][Math.round(Math.random()*5)];
-        
+        const fill = ["red", "green", "blue", "purple", "yellow", "orange"][Math.round(Math.random() * 5)];
+
         const stroke = "none";
         let my_circle = document.createElementNS(namespace, "circle");
         my_circle.setAttribute('cx', cx);
@@ -66,13 +104,32 @@
         my_circle.setAttribute('stroke', stroke);
 
         my_svg.appendChild(my_circle)
+    }
+
+    const createLeaf = () => {
+        const lf = document.createElementNS(namespace, "use");
+        const xpos = Math.random() * 500;
+        const ypos = Math.random() * 500;
+        const angle = Math.random() * 360;
+        const scale = .5 + Math.random() * .5;
+        lf.setAttribute("href", "#leaf");
+        lf.setAttribute("x", xpos);
+        lf.setAttribute("y", ypos);
+        lf.setAttribute("transform", `rotate(${angle}, ${xpos}, ${ypos}) scale(${scale})`);
+        lf.setAttribute("fill", getColor());
+        lf.addEventListener("click", _ => {
+            lf.remove();
+        })
+        my_svg.appendChild(lf);
+    }
+
+    for (let i = 0; i < 30; i++) {
+        createCircle();
+        createLeaf();
 
     }
 
-    //my_circle.setAttribute('fill', 'blue')
-    //my_circle.setAttribute('stroke', 'orange');
-    //my_circle.setAttribute('stroke-opacity', '1');
-    //my_circle.setAttribute('stroke-width', '20');
+
 
 
 </script>

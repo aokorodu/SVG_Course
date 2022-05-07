@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Grouping Elements</title>
+    <script src="../js/custom-slider-component.js"></script>
+    <script src="../js/highlight/highlight.min.js"></script>
+    <link rel="stylesheet" href="../js/highlight/styles/default.min.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="title-holder">
+        <div class="info-holder">
+            <div class="title">Grouping Elements</div>
+            <div class="subtitle"></div>
+            <div class="description"></div>
+        </div>
+    </div>
+    <div class="content-holder">
+        <div class="section-holder">
+            <div class="svg-holder">
+                <!--
+                    1.  smiley face with no group. If we wanted to move it, we'd have to change all the values
+                    2.  smiley face inside a group. Now we can add a transform to the group to move everything to the center
+                    3.  set stroke color, width, and linecap in the group so we don't need it on each element. Note that it puts a stroke around the "head" circle as well. If we don't want that, we could just add a stroke="none" the the head circle to override the group setting
+                    4.  presentation attributes on elements override group attribute settings
+                    5.  groups are also useful for logically arranging elements by type for readability
+                -->
+
+                <svg id="svg" width="500" height="500" viewbox="0 0 500 500">
+
+                    <!-- <circle cx="180" cy="180" r="181" fill="#F3C729" />
+                    <circle cx="117.5" cy="139.5" r="12.5" fill="black" />
+                    <circle cx="242.5" cy="139.5" r="12.5" fill="black" />
+                    <path d="M80 224 C 121 271 241 276 291 224" stroke="black" stroke-width="13" stroke-linecap="round"
+                        fill="none" />
+                    <line x1="110.107" y1="111.014" x2="87.0145" y2="128.893" stroke="black" stroke-width="10"
+                        stroke-linecap="round" />
+                    <line x1="5" y1="-5" x2="34.2046" y2="-5"
+                        transform="matrix(0.790724 0.612173 0.612173 -0.790724 244 99)" stroke="black" stroke-width="10"
+                        stroke-linecap="round" /> -->
+
+
+                    <!-- <g transform="translate(70, 70)">
+                        <circle cx="180" cy="180" r="181" fill="#F3C729" />
+                        <circle cx="117.5" cy="139.5" r="12.5" fill="black" />
+                        <circle cx="242.5" cy="139.5" r="12.5" fill="black" />
+                        <path d="M80 224 C 121 271 241 276 291 224" stroke="black" stroke-width="13" stroke-linecap="round"
+                            fill="none" />
+                        <line x1="110.107" y1="111.014" x2="87.0145" y2="128.893" stroke="black" stroke-width="10"
+                            stroke-linecap="round" />
+                        <line x1="5" y1="-5" x2="34.2046" y2="-5"
+                            transform="matrix(0.790724 0.612173 0.612173 -0.790724 244 99)" stroke="black" stroke-width="10"
+                            stroke-linecap="round" />
+                    </g> -->
+
+                    <!-- <g stroke="black" stroke-width="10" stroke-linecap="round" transform="translate(70, 70)">
+                        <circle cx="180" cy="180" r="181" fill="#F3C729" />
+                        <circle cx="117.5" cy="139.5" r="12.5" fill="black" />
+                        <circle cx="242.5" cy="139.5" r="12.5" fill="black" />
+                        <path d="M80 224 C 121 271 241 276 291 224" fill="none" />
+                        <line x1="110.107" y1="111.014" x2="87.0145" y2="128.893" />
+                        <line x1="240.107" y1="111.014" x2="267.0145" y2="120.893" />
+                    </g> -->
+
+                    <!-- <g fill="orange" stroke="red" stroke-width="7">
+                        <rect x="25" y="150" width="200" height="200"/>
+                        <rect x="275" y="150" width="200" height="200" fill="purple" />
+                    </g> -->
+
+                    <g id="tree"  transform="translate(150 115)">
+                        <g id="branches" stroke="#794901" fill="none">
+                            <path d="M85.5 71C103.833 88.1667 139.6 133.5 136 177.5C132.4 221.5 113.833 258.167 105 271"
+                                stroke-width="10" />
+                            <path d="M135.5 160.5C120.167 138.833 87.6 96.9 80 102.5" stroke-width="5" />
+                            <path d="M132 142C137.333 120 150.1 76.4 158.5 78" stroke-width="5" />
+                            <path d="M135 176C126.5 160.333 100.7 126.1 65.5001 114.5C30.3001 102.9 48.5001 94.6667 62.0001 92"
+                                stroke-width="5" />
+                        </g>
+                        <g id="leaves" fill="#06B460">
+                            <circle id="Ellipse 16" cx="56.5" cy="42.5" r="33.5"/>
+                            <circle id="Ellipse 17" cx="90.5" cy="62.5" r="33.5"/>
+                            <circle id="Ellipse 18" cx="33.5" cy="67.5" r="33.5"/>
+                            <circle id="Ellipse 19" cx="90.5" cy="33.5" r="33.5"/>
+                            <circle id="Ellipse 20" cx="136.5" cy="66.5" r="33.5"/>
+                            <circle id="Ellipse 21" cx="63.5" cy="83.5" r="33.5"/>
+                            <circle id="Ellipse 22" cx="103.5" cy="89.5" r="33.5"/>
+                            <circle id="Ellipse 23" cx="130.5" cy="38.5" r="33.5"/>
+                            <circle id="Ellipse 24" cx="163.5" cy="55.5" r="33.5"/>
+                        </g>
+                    </g>
+
+                </svg>
+
+            </div>
+            <div class="info">container size: 500px x 500px </div>
+        </div>
+        <div class="section-holder">
+            <div class="description">
+                <p>The group element acts like a container for all of it's child elements. Styles applied to the group
+                    will be applied to the children. If the child has the same style attribute as the group element, the
+                    child style attribute overrides the parent style</p>
+                <pre><code>&lt;g fill="yellow" stroke="black" transform="translate(70, 70)"&gt;</code></pre>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    hljs.highlightAll();
+</script>
+
+</html>

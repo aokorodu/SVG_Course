@@ -1,0 +1,10 @@
+<?xml-stylesheet type="text/css" href="my-external-styles.css" ?>
+<svg width="500" height="500" viewbox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+  <!-- <style>
+    @import url(my-external-styles.css);
+  </style> -->
+
+ 
+  <circle cx="250" cy="250" r="150" class="external-style">
+  </circle>
+</svg>

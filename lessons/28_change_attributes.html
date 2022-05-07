@@ -31,9 +31,9 @@
                 -->
                 <svg width="500" height="500" viewbox="0 0 500 500">
                     <defs>
-                        <radialGradient id="sun-gradient" cx="25%" cy="25%">
-                            <stop offset="0" stop-color="#FAEEB0"></stop>
-                            <stop offset="100%" stop-color="#FB9700"></stop>
+                        <radialGradient id="sun-gradient" cx="50%" cy="50%">
+                            <stop id="first_stop" offset="0" stop-color="#FAEEB0"></stop>
+                            <stop id="second_stop" offset="100%" stop-color="#FB9700"></stop>
                         </radialGradient>
                         <linearGradient id="sky-gradient" x1="0%" y1="0%" x2="50%" y2="100%">
                             <stop offset="0%" stop-color="#99EDFF" />
@@ -58,9 +58,9 @@
                 <custom-slider id="radius_size" minimum="1" maximum="300" val="150" label="radius" step=1></custom-slider>
                 <custom-slider id="cx" minimum="0" maximum="500" val="250" label="cx" step=1></custom-slider>
                 <custom-slider id="cy" minimum="0" maximum="500" val="250" label="cy" step=1></custom-slider>
-                <custom-slider id="radial_cx" minimum="0" maximum="100" val="25" label="radial grad. cx" step=1>
+                <custom-slider id="radial_cx" minimum="0" maximum="100" val="50" label="radial grad. cx" step=1>
                 </custom-slider>
-                <custom-slider id="radial_cy" minimum="0" maximum="100" val="25" label="radial grad. cy" step=1>
+                <custom-slider id="radial_cy" minimum="0" maximum="100" val="50" label="radial grad. cy" step=1>
                 </custom-slider>
             </div>
         </div>
@@ -71,6 +71,9 @@
 <script>
     const my_circle = document.querySelector('#my_circle');
     const sun_gradient = document.querySelector('#sun-gradient');
+    const first_stop = sun_gradient.querySelector("#first_stop");
+    const second_stop = sun_gradient.querySelector("#second_stop");
+
     const radius_size_slider = document.querySelector("#radius_size");
     const cx_slider = document.querySelector("#cx");
     const cy_slider = document.querySelector("#cy");
@@ -154,6 +157,8 @@
             gradient_info_text.innerText = str;
     }
 
+    first_stop.setAttribute("stop-color", "lightgreen");
+    second_stop.setAttribute("stop-color", "darkgreen");
     update_circle_info_text();
     update_radial_info_text();
 

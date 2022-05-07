@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>SVG - SYNTAX</title>
+   <link rel="stylesheet" href="../js/highlight/styles/default.min.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="title-holder">
+        <div class="info-holder">
+            <div class="title">SVG Fills </div>
+            <div class="subtitle">fill and fill-opacity</div>
+        </div>
+    </div>
+    <div class="content-holder">
+        <div class="section-holder">
+            <div class="svg-holder">
+                <!-- 
+                    1.  fill using css color values: https://www.w3.org/wiki/CSS/Properties/color/keywords
+                -->
+                <svg width="500" height="500" viewbox="0 0 500 500">
+
+                    <circle cx="150" cy="150" r="50" fill="red"></circle>
+                    
+                    <circle cx="350" cy="150" r="50" fill="red" fill-opacity=".3"></circle>
+                    
+                    <circle cx="250" cy="250" r="50" fill="cornflowerblue" ></circle>
+
+                    <polyline points="100,350 250,400 400,350 400,450 100,450" fill="green"></polyline>
+                </svg>
+
+            </div>
+            <div class="info">container size: 500px x 500px </div>
+
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>gradients</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="title-holder">
+        <div class="info-holder">
+            <div class="title">gradients</div>
+            <div class="subtitle">linearGradient, radialGradient
+            </div>
+            <div class="description"></div>
+        </div>
+    </div>
+    <div class="content-holder">
+        <div class="section-holder">
+            <div class="svg-holder">
+                <!--
+                    base element <svg>
+                    
+                -->
+                <svg id="svg" width="500" height="500" viewbox="0 0 500 500">
+                    <!-- 
+                
+                    -->
+                    <defs>
+                        <!-- radial gradients -->
+                        <radialGradient id="radial_gradient" r="1" fr=".0">
+                            <stop offset="0%" stop-color="red" />
+                            <stop offset="100%" stop-color="blue" />
+                        </radialGradient>
+
+                        <radialGradient id="radial_gradient_focal_center" cx="90%" cy="50%" fx="50%" fy="50%">
+                            <stop offset="0%" stop-color="red" />
+                            <stop offset="100%" stop-color="blue" />
+                        </radialGradient>
+
+                        <radialGradient id="radial_gradient_2" gradientUnits="userSpaceOnUse">
+                            <stop offset="0%" stop-color="red" />
+                            <stop offset="100%" stop-color="blue" />
+                        </radialGradient>
+
+                        <radialGradient id="radial_gradient_not_centered" cx="50%" cy="100%">
+                            <stop offset="0%" stop-color="yellow" />
+                            <stop offset="100%" stop-color="purple" />
+                        </radialGradient>
+
+                        <radialGradient id="radial_gradient_not_centered_b" cx=".5" cy=".5" fx=".2" fy=".2" r=".5"
+                            spreadMethod="repeat">
+                            <stop offset="0%" stop-color="yellow" />
+                            <stop offset="100%" stop-color="#111111" />
+                        </radialGradient>
+
+
+                    </defs>
+
+                    <rect x="0" y="0" width="500" height="500" stroke="none" fill="url(#radial_gradient)"></rect>
+
+                    <!-- <rect x="0" y="0" width="500" height="500" stroke="none" fill="url(#radial_gradient_focal_center)"></rect> -->
+
+                    <!-- <rect x="0" y="0" width="500" height="500" stroke="none" fill="url(#radial_gradient_2)"></rect> -->
+
+                    <!-- <rect x="0" y="0" width="500" height="500" stroke="none" fill="url(#radial_gradient_not_centered)"></rect> -->
+
+                    <!-- <rect x="0" y="0" width="500" height="500" stroke="none" fill="url(#radial_gradient_not_centered_b)"></rect> -->
+
+
+                </svg>
+            </div>
+            <div class="info">left: linear gradients - right: radial gradients </div>
+        </div>
+    </div>
+</body>
+
+</html>

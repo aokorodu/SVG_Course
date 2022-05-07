@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>smooth quadratic command</title>
+   <link rel="stylesheet" href="../css/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="title-holder">
+        <div class="info-holder">
+            <div class="title">Smooth Quadratic Command (T)</div>
+            <!-- <div class="subtitle">two control points</div> -->
+        </div>
+    </div>
+    <div class="content-holder">
+        <div class="section-holder">
+            <div class="svg-holder">
+
+                <svg width="500" height="500" xmlns="http://www.w3.org/2000/svg">
+                    <style>
+                        .showing {
+                            opacity: 1;
+                            animation: pulse 1s ease-in-out alternate-reverse infinite;
+
+                        }
+
+                        .hidden {
+                            opacity: 0;
+                        }
+
+                        @keyframes pulse {
+                            from {
+                                opacity: 1;
+                            }
+
+                            to {
+                                opacity: 0;
+                            }
+                        }
+                    </style>
+                    <path d="M 0,250 Q 125,100 250,250 Q 375,400 500,250" stroke="black" fill="none" />
+                    <path id="my_path" d="M 0,250 Q 125,100 250,250 T 500,250" stroke="black" stroke-width="2"
+                        fill="transparent" />
+                    <line id="handle-connector" x1="125" y1="100" x2="375" y2="400" stroke="black" stroke-dasharray="10"
+                        stroke-opacity=".5"></line>
+                    <text id="drag-me-text" class="showing" x="125" y="75" text-anchor="middle" fill="black">drag
+                        me</text>
+                    <circle id="handle" cx="125" cy="100" r="15" stroke="black" fill="black"></circle>
+                    <circle id="shadow-handle" cx="375" cy="400" r="15" stroke="black" stroke-dasharray="5"
+                        stroke-width="3" fill="white"></circle>
+
+                    <rect x="-5" y="-5" width="10" height="10" transform="translate(250 250) rotate(45)"></rect>
+                </svg>
+
+
+            </div>
+            <div id="info_text" class="info">aaa</div>
+        </div>
+        <div class="section-holder">
+            <div class="description">
+                <p>The smooth quadratic command (T or t) draws a quadratic curve from the current point (the point prior
+                    to the command) to the point after the command. It assumes a control point that is the REFLECTION of
+                    the previous control point.</p>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    const svg = document.querySelector("svg");
+    const handle = document.getElementById("handle");
+    const dragMeText = document.getElementById("drag-me-text")
+    const shadowHandle = document.getElementById("shadow-handle");
+    const handleConnector = document.getElementById('handle-connector');
+    const path = document.getElementById("my_path");
+    const infoText = document.getElementById("info_text")
+    
+    const centerPoint = {
+        x: 250,
+        y: 250
+    }
+
+    const handle_0_pos = {
+        x: 25,
+        y: 100
+    }
+
+    const handle_1_pos = {
+        x: 225,
+        y: 100
+    }
+
+    const handle_3_pos = {
+        x: 475,
+        y: 400
+    }
+
+    const activeHandle = null;
+    const activePosition = null;
+
+    handle.addEventListener("mousedown", (e) => {
+        dragMeText.classList.remove("showing");
+        dragMeText.classList.add("hidden")
+        startDrag(e);
+    })
+
+    const startDrag = (e) => {
+        console.log('down');
+
+        svg.addEventListener("mousemove", drag);
+        svg.addEventListener("mouseup", stopDrag);
+        svg.addEventListener("mouseleave", stopDrag);
+    }
+
+    const stopDrag = () => {
+        console.log('stopDrag')
+        svg.removeEventListener("mousemove", drag);
+        svg.removeEventListener("mouseup", stopDrag);
+        svg.removeEventListener("mouseleave", stopDrag);
+    }
+
+    const drag = (e) => {
+        const x = e.offsetX;
+        const y = e.offsetY;
+        if (x < 20) {
+            x = 20;
+        } else if (x > 480) {
+            x = 480;
+        }
+
+        if (y < 20) {
+            y = 20;
+        } else if (y > 480) {
+            y = 480;
+        }
+
+        const shadowX = centerPoint.x + (centerPoint.x - x);
+        const shadowY = centerPoint.y + (centerPoint.y - y);
+        updateHandlePosition(x, y);
+        updateShadowHandlePosition(shadowX, shadowY);
+        updateCurve(x, y);
+        updateHandleConnector(x, y, shadowX, shadowY)
+    }
+
+    const updateHandlePosition = (x, y) => {
+        handle.setAttribute("cx", x);
+        handle.setAttribute("cy", y);
+    }
+
+    const updateShadowHandlePosition = (x, y) => {
+
+        shadowHandle.setAttribute("cx", x);
+        shadowHandle.setAttribute("cy", y);
+    }
+
+    const updateHandleConnector = (x1, y1, x2, y2) => {
+        handleConnector.setAttribute("x1", x1);
+        handleConnector.setAttribute("y1", y1);
+        handleConnector.setAttribute("x2", x2);
+        handleConnector.setAttribute("y2", y2);
+    }
+
+    const updateCurve = (x, y) => {
+        const newCurve = `M 0,250 Q ${x},${y} 250,250 T 500,250`;
+        path.setAttribute("d", newCurve);
+        infoText.innerText = `<path d=${newCurve}/>`;
+    }
+
+    infoText.innerText = `<path d="M 0,250 Q 125,100 250,250 T 500,250" />`
+
+
+</script>
+
+</html>

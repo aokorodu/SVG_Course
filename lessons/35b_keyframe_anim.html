@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Filters - 1</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="title-holder">
+        <div class="info-holder">
+            <div class="title">CSS Animation</div>
+            <div class="subtitle">keyframe animation, example of Safari bug on zoom page with transform-origin</div>
+
+        </div>
+    </div>
+    <div class="content-holder">
+        <div class="section-holder">
+            <div class="svg-holder">
+                <!--
+                   for the lesson
+                -->
+                <svg width="500" height="500" viewbox="0 0 500 500">
+                    <style>
+                        .hours {
+                            stroke-dasharray: 25 75;
+                            stroke-dashoffset: 0;
+                            animation: pendulum 1s ease-in-out infinite alternate;
+                        }
+
+                        .minutes {
+                            stroke-dasharray: 25 75;
+                            stroke-dashoffset: 0;
+                            animation: snake 3s linear infinite;
+                        }
+
+                        .seconds {
+                            stroke-dasharray: 25 75;
+                            stroke-dashoffset: 0;
+                            animation: snake 4s ease-out infinite alternate-reverse;
+                        }
+
+                        .zoom-circle {
+                            animation: zoom 5s ease-in-out infinite alternate;
+                        }
+
+                        @keyframes snake {
+                            from {
+                                stroke-dashoffset: 0;
+                            }
+                            to {
+                                stroke-dashoffset: -100;
+                            }
+                        }
+
+                        @keyframes pendulum {
+                            from {
+                                stroke-dashoffset: 20;
+                            }
+                            to {
+                                stroke-dashoffset: -45;
+                            }
+                        }
+
+                        <!-- @keyframes zoom {
+                            0% {
+                                fill: red;
+                                cx: 125px;
+                                cy:125px;
+                            }
+                            25% {
+                                fill: green;
+                                cx: 375px;
+                                cy:125px;
+                            }
+                            50% {
+                                fill: blue;
+                                cx: 375px;
+                                cy:375px;
+                            }
+                            75% {
+                                fill: yellow;
+                                cx: 125px;
+                                cy:375px;
+                            }
+                            100% {
+                                fill: red;
+                                cx: 125px;
+                                cy:125px;
+                            }
+                        } -->
+
+                        @keyframes zoom {
+                            0% {
+                                fill: red;
+                                cx: 250px;
+                                cy:125px;
+                            }
+                            33% {
+                                cx: 375px;
+                                cy:375px;
+                            }
+                            66% {
+                                cx: 125px;
+                                cy:375px;
+                            }
+                            100% {
+                                fill: blue;
+                                cx: 250px;
+                                cy:125px;
+                            }
+                        }
+
+                        
+                        
+                    </style>
+                    
+                    <circle cx="250" cy="250" r="200" fill="none" stroke-width="20" stroke="#eaeaea" pathLength="100"></circle>
+
+                    <circle cx="250" cy="250" r="150" fill="none" stroke-width="20" stroke="#eaeaea" pathLength="100"></circle>
+
+                    <circle cx="250" cy="250" r="100" fill="none" stroke-width="20" stroke="#eaeaea" pathLength="100"></circle>
+
+                    <circle class="hours" cx="250" cy="250" r="200" fill="none" stroke-width="20" stroke="black" pathLength="100"></circle>
+
+                    <circle class="minutes" cx="250" cy="250" r="150" fill="none" stroke-width="20" stroke="black" pathLength="100"></circle>
+                    
+                    <circle class="seconds" cx="250" cy="250" r="100" fill="none" stroke-width="20" stroke="black" pathLength="100"></circle>
+
+                    <circle class="hours" cx="250" cy="250" r="25" fill="none" stroke-width="50" stroke="black" pathLength="100"></circle>
+
+                    <circle class="zoom-circle" cx="50" cy="50" r="50" fill="black" stroke="none"></circle>
+
+
+                    
+
+                </svg>
+
+            </div>
+            <div class="info">container size: 500px x 500px </div>
+        </div>
+    </div>
+</body>
+
+</html>

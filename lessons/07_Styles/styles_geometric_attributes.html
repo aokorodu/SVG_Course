@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>geometric attributes</title>
+    <link rel="stylesheet" href="../js/highlight/styles/default.min.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+<style>
+    .html_style {
+        fill: orange;
+        stroke: blue;
+        stroke-width: 10
+    }
+</style>
+
+<body>
+    <div class="title-holder">
+        <div class="info-holder">
+            <div class="title">SVG Styles </div>
+            <div class="subtitle">geometric attributes</div>
+            <div class="description"></div>
+        </div>
+    </div>
+    <div class="content-holder">
+        <div class="section-holder">
+            <div class="svg-holder">
+                
+
+                <svg width="500" height="500" viewbox="0 0 500 500">
+                    <style>
+                        .geo-style-a{
+                            cx: 250;
+                            cy: 250;
+                            r: 100;
+                        }
+
+                        .geo-style-b{
+                            cx: 250px;
+                            cy: 250px;
+                            r: 100px;
+                        }
+                 
+                    </style>
+                    <!-- this doesn't work with safari on a mac-->
+                    <!-- <circle class="geo-style-a">
+                    </circle> -->
+
+                    <!-- including geometric presentation attributes that are overridden by the style works somewhat but looks different in each different browser. For example, Safari and FF wont apply the r css value, they use the pres. attribute. -->
+                    <circle cx="375" cy="375" r="50" class="geo-style-a">
+                    </circle>
+
+                    <!-- css geometric presentation attributes works when you add "px" to the values -->
+                    <!-- <circle class="geo-style-b">
+                    </circle> -->
+                </svg>
+
+            </div>
+            <div class="info">container size: 500px x 500px </div>
+        </div>
+
+    </div>
+</body>
+
+</html>

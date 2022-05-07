@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Viewbox</title>
+    <link rel="stylesheet" href="../js/highlight/styles/default.min.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+<style>
+    /* use this for the html style */
+    .html_style {
+        fill: orange;
+        stroke: blue;
+        stroke-width: 10
+    }
+</style>
+
+<body>
+    <div class="title-holder">
+        <div class="info-holder">
+            <div class="title">SVG Styles </div>
+            <div class="subtitle">presentation attributes, inline, embedded, html style element, external</div>
+            <div class="description"></div>
+        </div>
+    </div>
+    <div class="content-holder">
+        <div class="section-holder">
+            <div class="svg-holder">
+                <!--
+                    1.  presentation attributes
+                    2.  inline style
+                    3.  embedded style
+                    4.  html style
+                    5.  external style
+                -->
+
+                <svg width="500" height="500" viewbox="0 0 500 500">
+                    <style>
+                        @import url(my-external-styles.css);
+
+                        .embedded_style {
+                            fill: blue;
+                            stroke: orange;
+                            stroke-width: 10
+                        }
+                    </style>
+
+                    <circle cx="125" cy="125" r="75" fill="rgb(0, 206, 0)" stroke="grey" stroke-width="10px">
+                    </circle>
+
+                    <circle cx="375" cy="125" cy="140" r="75" style="fill:yellow; stroke: black; stroke-width: 10">
+                    </circle>
+
+                    <circle cx="125" cy="375" r="75" class="embedded_style">
+                    </circle>
+
+                    <circle cx="375" cy="375" r="75" class="html_style">
+                    </circle>
+
+                    <circle cx="250" cy="250" r="75" class="external-style">
+                    </circle>
+                </svg>
+
+            </div>
+            <div class="info">
+                    <div>ul: presentation attributes</div>
+                    <div>ur: inline style</div>
+                    <div>ll: embedded style</div>
+                    <div>lr: html style</div>
+                    <div>center: external style</div>
+            </div>
+        </div>
+
+    </div>
+</body>
+
+</html>

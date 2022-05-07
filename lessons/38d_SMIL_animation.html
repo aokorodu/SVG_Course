@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>wave experiment</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="title-holder">
+        <div class="info-holder">
+            <div class="title">SMIL animation</div>
+            <!-- <div class="subtitle">two control points</div> -->
+        </div>
+    </div>
+    <div class="content-holder">
+        <div class="section-holder">
+            <div class="svg-holder">
+
+                <svg width="500" height="500" xmlns="http://www.w3.org/2000/svg">
+
+                    <defs>
+                        <g id="rocket" transform="rotate(90) translate(-10 -20)">
+                            <path d="M9.98599 0L16.5744 40L9.98599 37.8295L3.39758 40L9.98599 0Z" fill="#EEE6E6" />
+                            <path d="M10.045 20.3765L10.6359 37.2093L10.045 36.2959L9.45416 37.2093L10.045 20.3765Z"
+                                fill="#D3CBCB" />
+                            <path d="M12.9827 18.2195L20 31.853L17.5394 32.0958L15.6018 33.9309L12.9827 18.2195Z"
+                                fill="#B70B0B" />
+                            <path d="M7.01727 18.049L6.27483e-06 31.6825L2.46055 31.9253L4.3982 33.7604L7.01727 18.049Z"
+                                fill="#B70B0B" />
+                            <ellipse cx="10.045" cy="15.9468" rx="1.47721" ry="2.48062" fill="#0B0A0A" />
+                        </g>
+                        <clipPath id="rect-clip">
+                            <rect x="0" y="0" width="500" height="100"></rect>
+                        </clipPath>
+                    </defs>
+
+
+                    <g id="anim_one" clip-path="url(#rect-clip)">
+                        <rect x="0" y="0" width="500" height="100" stroke="none" fill="#93C17E" />
+                        <circle id="first-circle" cx="250" cy="200" r="50" fill="white" fill-opacity=".6" stroke="none">
+                        </circle>
+                    </g>
+                    <animate id="first_animation" href="#first-circle" attributeName="cy" from="200" to="100" begin="0s"
+                        dur="2s"  fill="freeze" />
+
+
+                    <g id="anim_two" transform="translate(0 100)">
+                        <rect x="0" y="0" width="500" height="100" stroke="none" fill="#7BAD63" />
+                        <circle id="second-circle" cx="-50" cy="50" r="15" fill="#48723A" stroke="none">
+                        </circle>
+                    </g>
+
+                    
+                    <animate id="second_animation" href="#second-circle" attributeName="cx" from="-50" to="550"
+                        begin="first_animation.end" dur="5s" repeatCount="indefinite" />
+
+                    <g id="anim_three" transform="translate(0 200)">
+                        <rect x="0" y="0" width="500" height="100" stroke="none" stroke-width="1" fill="#599F58" />
+                        <rect x="225" y="25" rx="10" ry="10" width="50" height="50" fill="darkgreen">
+                            <animateTransform attributeName="transform"  type="rotate"
+                                from="0 250 50" to="360 250 50" begin="0s" dur="1s" repeatCount="indefinite">
+                            </animateTransform>
+                        </rect>
+
+                        <rect x="237.5" y="37.5" width="25" height="25" rx="5" ry="5" fill="lightgreen">
+                            <animateTransform attributeName="transform"  type="rotate"
+                                from="0 250 50" to="360 250 50" dur="1.5s" repeatCount="indefinite">
+                            </animateTransform>
+                        </rect>
+
+                        <rect x="245" y="45" width="10" height="10" rx="1" ry="2" fill="green">
+                            <animateTransform attributeName="transform"  type="rotate"
+                                from="0 250 50" to="360 250 50" dur="1.5s" repeatCount="indefinite">
+                            </animateTransform>
+                        </rect>
+                    </g>
+
+                    <g id="anim_four" transform="translate(0 300)">
+                        <rect x="0" y="0" width="500" height="200" stroke="none" fill="#48723A" />
+                        <path
+                            d="M122.72 173.5C68.2 173.5 50 133.5 50 93.5C50 53.5 72.48 26 127 26C199.74 26 304.54 173.5 377.28 173.5C431.8 173.5 450 133.5 450 93.5C450 53.5 417.52 28 363 28C290.26 28 195.46 173.5 122.72 173.5Z"
+                            stroke="yellowgreen" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            stroke-opacity=".25" fill="none" />
+                        <rect x="-5" y="-5" width="10" height="10" fill="#A8E295">
+                            <animateMotion dur="5s" repeatCount="indefinite" rotate="auto" keyPoints="0;0.5;1"
+                                keyTimes="0;0.75;1" calcMode="linear"
+                                path="M122.72 173.5C68.2 173.5 50 133.5 50 93.5C50 53.5 72.48 26 127 26C199.74 26 304.54 173.5 377.28 173.5C431.8 173.5 450 133.5 450 93.5C450 53.5 417.52 28 363 28C290.26 28 195.46 173.5 122.72 173.5Z" />
+                        </rect>
+                        
+                        <use href="#rocket" x="0" y="0">
+                            <animateMotion dur="5000ms" begin="0s" repeatCount="indefinite" rotate="auto"
+                                keyPoints="0;0.5;1" keyTimes="0;0.45;1" calcMode="linear"
+                                path="M122.72 173.5C68.2 173.5 50 133.5 50 93.5C50 53.5 72.48 26 127 26C199.74 26 304.54 173.5 377.28 173.5C431.8 173.5 450 133.5 450 93.5C450 53.5 417.52 28 363 28C290.26 28 195.46 173.5 122.72 173.5Z" />
+                        </use>
+                    </g>
+
+
+                </svg>
+            </div>
+            <div id="info_text" class="info"></div>
+        </div>
+        <div class="section-holder">
+            <div class="description">
+                <p></p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

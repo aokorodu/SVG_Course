@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>wave experiment</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="title-holder">
+        <div class="info-holder">
+            <div class="title">SMIL animation</div>
+            <!-- <div class="subtitle">two control points</div> -->
+        </div>
+    </div>
+    <div class="content-holder">
+        <div class="section-holder">
+            <div class="svg-holder">
+
+                <svg width="500" height="500" xmlns="http://www.w3.org/2000/svg">
+                    <!-- <rect x="0" y="0" width="500" height="500" fill="skyblue"></rect> -->
+                    <g id="propeller-holder" opacity="0" transform="translate(210 0)">
+                        <g id="propeller">
+                            <path
+                                d="M31.1287 51.8972C32.8343 41.9192 47.1657 41.9192 48.8713 51.8972L78.7742 226.829C79.4892 231.012 77.1854 235.126 73.2454 236.702L43.3425 248.663C41.1968 249.521 38.8032 249.521 36.6575 248.663L6.75461 236.702C2.81464 235.126 0.510789 231.012 1.2258 226.829L31.1287 51.8972Z"
+                                fill="#ECE9E9" />
+                            <path
+                                d="M31.1287 51.8972C32.8343 41.9192 47.1657 41.9192 48.8713 51.8972L78.7742 226.829C79.4892 231.012 77.1854 235.126 73.2454 236.702L43.3425 248.663C41.1968 249.521 38.8032 249.521 36.6575 248.663L6.75461 236.702C2.81464 235.126 0.510789 231.012 1.2258 226.829L31.1287 51.8972Z"
+                                fill="#ECE9E9" />
+                            <path
+                                d="M48.8713 448.103C47.1657 458.081 32.8343 458.081 31.1287 448.103L1.22582 273.171C0.51081 268.988 2.81466 264.874 6.75462 263.298L36.6575 251.337C38.8032 250.479 41.1968 250.479 43.3425 251.337L73.2454 263.298C77.1854 264.874 79.4892 268.988 78.7742 273.171L48.8713 448.103Z"
+                                fill="#ECE9E9" />
+                            <path
+                                d="M48.8713 448.103C47.1657 458.081 32.8343 458.081 31.1287 448.103L1.22582 273.171C0.51081 268.988 2.81466 264.874 6.75462 263.298L36.6575 251.337C38.8032 250.479 41.1968 250.479 43.3425 251.337L73.2454 263.298C77.1854 264.874 79.4892 268.988 78.7742 273.171L48.8713 448.103Z"
+                                fill="#ECE9E9" />
+                            <circle cx="40" cy="250" r="11.5" fill="#171616" stroke="#F9F9F9" stroke-width="7" />
+                        </g>
+                    </g>
+                    <rect x="150" y="150" rx="10" ry="10" width="200" height="200" fill="skyblue" transform-origin="250 250">
+                        <animateTransform 
+                            id="rotate"
+                            attributeName="transform" 
+                            type="rotate" 
+                            values="0; 360"
+                            begin=".5s" 
+                            dur="1s" 
+                            repeatCount="1">
+                        </animateTransform>
+                        <animateTransform 
+                            id="scale"
+                            attributeName="transform" 
+                            type="scale" 
+                            values="1 1; 2 1; 1 1; 1 2; 1 1; 2; 1"
+                            begin="rotate.end" 
+                            dur="2s" 
+                            repeatCount="2"
+                            fill="freeze">
+                        </animateTransform>
+                    </rect>
+                    <!-- <animateTransform href="#propeller" attributeName="transform" type="rotate" from="0 40 250"
+                        to="360 40 250" begin="0s" dur="2s" repeatCount="indefinite">
+                    </animateTransform> -->
+
+
+
+                </svg>
+            </div>
+            <div id="info_text" class="info"></div>
+        </div>
+        <div class="section-holder">
+            <div class="description">
+                <p></p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

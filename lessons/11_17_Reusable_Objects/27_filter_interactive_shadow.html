@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Drop Shadow Interactive</title>
+    <script src="./custom-slider-component.js"></script>
+    <link rel="stylesheet" href="main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="title-holder">
+        <div class="info-holder">
+            <div class="title">&lt;feDropShadow&gt;</div>
+            <div class="subtitle">interactive drop shadow</div>
+        </div>
+    </div>
+    <div class="content-holder">
+        <div class="section-holder">
+            <div class="svg-holder">
+                <!--
+                   for the lesson
+                -->
+                <svg width="500" height="500" viewbox="0 0 500 500">
+                    <defs>
+    
+                        <filter id="shadow-filter" x="-50%" y="-50%" width="200%" height="200%">
+                            <feDropShadow id="drop-shadow" dx="10" dy="10" stdDeviation="3" flood-color="black" flood-opacity=".5" />
+                        </filter>
+    
+                        <image id="image" x="0" y="0" href="../_graphics/zuubaDigitalLogo_2.png" width="400" height="400"></image>
+
+                        <!-- <g id="box">
+                            <rect x="0" y="0" width="300" height="300" fill="orange" stroke="none"></rect>
+                        </g> -->
+    
+                    </defs>
+    
+                    <!-- <use href="#box" x="100" y="100" filter="url(#shadow-filter)" /> -->
+
+                    <g id="box">
+                        <rect x="100" y="100" width="300" height="300" fill="orange" stroke="none" filter="url(#shadow-filter)"></rect>
+                    </g>
+                </svg>
+    
+            </div>
+            <div class="descriptive-info-holder">
+                <div id="info" class="small-info">container size: 500px x 500px </div>
+            </div>
+            
+        </div>
+        <div class="section-holder">
+            <div style="width:500px;">
+                <custom-slider id="stdDev" minimum="0" maximum="30" val="3" label="stdDeviation"></custom-slider>
+                <custom-slider id="dx" minimum="-30" maximum="30" val="10" label="dx"></custom-slider>
+                <custom-slider id="dy" minimum="-30" maximum="30" val="10" label="dy"></custom-slider>
+    
+            </div>
+        </div>
+        
+        
+    </div>
+</body>
+<script>
+    let stDev = 3;
+    let dx = 10;
+    let dy = 10;
+
+    const info = document.querySelector('#info');
+
+    const stdDev_slider = document.querySelector("#stdDev");
+    const dx_slider = document.querySelector("#dx");
+    const dy_slider = document.querySelector("#dy");
+    
+    const drop_shadow_filter = document.getElementById('drop-shadow');
+
+    stdDev_slider.addEventListener("value", (e)=>{
+        updateStdDev(e.detail.value)
+    })
+
+    dx_slider.addEventListener("value", (e)=>{
+        updateDX(e.detail.value)
+    })
+
+    dy_slider.addEventListener("value", (e)=>{
+        updateDY(e.detail.value)
+    })
+
+    const updateStdDev = (val)=>{
+        stDev= val;
+        let str = `${stDev}`;
+        drop_shadow_filter.setAttribute("stdDeviation", str)
+        updateStdDevText()
+    }
+
+    const updateDX = (val)=>{
+        dx = val;
+        let str = `${dx}`;
+        drop_shadow_filter.setAttribute("dx", str)
+        updateStdDevText()
+    }
+
+    const updateDY = (val)=>{
+        dy = val;
+        let str = `${dy}`;
+        drop_shadow_filter.setAttribute("dy", str)
+        updateStdDevText()
+    }
+
+    const updateStdDevText = ()=>{
+        info.innerText = `<feDropShadow id="drop-shadow"  stdDeviation="${stDev} dx="${dx}" dy="${dy}"" />`;
+    }
+
+    updateStdDev(stDev);
+    updateDX(dx);
+    updateDX(dy);
+</script>
+</html>

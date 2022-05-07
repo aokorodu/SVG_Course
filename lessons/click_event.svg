@@ -1,0 +1,29 @@
+<svg width="500" height="500" viewbox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+
+
+    <rect x="10" y="10" width="480" height="480" fill="none" stroke="#eaeaea" stroke-width="2" />
+    <circle id="my_circle" cx="250" cy="250" r="60" fill="blue" />
+    <script type="text/JavaScript">
+    // <![CDATA[
+
+        
+        const my_circle = document.querySelector('#my_circle');
+
+        my_circle.addEventListener('click', (e) => {
+            // my_circle.setAttribute("fill", getColor());
+            my_circle.parentNode.removeChild(my_circle);
+            //my_circle.remove()
+            console.log(my_circle);
+        })
+
+        function getColor() {
+            const h = Math.round(Math.random() * 360);
+            const s = 50 + Math.round(Math.random() * 50);
+            const l = 40 + Math.round(Math.random() * 50);
+            return `hsl(${h}, ${s}%, ${l}%)`
+        }
+    
+        
+        // ]]>
+    </script>
+</svg>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>geometric attributes</title>
+    <link rel="stylesheet" href="../js/highlight/styles/default.min.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+<style>
+    .html_style {
+        fill: orange;
+        stroke: blue;
+        stroke-width: 10
+    }
+</style>
+
+<body>
+    <div class="title-holder">
+        <div class="info-holder">
+            <div class="title">SVG Styles </div>
+            <div class="subtitle">hierarchy</div>
+            <div class="description"></div>
+        </div>
+    </div>
+    <div class="content-holder">
+        <div class="section-holder">
+            <div class="svg-holder">
+                
+
+                <svg width="500" height="500" viewbox="0 0 500 500">
+
+                    <style>
+                        .embedded-style {
+                            fill: blue;
+                            stroke: red;
+                            stroke-width: 5;
+                           }
+                    </style>
+
+                    <!-- remove style types one by one to find out how hierarchy works -->
+                    <circle cx="250" cy="250" r="200"                    
+                        style="fill: orange; stroke: purple; stroke-width: 20"
+                        class="embedded-style"
+                        fill="purple" stroke="red" stroke-width="2">
+                    </circle>
+                </svg>
+
+            </div>
+            <div class="info">In this example, the inline style overrides both the “fill” presentation attribute and the embedded-style inline css style.</div>
+        </div>
+
+    </div>
+</body>
+
+</html>

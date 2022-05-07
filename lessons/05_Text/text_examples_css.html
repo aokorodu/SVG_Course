@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>SVG text styling</title>
+    <link rel="stylesheet" href="../css/main.css">
+</head>
+
+<body>
+    <div class="title-holder">
+        <div class="info-holder">
+            <div class="title">SVG text styling</div>
+            <div class="subtitle">Presentation Attributes vs CSS</div>
+        </div>
+    </div>
+    <div class="content-holder">
+        <div class="section-holder">
+            <div class="svg-holder">
+              
+                <svg width="500" height="500" viewbox="0 0 500 500">
+                    <style>
+                        .text-style {
+                            font-family: 'Open Sans',serif;
+                            font-size: 2rem;
+                            font-weight: bold;
+                            fill: #eaeaea;
+                            stroke: #212121;
+                            stroke-width: 1;
+                        }
+
+                        .span-style {
+                            font-size: 3rem;
+                            fill: green;
+                            font-weight: bold;
+                            stroke: none;
+                        }
+
+                    </style>
+
+                    <text class="text-style" text-anchor="middle" font-weight="bold" x="250" y="250">css <tspan class="span-style">styling</tspan> examples</text>
+                    
+                </svg>
+                
+
+            </div>
+        </div>
+        <div class="section-holder">
+            <p>SVG text elements can be styled using CSS or SVG text styling attributes</p>
+        </div>
+
+    </div>
+</body>
+
+</html>

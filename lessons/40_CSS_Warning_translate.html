@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>CSS Transform Warning! translate</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="title-holder">
+        <div class="info-holder">
+            <div class="title">CSS Transform Warning! translate</div>
+            <div class="subtitle">weirdness when using css transforms</div>
+
+        </div>
+    </div>
+    <div class="content-holder">
+        <div class="section-holder">
+            <div class="svg-holder">
+                <style>
+                    #slider {
+                        fill: green;
+                        animation: slide 2s ease-in-out infinite alternate;
+                    }
+
+                    @keyframes slide {
+                        from {
+                            transform: translate(0%);
+                        }
+
+                        to {
+                            transform: translate(80%);
+                        }
+                    }
+                </style>
+                <svg width="500" height="500" viewbox="0 0 500 500">
+                    <style>
+
+
+                    </style>
+
+                    <circle id="slider" cx="50" cy="250" r="20"></circle>
+
+
+
+
+                </svg>
+
+            </div>
+            <div class="info">container size: 500px x 500px </div>
+        </div>
+    </div>
+</body>
+
+</html>
