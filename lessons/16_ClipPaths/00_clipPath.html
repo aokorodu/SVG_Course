@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>clipPath</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="title-holder">
+        <div class="info-holder">
+            <div class="title">clipPaths</div>
+        </div>
+    </div>
+    <div class="content-holder">
+        <div class="section-holder">
+            <div class="svg-holder">
+                <!--
+                   
+                -->
+                <svg width="500" height="500" viewbox="0 0 500 500">
+                    <defs>
+                       
+                        <pattern id="tile" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse" patternContentUnits="userSpaceOnUse">
+                            <circle cx="10" cy="10" r="9" fill="orange" stroke="none" ></circle>
+                            <circle cx="30" cy="10" r="9" fill="#bababa" stroke="none" ></circle>
+                            <circle cx="10" cy="30" r="9" fill="#bababa" stroke="none" ></circle>
+                            <circle cx="30" cy="30" r="9" fill="#616161" stroke="none" ></circle>
+                        </pattern>
+
+                        <g id="simple-shape">
+                            <circle cx="250" cy="250" r="200"/>
+                        </g>
+
+                        <clipPath id="simple-clipPath">
+                            <!-- <use href="#simple-shape"/> -->
+                            <circle cx="250" cy="250" r="200"/>
+                        </clipPath>
+
+                        <clipPath id="complex-clipPath">
+                            <path
+                            d="M143 0L176.677 103.647H285.658L197.491 167.705L231.168 271.353L143 207.295L54.8322 271.353L88.5093 167.705L0.341522 103.647H109.323L143 0Z"
+                            fill="#C4C4C4" />
+                        <path transform="scale(.3)"
+                            d="M143 0L176.677 103.647H285.658L197.491 167.705L231.168 271.353L143 207.295L54.8322 271.353L88.5093 167.705L0.341522 103.647H109.323L143 0Z"
+                            fill="#C4C4C4" />
+                        <path transform="scale(3)"
+                            d="M143 0L176.677 103.647H285.658L197.491 167.705L231.168 271.353L143 207.295L54.8322 271.353L88.5093 167.705L0.341522 103.647H109.323L143 0Z"
+                            fill="#C4C4C4" />
+                        </clipPath>
+                    </defs>
+
+                    <!-- bg -->
+                    <rect x="0" y="0" width="500" height="500" stroke="none" fill="#eaeaea">
+                    </rect>
+
+                    <!-- item being clipped -->
+                    <rect x="0" y="0" width="500" height="500" stroke="black" stroke-width="2" clip-path="url(#simple-clipPath)" fill="url(#tile)">
+                    </rect>
+
+                    <!-- circle outline -->
+                    <circle cx="250" cy="250" r="202" fill="none" stroke="#616161" stroke-width="5"/>
+            
+                </svg>
+
+            </div>
+            <div class="info">container size: 500px x 500px </div>
+
+        </div>
+    </div>
+</body>
+
+</html>

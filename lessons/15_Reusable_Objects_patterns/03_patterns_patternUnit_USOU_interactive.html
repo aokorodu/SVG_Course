@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>patternUnit userSpaceOnUse interactive</title>
+  <script src="../js/custom-slider-component.js"></script>
+  <script src="../js/highlight/highlight.min.js"></script>
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <div class="title-holder">
+    <div class="info-holder">
+      <div class="title">patternUnit userSpaceOnUse interactive</div>
+      <div class="subtitle">interactive - change x, y, width and height</div>
+    </div>
+  </div>
+  <div class="content-holder">
+    <div class="section-holder">
+      <div class="svg-holder">
+        <svg width="500" height="500" viewbox="0 0 500 500">
+          <defs>
+           
+
+            <pattern id="tile_1" x="0" y="0" width="50" height="50" patternUnits="userSpaceOnUse">
+              <g>
+                <path d="M50 35V50H35L50 35Z" fill="black"/>
+                <path d="M35 1.31039e-07L50 -5.24632e-07L50 15L35 1.31039e-07Z" fill="black"/>
+                <path d="M1.31039e-07 35V50H15L1.31039e-07 35Z" fill="black"/>
+                <path d="M15 1.31039e-07L7.8671e-07 -5.24632e-07L1.31039e-07 15L15 1.31039e-07Z" fill="black"/>
+                <rect x="25" y="9.44366" width="22" height="22" transform="rotate(45 25 9.44366)" stroke="black" stroke-width="8" fill="red"/>
+                </g>
+            </pattern>
+
+
+          </defs>
+          <rect id="filled_rectangle" x="100" y="100" width="300" height="300" fill="url(#tile_1)" stroke="black" stroke-width="5">
+          </rect>
+        </svg>
+      </div>
+      <div id="info_text" class="info"></div>
+    </div>
+
+    <div class="section-holder">
+      <div class="slidecontainer">
+        <custom-slider id="object_x" minimum="0" maximum="500" val="100" label="pattern x" step=5>
+        </custom-slider>
+        <custom-slider id="object_y" minimum="0" maximum="500" val="100" label="pattern y" step=5>
+        </custom-slider>
+        <custom-slider id="object_width" minimum="0" maximum="500" val="300" label="pattern width" step=5>
+        </custom-slider>
+        <custom-slider id="object_height" minimum="0" maximum="500" val="300" label="pattern height" step=5>
+        </custom-slider>
+
+      </div>
+
+      <div class="description">
+        <p>Use the sliders to change the rectangle's x, y, width or height. Notice how the pattern conforms to the position and size of the rectangle.
+        </p>
+
+      </div>
+
+    </div>
+
+
+  </div>
+</body>
+<script>
+  
+  const filled_rectangle = document.querySelector("#filled_rectangle")
+
+  const object_x = document.querySelector("#object_x");
+  object_x.addEventListener("value", xHandler)
+
+  const object_y = document.querySelector("#object_y");
+  object_y.addEventListener("value", yHandler);
+
+  const object_width = document.querySelector("#object_width");
+  object_width.addEventListener("value", widthHandler)
+
+  const object_height = document.querySelector("#object_height");
+  object_height.addEventListener("value", heightHandler);
+
+
+  function xHandler(e) {
+    const newVal = e.detail.value;
+    console.log('new pattern x: ', newVal);
+    filled_rectangle.setAttribute("x", newVal)
+  }
+
+  function yHandler(e) {
+    const newVal = e.detail.value;
+    console.log('new pattern y: ', newVal);
+    filled_rectangle.setAttribute("y", newVal)
+  }
+
+  function widthHandler(e) {
+    const newVal = e.detail.value;
+    console.log('new pattern width: ', newVal);
+    filled_rectangle.setAttribute("width", newVal)
+  }
+
+  function heightHandler(e) {
+    const newVal = e.detail.value;
+    console.log('new pattern height: ', newVal);
+    filled_rectangle.setAttribute("height", newVal)
+  }
+
+</script>
+
+</html>

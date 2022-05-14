@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>feTurbulence</title>
+    <link rel="stylesheet" href="../css/main.css"> 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="title-holder">
+        <div class="info-holder">
+            <div class="title">&lt;feTurbulence&gt;</div>
+            <div class="subtitle"></div>
+            <!-- <div class="description">
+            </div> -->
+        </div>
+    </div>
+    <div class="content-holder">
+        <div class="section-holder">
+            <div class="svg-holder">
+                <!--
+                   for the lesson
+                -->
+                <svg width="500" height="500" viewbox="0 0 500 500">
+                    <defs>
+                        
+    
+                        <!-- <filter id="turbulence">
+                            <feTurbulence baseFrequency=".1" result="turbulence" numOctaves="10" />
+                            <feDisplacementMap in="SourceGraphic" in2="turbulence" scale="20"></feDisplacementMap>
+                        </filter> -->
+
+                        <filter id="turbulence">
+                            <feTurbulence baseFrequency=".01" numOctaves="1" seed="5"/>
+                        </filter>
+    
+                        <image id="image" x="0" y="0" href="../_graphics/zuubaDigitalLogo_2.png" width="200" height="200">
+                        </image>
+    
+                    </defs>
+    
+                    <rect filter="url(#turbulence)" x="0" y="0" width="500" height="500" fill="black" />
+    
+                    <!-- <use href="#image" x="275" y="275" filter="url(#turbulence)" /> -->
+                </svg>
+    
+            </div>
+            <div class="descriptive-info-holder">
+                <div class="small-info">container size: 500px x 500px </div>
+            </div>
+            
+        </div>
+        </div>
+</body>
+
+</html>

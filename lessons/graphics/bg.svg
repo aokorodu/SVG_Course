@@ -1,0 +1,12 @@
+<svg width="500" height="500" viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="500" height="500" fill="#E5E5E5"/>
+<g id="Frame 1">
+<rect width="500" height="500" fill="url(#grey-gradient)"/>
+</g>
+<defs>
+<linearGradient id="grey-gradient" x1="0" y1="500" x2="500" y2="0" gradientUnits="userSpaceOnUse">
+<stop stop-color="#464545"/>
+<stop offset="1" stop-color="#464545" stop-opacity="0"/>
+</linearGradient>
+</defs>
+</svg>

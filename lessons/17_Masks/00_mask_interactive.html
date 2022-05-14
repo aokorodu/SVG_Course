@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Masks</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="title-holder">
+        <div class="info-holder">
+            <div class="title">Masks</div>
+        </div>
+    </div>
+    <div class="content-holder">
+        <div class="section-holder">
+            <div class="svg-holder">
+                <!--
+                   for the lesson
+                -->
+                <svg width="500" height="500" viewbox="0 0 500 500">
+
+                  <!-- play with the values for the gradient (for example, swap black and white) to show how it affects mask -->
+                    <radialGradient id="my_gradient">
+                        <stop offset="0%" stop-color="white" />
+                        <stop offset="100%" stop-color="black" />
+                    </radialGradient>
+
+                    <pattern id="tile" x="0" y="0" width="50" height="50" patternUnits="userSpaceOnUse">
+                        <g>
+                          <path d="M50 35V50H35L50 35Z" fill="black"/>
+                          <path d="M35 1.31039e-07L50 -5.24632e-07L50 15L35 1.31039e-07Z" fill="black"/>
+                          <path d="M1.31039e-07 35V50H15L1.31039e-07 35Z" fill="black"/>
+                          <path d="M15 1.31039e-07L7.8671e-07 -5.24632e-07L1.31039e-07 15L15 1.31039e-07Z" fill="black"/>
+                          <rect x="25" y="9.44366" width="22" height="22" transform="rotate(45 25 9.44366)" stroke="black" stroke-width="8" fill="orange"/>
+                          </g>
+                      </pattern>
+
+                    <mask id="my_mask">
+                        <circle cx="250" cy="250" r="200" fill="url(#my_gradient)"></circle>
+                    </mask>
+
+                    <rect mask="url(#my_mask)" x="0" y="0" width="500" height="500" stroke="black" stroke-width="2" clip-path="url(#circ_CP)" fill="url(#tile)">
+                    </rect>
+
+                    <circle id="gradient" cx="250" cy="250" r="200" opacity="0" fill="url(#my_gradient)"></circle>
+                </svg>
+
+            </div>
+            <div class="radio-container">
+                <div class="radio-label">mask</div>
+                <div class="radio-group-container">
+                  <label class="radio-button-container">hide mask
+                    <input type="radio" checked="checked" value="hide" name="mask_visability">
+                    <span class="checkmark"></span>
+                  </label>
+                  <label class="radio-button-container">show mask
+                    <input type="radio" name="mask_visability" value="show">
+                    <span class="checkmark"></span>
+                  </label>
+                </div>
+              </div>
+            <div class="descriptive-info-holder">
+                <div class="small-info">container size: 500px x 500px </div>
+            </div>
+            
+
+        </div>
+    </div>
+</body>
+<script>
+    const gradientDemo = document.querySelector("#gradient");
+    const maskVisibleRadios = document.querySelectorAll('input[type=radio][name="mask_visability"]');
+  for (const radio of maskVisibleRadios) {
+    radio.addEventListener('change', () => {
+      const val = radio.value;
+      console.log('mask:', radio.value);
+      val == "hide" ? gradientDemo.setAttribute("opacity", 0) : gradientDemo.setAttribute("opacity", 1)
+    })
+  }
+</script>
+</html>

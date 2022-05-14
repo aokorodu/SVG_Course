@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Filters - Comparison</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="title-holder">
+        <div class="info-holder">
+            <div class="title">&lt;filter&gt;</div>
+            <div class="subtitle">drop shadow, guassian blur, color matrix and displacement maps</div>
+            <!-- <div class="description">
+            </div> -->
+        </div>
+    </div>
+    <div class="content-holder">
+        <div class="section-holder">
+            <div class="svg-holder">
+                <!--
+                   for the lesson
+                -->
+                <svg width="500" height="500" viewbox="0 0 500 500">
+                    <defs>
+                        <filter id="shadow">
+                            <feDropShadow dx="15" dy="15" stdDeviation="5" flood-color="black" flood-opacity=".5" />
+                        </filter>
+
+                        <filter id="motion-blur-x">
+                            <feGaussianBlur stdDeviation="10 0" />
+                        </filter>
+
+                        <filter id="colorMatrix" x="-50%" y="-50%" width="200%" height="200%">
+                            <feColorMatrix in="SourceGraphic" type="matrix" values="0 0 0 0 0
+                                        .1 1 .1 0 0
+                                        0 0 0 0 0
+                                        0 0 0 1 0" />
+                        </filter>
+
+                        <filter id="turbulence">
+                            <feTurbulence baseFrequency=".1" result="turbulence" numOctaves="10" />
+                            <feDisplacementMap in="SourceGraphic" in2="turbulence" scale="20"></feDisplacementMap>
+                        </filter>
+
+                        <image id="image" x="0" y="0" href="../graphics/zuubaDigitalLogo_2.png" width="200"
+                            height="200">
+                        </image>
+
+                    </defs>
+
+                    <use href="#image" x="25" y="25" filter="url(#shadow)" />
+
+                    <use href="#image" x="275" y="25" filter="url(#motion-blur-x)" />
+
+                    <use href="#image" x="25" y="275" filter="url(#colorMatrix)" />
+
+                    <use href="#image" x="275" y="275" filter="url(#turbulence)" />
+                </svg>
+
+            </div>
+            <div class="descriptive-info-holder">
+                <div class="small-info">container size: 500px x 500px </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+
+</html>

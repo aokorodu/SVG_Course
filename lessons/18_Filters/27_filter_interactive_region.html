@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Filter Region</title>
+    <script src="../js/custom-slider-component.js"></script>
+    <link rel="stylesheet" href="../css/main.css">
+    <script src="../js/custom-checkbox-component.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="title-holder">
+        <div class="info-holder">
+            <div class="title">filter region</div>
+            <div class="subtitle">demo of filter region settings</div>
+        </div>
+    </div>
+    <div class="content-holder">
+        <div class="section-holder">
+            <div class="svg-holder">
+                <!--
+                   for the lesson
+                -->
+                <svg width="500" height="500" viewbox="0 0 500 500">
+                    <defs>
+
+                        <!-- <filter id="blur-filter" >
+                            <feGaussianBlur id="gauss-blur" stdDeviation="10" />
+                        </filter> -->
+
+                        <filter id="dropshadow-filter" x="-10%" y="-10%" width="120%" height="120%">
+                            <feDropShadow id="drop-shadow" dx="0" dy="0" flood-color="black" stdDeviation="10"
+                                flood-opacity="1" />
+                        </filter>
+
+                    </defs>
+
+                    <rect id="rect" x="100" y="100" width="300" height="300" fill="orange" stroke="none"
+                        filter="url(#dropshadow-filter)"></rect>
+
+                    <rect id="bounding-box" x="100" y="100" width="300" height="300" fill="none" stroke="red"
+                        stroke-opacity=".2"></rect>
+
+                </svg>
+
+            </div>
+            <div id="info" class="descriptive-info-holder">_</div>
+
+        </div>
+        <div class="section-holder">
+            <div class="slidecontainer">
+                <custom-slider id="blur_x" minimum="0" maximum="100" val="10" label="shadow size"></custom-slider>
+                <custom-slider id="filter_size" minimum="100" maximum="200" val="120" step="2" label="filter size">
+                </custom-slider>
+
+                <custom-checkbox id="checkbox" label="filter boundry visible"></custom-checkbox>
+            </div>
+        </div>
+
+    </div>
+</body>
+<script>
+    const info = document.querySelector('#info');
+    const blur_slider = document.querySelector("#blur_x");
+    const filter_size_slider = document.querySelector("#filter_size");
+    const dropshadow_filter = document.querySelector("#dropshadow-filter");
+    const border_checkbox = document.querySelector("#checkbox");
+    const bbOutline = document.getElementById("bounding-box");
+
+    blur_slider.addEventListener("value", (e) => {
+        updateBlur(e.detail.value)
+    })
+
+    filter_size_slider.addEventListener("value", (e) => {
+        const margin = (e.detail.value - 100) / 2;
+        updateFilterSize(margin);
+        updateFilterBoundry(margin)
+    })
+
+    border_checkbox.addEventListener("value", e=>{
+        console.log('checkbox: ', border_checkbox.ischecked);
+        showBoundry();
+    })
+    
+
+    const updateBlur = (val) => {
+        const gauss_blur = document.getElementById('drop-shadow');
+        const currrent_blur_str = gauss_blur.getAttribute("stdDeviation");
+        let str = `${val}`;
+        gauss_blur.setAttribute("stdDeviation", str)
+    }
+
+    const updateFilterText = (str) => {
+        info.innerText = `<filter ${str}" />`;
+    }
+
+    const updateFilterSize = (margin) => {
+
+        const xval = `-${margin}%`;
+        const yval = `-${margin}%`;
+        const width = `${100 + (2 * margin)}%`;
+        const height = `${100 + (2 * margin)}%`;
+        const filter_text = ` x="${xval}" y="${yval}" width="${width}" height="${height}" `;
+        updateFilterText(filter_text)
+
+        dropshadow_filter.setAttribute("x", xval);
+        dropshadow_filter.setAttribute("y", yval);
+        dropshadow_filter.setAttribute("width", width);
+        dropshadow_filter.setAttribute("height", height);
+    }
+
+    const updateFilterBoundry = (margin_percentage) => {
+        var rect = document.getElementById("rect").getBBox();
+        const margin = rect.width * (margin_percentage / 100);
+        const x = rect.x - margin;
+        const y = rect.y - margin;
+        const w = rect.width + (2 * margin);
+        const h = rect.height + (2 * margin);
+
+        bbOutline.setAttribute("x", x);
+        bbOutline.setAttribute("y", y);
+        bbOutline.setAttribute("width", w);
+        bbOutline.setAttribute("height", h);
+    }
+
+    const showBoundry = ()=>{
+        const bool = border_checkbox.ischecked;
+        if(bool){
+            bbOutline.setAttribute("stroke-opacity", .5);
+        } else {
+            bbOutline.setAttribute("stroke-opacity", 0);
+        }
+    }
+
+    updateFilterBoundry((filter_size_slider.val - 100) / 2);
+    showBoundry();
+    updateFilterText(`x="-10%" y="-10%" width="120%" height="120%"`)
+
+</script>
+
+</html>

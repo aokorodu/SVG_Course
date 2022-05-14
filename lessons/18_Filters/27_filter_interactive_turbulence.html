@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>feTurbulence, feDisplacementMap</title>
+    <script src="../js/custom-slider-component.js"></script>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="title-holder">
+        <div class="info-holder">
+            <div class="title">feTurbulence, feDisplacementMap</div>
+            <!-- <div class="subtitle">horizontal and vertical blur filter</div> -->
+        </div>
+    </div>
+    <div class="content-holder">
+        <div class="section-holder">
+        <div class="svg-holder">
+            
+            <svg width="500" height="500" viewbox="0 0 500 500">
+                <defs>
+
+                    <filter id="turb-displace-filter">
+                        <feTurbulence id="turbulence-filter" type="turbulence" baseFrequency="0.05"
+                            numOctaves="5" result="turbulence" seed="0"/>
+                        <feDisplacementMap id="displacement-filter" in2="turbulence" in="SourceGraphic"
+                            scale="30" xChannelSelector="R" yChannelSelector="G"/>
+                    </filter>
+
+                    <image id="image" x="0" y="0" href="../graphics/zuubaDigitalLogo_2.png" width="400" height="400"></image>
+
+                </defs>
+
+                <use href="#image" x="50" y="50" filter="url(#turb-displace-filter)" />
+            </svg>
+
+        </div>
+        <div class="descriptive-info-holder">
+            <div id="info_1" class="small-info">container size: 500px x 500px </div>
+            <div id="info_2" class="small-info">- </div>
+        </div>
+    </div>
+    <div class="section-holder">
+        <div class="slidecontainer">
+            <custom-slider id="base_freq_x" minimum="0" maximum="1" val="0.05" label="base freq x"></custom-slider>
+            <custom-slider id="base_freq_y" minimum="0" maximum="1" val="0.05" label="base freq y"></custom-slider>
+            <custom-slider id="scale" minimum="0" maximum="50" val="10" label="scale"></custom-slider>
+        </div>
+    </div>
+       
+        
+    </div>
+</body>
+<script>
+    const info_1 = document.querySelector('#info_1');
+    const base_freq_x_slider = document.querySelector("#base_freq_x");
+    const base_freq_y_slider = document.querySelector("#base_freq_y");
+    const disp_scale_slider = document.querySelector("#scale");
+    
+    base_freq_x_slider.addEventListener("value", (e)=>{
+        updateFrequency(e.detail.value, true)
+    })
+    base_freq_y_slider.addEventListener("value", (e)=>{
+        updateFrequency(e.detail.value, false)
+    })
+    disp_scale_slider.addEventListener("value", (e)=>{
+        updateScale(e.detail.value)
+    })
+
+    const updateFrequency = (val, isX)=>{
+        const turbulence_filter = document.getElementById('turbulence-filter');
+        const current_base_frequency = turbulence_filter.getAttribute("baseFrequency");
+        const arr = current_base_frequency.split(" ");
+        let xval = arr[0];
+        let yval = arr[1] || xval;
+        isX ? xval = val : yval = val;
+        let str = `${xval} ${yval}`;
+        if(xval == yval) str = `${xval}`;
+        turbulence_filter.setAttribute("baseFrequency", str)
+        updateFrequencyText(str)
+    }
+
+    const updateScale = (val)=>{
+        const displacement_filter = document.getElementById('displacement-filter');
+        displacement_filter.setAttribute("scale", val)
+        updateScaleText(val)
+    }
+
+    const updateFrequencyText = (str)=>{
+        info_1.innerText = `<feTurbulence id="turbulence-filter" type="turbulence" baseFrequency="${str}" />`;
+    }
+
+    const updateScaleText = (str)=>{
+        info_2.innerText = `<feDisplacementMap id="displacement-filter" in2="turbulence" in="SourceGraphic" scale="${str}" />`;
+    }
+
+    updateFrequency(base_freq_x_slider.value, true);
+    updateFrequency(base_freq_x_slider.value, false);
+    updateScale(disp_scale_slider.value)
+</script>
+</html>

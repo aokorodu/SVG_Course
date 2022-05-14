@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>patternUnits</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="title-holder">
+        <div class="info-holder">
+            <div class="title">patternUnits</div>
+            <div class="subtitle">userSpaceOnUse vs objectBoundingBox</div>
+
+        </div>
+    </div>
+    <div class="content-holder">
+        <div class="section-holder">
+            <div class="svg-holder">
+                <!--
+                   
+                -->
+                <svg width="500" height="500" viewbox="0 0 500 500">
+                    <defs>
+                        <!-- userSpaceOnUse patterns -->
+                        <pattern id="tile_1" x="0" y="0" width="50" height="50" patternUnits="userSpaceOnUse">
+                            <rect x="0" y="0" width="25" height="25" stroke="none" fill="red"/>
+                            <rect x="25" y="0" width="25" height="25" stroke="none" fill="black"/>
+                            <rect x="0" y="25" width="25" height="25" stroke="none" fill="black"/>
+                            <rect x="25" y="25" width="25" height="25" stroke="none" fill="red"/>
+                        </pattern>
+
+                        <!-- objectBoundingBox patterns -->
+                        <!-- <pattern id="tile_1" x="0" y="0" width=".1666" height=".1666" patternUnits="objectBoundingBox">
+                            <rect x="0" y="0" width="25" height="25" stroke="none" fill="red"/>
+                            <rect x="25" y="0" width="25" height="25" stroke="none" fill="black"/>
+                            <rect x="0" y="25" width="25" height="25" stroke="none" fill="black"/>
+                            <rect x="25" y="25" width="25" height="25" stroke="none" fill="red"/>
+                        </pattern> -->
+
+
+                    </defs>
+                    <rect x="100" y="100" width="300" height="300" stroke="black" stroke-width="10" fill="url(#tile_1)">
+                    </rect>
+
+                </svg>
+
+            </div>
+            <div class="info">container size: 500px x 500px </div>
+
+        </div>
+    </div>
+</body>
+
+</html>
